@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,34 +8,39 @@
     <!-- Cargando bootstrap.css descargado -->
     <link rel="stylesheet" href="../css/bootstrap.css">
     <style>
-        /* Estilizar el tamaño de la fuente en la barra de navegación */
-        .navbar-nav .nav-link {
-            font-size: 1.5rem; /* Ajusta el tamaño de la fuente según sea necesario */
+        /* Desplazamiento vertical para todo el documento */
+        body {
+            overflow-y: auto; /* Permite scroll vertical */
+            margin: 0; /* Elimina el margen para aprovechar toda la pantalla */
+            height: 100vh; /* Asegura que el cuerpo ocupe toda la ventana */
         }
 
-        /* Estilizar SOLO la imagen representativa para alinearla al borde izquierdo */
+        .navbar-nav .nav-link {
+            font-size: 1.5rem;
+        }
+
         .imagen-representativa {
             position: fixed;
             left: 0;
             top: 50%;
             transform: translateY(-50%);
             z-index: -1;
+            max-width: 100%; /* Asegura que no se salga del ancho de la pantalla */
+            height: auto;
         }
 
-        /* Estilizar el contenedor para alinearlo a la derecha */
+        /* Contenedor alineado con Bootstrap */
         .content-container {
+            position: relative;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: flex-start; /* Alinea a la izquierda */
-            position: absolute;
-            top: 40%;
-            left: 43%; /* Alineado un poco a la derecha de la imagen */
-            transform: translateY(-50%);
-            width: 45%; /* Ancho del contenedor */
+            align-items: flex-start;
+            margin-top: 120px;
+            left: 40%;
+            width: 80%;
         }
 
-        /* Estilo del botón para centrarlo debajo del contenedor */
         .btn {
             display: block;
             margin-top: 20px;
@@ -44,35 +50,33 @@
             font-size: 1.5rem;
             padding: 15px 30px;
             border-radius: 8px;
-            width: 75%; /* Botón ocupa el ancho completo del contenedor */
+            width: 75%;
             text-align: center;
-            transform: translateX(15%); /* Desplazar ligeramente a la izquierda */
+            transform: translateX(15%);
         }
 
-        /* Estilizar el título */
         h1 {
             color: green;
             font-size: 2.5rem;
             margin-bottom: 20px;
         }
 
-        /* Estilo del contenedor de información */
         .custom-container {
             background-color: #cbc7c7;
             padding: 20px;
             border-radius: 8px;
             border: 1px solid #ccc;
             width: 100%;
-            height: auto; /* Permite que el contenedor crezca con el contenido */
+            height: auto;
         }
 
-        /* Estilo del contenido del contenedor */
         .container-body {
             color: #000000;
             font-size: 1.2rem;
         }
     </style>
 </head>
+
 <body>
     <!-- Barra de navegación -->
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #efe8e8;">
@@ -80,7 +84,8 @@
             <a class="navbar-brand" href="index.html">
                 <img src="../../img/logo.png" alt="Logo" width="200" height="75">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01"
+                aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarColor01">
@@ -99,26 +104,33 @@
         </div>
     </nav>
 
-    <!-- Contenedor principal para título, contenedor y botón -->
-    <div class="content-container">
-        <!-- Título -->
-        <h1>PRODUCCIÓN Y CONSUMO RESPONSABLE</h1>
+    <!-- Contenedor principal -->
+    <div class="container">
+        <div class="content-container">
+            <h1>PRODUCCIÓN Y CONSUMO RESPONSABLE</h1>
 
-        <!-- Contenedor de información de empresa -->
-        <div class="custom-container">
-            <div class="container-body">
-                <p>Este ODS tiene como finalidad garantizar patrones de producción y consumo sostenibles, promoviendo un equilibrio entre el bienestar humano, el crecimiento económico y la conservación del medio ambiente. Este objetivo busca reducir el impacto ambiental negativo derivado de la producción y el consumo de bienes y servicios, fomentando un uso eficiente de los recursos naturales, la disminución de desechos y la implementación de prácticas responsables en toda la cadena de valor.​ Entre sus principales metas, el ODS 12 incluye la gestión eficiente de los recursos naturales, la reducción del desperdicio de alimentos y desechos en general, así como el impulso al reciclaje y la reutilización. Además, promueve la adopción de prácticas sostenibles en las empresas y trabaja en la sensibilización de la población sobre la importancia de un consumo responsable.</p>
+            <div class="custom-container">
+                <div class="container-body">
+                    <p>Este ODS tiene como finalidad garantizar patrones de producción y consumo sostenibles,
+                        promoviendo un equilibrio entre el bienestar humano, el crecimiento económico y la conservación
+                        del medio ambiente. Este objetivo busca reducir el impacto ambiental negativo derivado de la
+                        producción y el consumo de bienes y servicios, fomentando un uso eficiente de los recursos
+                        naturales, la disminución de desechos y la implementación de prácticas responsables en toda la
+                        cadena de valor. Entre sus principales metas, el ODS 12 incluye la gestión eficiente de los
+                        recursos naturales, la reducción del desperdicio de alimentos y desechos en general, así como el
+                        impulso al reciclaje y la reutilización. Además, promueve la adopción de prácticas sostenibles en
+                        las empresas y trabaja en la sensibilización de la población sobre la importancia de un consumo
+                        responsable.
+                    </p>
+                </div>
             </div>
+
+            <button type="button" class="btn" onclick="window.location.href='formulario.php';">¡Contesta el formulario!</button>
+            <img src="../../img/Imagen_Representativa.jpeg" alt="Imagen Representativa" width="780" height="700"
+            class="imagen-representativa">
         </div>
 
-        <!-- Botón debajo del contenedor -->
-        <button type="button" class="btn" onclick="window.location.href='formulario.php';">¡Contesta el formulario!</button>
     </div>
-
-    <!-- Imagen representativa -->
-    <img src="../../img/Imagen_Representativa.jpeg" alt="Imagen Representativa" width="780" height="700" class="imagen-representativa">
-
-    <!-- Cargando scripts de Bootstrap -->
-    <script src="../js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
