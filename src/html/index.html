@@ -8,71 +8,93 @@
     <!-- Cargando bootstrap.css descargado -->
     <link rel="stylesheet" href="../css/bootstrap.css">
     <style>
-        /* Desplazamiento vertical para todo el documento */
+        /* Ajustes globales */
         body {
-            overflow-y: auto; /* Permite scroll vertical */
-            margin: 0; /* Elimina el margen para aprovechar toda la pantalla */
-            height: 100vh; /* Asegura que el cuerpo ocupe toda la ventana */
+            overflow-y: auto;
+            margin: 0;
         }
 
         .navbar-nav .nav-link {
             font-size: 1.5rem;
         }
 
-        .imagen-representativa {
-            position: fixed;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: -1;
-            max-width: 100%; /* Asegura que no se salga del ancho de la pantalla */
-            height: auto;
+        /* Contenedor principal */
+        .content-container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
         }
 
-        /* Contenedor alineado con Bootstrap */
-        .content-container {
-            position: relative;
+        /* Imagen alineada completamente a la izquierda */
+        .imagen-representativa-container {
+            flex: 1;
+            max-width: 780px;
+            margin-right: 20px;
+        }
+
+        .imagen-representativa {
+            width: 100%;
+            height: auto;
+            border-radius: 0px;
+        }
+
+        /* Contenedor del texto y título */
+        .text-container {
+            flex: 2;
+            max-width: 600px;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: flex-start;
-            margin-top: 120px;
-            left: 40%;
-            width: 80%;
         }
 
+        /* Estilo del título */
+        h1 {
+            color: green;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Contenedor del texto */
+        .custom-container {
+            background-color: #cbc7c7;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            text-align: justify;
+        }
+
+        /* Estilo del botón */
         .btn {
-            display: block;
-            margin-top: 20px;
             background-color: green;
             border-color: green;
             color: white;
             font-size: 1.5rem;
             padding: 15px 30px;
             border-radius: 8px;
-            width: 75%;
+            max-width: 300px;
+            align-self: center;
             text-align: center;
-            transform: translateX(15%);
+            margin: 20px auto 0 auto; /* Centrado debajo del contenedor de texto */
         }
 
-        h1 {
-            color: green;
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
+        /* Ajustes responsivos */
+        @media (max-width: 768px) {
+            .content-container {
+                flex-direction: column; /* Apilar imagen y texto en pantallas pequeñas */
+            }
 
-        .custom-container {
-            background-color: #cbc7c7;
-            padding: 20px;
-            border-radius: 8px;
-            border: 1px solid #ccc;
-            width: 100%;
-            height: auto;
-        }
+            .imagen-representativa-container,
+            .text-container {
+                max-width: 100%;
+            }
 
-        .container-body {
-            color: #000000;
-            font-size: 1.2rem;
+            h1 {
+                font-size: 2rem;
+            }
+
+            .btn {
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -84,8 +106,7 @@
             <a class="navbar-brand" href="index.html">
                 <img src="../../img/logo.png" alt="Logo" width="200" height="75">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01"
-                aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarColor01">
@@ -105,32 +126,30 @@
     </nav>
 
     <!-- Contenedor principal -->
-    <div class="container">
-        <div class="content-container">
-            <h1>PRODUCCIÓN Y CONSUMO RESPONSABLE</h1>
+    <div class="content-container">
+        <!-- Contenedor de imagen -->
+        <div class="imagen-representativa-container">
+            <img src="../../img/Imagen_Representativa.jpeg" alt="Imagen Representativa" class="imagen-representativa">
+        </div>
 
+        <!-- Contenedor de texto y título -->
+        <div class="text-container">
+            <!-- Título -->
+            <h1>PRODUCCIÓN Y CONSUMO <br>RESPONSABLE</h1>
+
+            <!-- Contenedor de texto -->
             <div class="custom-container">
                 <div class="container-body">
-                    <p>Este ODS tiene como finalidad garantizar patrones de producción y consumo sostenibles,
-                        promoviendo un equilibrio entre el bienestar humano, el crecimiento económico y la conservación
-                        del medio ambiente. Este objetivo busca reducir el impacto ambiental negativo derivado de la
-                        producción y el consumo de bienes y servicios, fomentando un uso eficiente de los recursos
-                        naturales, la disminución de desechos y la implementación de prácticas responsables en toda la
-                        cadena de valor. Entre sus principales metas, el ODS 12 incluye la gestión eficiente de los
-                        recursos naturales, la reducción del desperdicio de alimentos y desechos en general, así como el
-                        impulso al reciclaje y la reutilización. Además, promueve la adopción de prácticas sostenibles en
-                        las empresas y trabaja en la sensibilización de la población sobre la importancia de un consumo
-                        responsable.
-                    </p>
+                    <p>Este ODS tiene como finalidad garantizar patrones de producción y consumo sostenibles, promoviendo un equilibrio entre el bienestar humano, el crecimiento económico y la conservación del medio ambiente. Este objetivo busca reducir el impacto ambiental negativo derivado de la producción y el consumo de bienes y servicios, fomentando un uso eficiente de los recursos naturales, la disminución de desechos y la implementación de prácticas responsables en toda la cadena de valor.</p>
+                    <p>Entre sus principales metas, el ODS 12 incluye la gestión eficiente de los recursos naturales, la reducción del desperdicio de alimentos y desechos en general, así como el impulso al reciclaje y la reutilización. Además, promueve la adopción de prácticas sostenibles en las empresas y trabaja en la sensibilización de la población sobre la importancia de un consumo responsable.</p>
                 </div>
             </div>
 
+            <!-- Botón debajo del contenedor de texto -->
             <button type="button" class="btn" onclick="window.location.href='formulario.php';">¡Contesta el formulario!</button>
-            <img src="../../img/Imagen_Representativa.jpeg" alt="Imagen Representativa" width="780" height="700"
-            class="imagen-representativa">
         </div>
-
     </div>
+
 </body>
 
 </html>
