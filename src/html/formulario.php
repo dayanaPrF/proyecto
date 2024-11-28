@@ -123,7 +123,7 @@
                             <div class="form-check">
                                 <!-- SEXO -->
                                 <label class="col-form-label col-form-label-format" for="inputDefault">Sexo</label>
-                                <select id="id-sexo" name="sexo" class="form-select col-form-label-format all-elements-color-background" require>
+                                <select id="id-sexo" name="sexo" class="form-select col-form-label-format all-elements-color-background" required>
                                     <option value="">Selecciona una opción</option>
                                     <option value="hombre" <?= (isset($_POST['sexo']) && $_POST['sexo'] === 'hombre') ? 'selected' : '' ?>>Hombre</option>
                                     <option value="mujer" <?= (isset($_POST['sexo']) && $_POST['sexo'] === 'mujer') ? 'selected' : '' ?>>Mujer</option>
@@ -131,22 +131,23 @@
                                 </select>
                             </div>
                             <div class="form-check">
+                                <!-- OCUPACION -->
                                 <label class="col-form-label col-form-label-format" for="inputDefault">Ocupación</label>
-                                <select id="ocupacion" class="form-select col-form-label-format all-elements-color-background">
+                                <select id="id-ocupacion" name="ocupacion" class="form-select col-form-label-format all-elements-color-background" required>
                                     <option value="">Selecciona una opción</option>
-                                    <option value="estudiante">Estudiante</option>
-                                    <option value="ingeniero">Ingeniero</option>
-                                    <option value="medico">Médico</option>
-                                    <option value="abogado">Abogado</option>
-                                    <option value="profesor">Profesor</option>
-                                    <option value="enfermero">Enfermero</option>
-                                    <option value="arquitecto">Arquitecto</option>
-                                    <option value="diseñador">Diseñador</option>
-                                    <option value="programador">Programador</option>
-                                    <option value="artista">Artista</option>
-                                    <option value="comerciante">Comerciante</option>
-                                    <option value="chef">Chef</option>
-                                    <option value="otros">Otro</option>
+                                    <option value="Estudiante" <?= (isset($_POST['ocupacion']) && $_POST['ocupacion'] === 'Estudiante') ? 'selected' : '' ?>>Estudiante</option>
+                                    <option value="Ingeniero" <?= (isset($_POST['ocupacion']) && $_POST['ocupacion'] === 'Ingeniero') ? 'selected' : '' ?>>Ingeniero</option>
+                                    <option value="Medico" <?= (isset($_POST['ocupacion']) && $_POST['ocupacion'] === 'Medico') ? 'selected' : '' ?>>Médico</option>
+                                    <option value="Abogado" <?= (isset($_POST['ocupacion']) && $_POST['ocupacion'] === 'Abogado') ? 'selected' : '' ?>>Abogado</option>
+                                    <option value="Profesor" <?= (isset($_POST['ocupacion']) && $_POST['ocupacion'] === 'Profesor') ? 'selected' : '' ?>>Profesor</option>
+                                    <option value="Enfermero" <?= (isset($_POST['ocupacion']) && $_POST['ocupacion'] === 'Enfermero') ? 'selected' : '' ?>>Enfermero</option>
+                                    <option value="Arquitecto" <?= (isset($_POST['ocupacion']) && $_POST['ocupacion'] === 'Arquitecto') ? 'selected' : '' ?>>Arquitecto</option>
+                                    <option value="Diseñador" <?= (isset($_POST['ocupacion']) && $_POST['ocupacion'] === 'Diseñador') ? 'selected' : '' ?>>Diseñador</option>
+                                    <option value="Programador" <?= (isset($_POST['ocupacion']) && $_POST['ocupacion'] === 'Programador') ? 'selected' : '' ?>>Programador</option>
+                                    <option value="Artista" <?= (isset($_POST['ocupacion']) && $_POST['ocupacion'] === 'Artista') ? 'selected' : '' ?>>Artista</option>
+                                    <option value="Comerciante" <?= (isset($_POST['ocupacion']) && $_POST['ocupacion'] === 'Comerciante') ? 'selected' : '' ?>>Comerciante</option>
+                                    <option value="Chef" <?= (isset($_POST['ocupacion']) && $_POST['ocupacion'] === 'Chef') ? 'selected' : '' ?>>Chef</option>
+                                    <option value="Otros" <?= (isset($_POST['ocupacion']) && $_POST['ocupacion'] === 'Otros') ? 'selected' : '' ?>>Otro</option>
                                 </select>
                             </div>
                         </div>
@@ -159,57 +160,65 @@
                         <div class="card-header card-header-color-format">Alimentación y Productos de Uso Diario</div>
                         <div class="card-body card-body-style-questions">
                             <div class="form-check">
+                                <!-- apud_1 -->
                                 <label class="col-form-label col-form-label-format" for="productosFrescos">
                                     ¿Prefieres comprar productos frescos en mercados locales o en supermercados grandes?
                                 </label>
-                                <select id="productosFrescos" class="form-select col-form-label-format all-elements-color-background">
+                                <select id="productosFrescos" name="apud_1" class="form-select col-form-label-format all-elements-color-background" required>
                                     <option value="">Selecciona una opción</option>
-                                    <option value="Mercados locales">Mercados locales</option>
-                                    <option value="Supermercados">Supermercados</option>
-                                    <option value="Ambos">Ambos</option>
+                                    <option value="Mercados locales"<?= (isset($_POST['apud_1']) && $_POST['apud_1'] === 'Mercados locales') ? 'selected' : '' ?>>Mercados locales</option>
+                                    <option value="Supermercados"<?= (isset($_POST['apud_1']) && $_POST['apud_1'] === 'Supermercados') ? 'selected' : '' ?>>Supermercados</option>
+                                    <option value="Ambos" <?= (isset($_POST['apud_1']) && $_POST['apud_1'] === 'Ambos') ? 'selected' : '' ?>>Ambos</option>
                                 </select>
-            
+                                <!-- apud_2 -->
                                 <label class="col-form-label col-form-label-format" for="restosComida">
                                     ¿Qué haces con los restos de comida?
                                 </label>
-                                <select id="restosComida" class="form-select col-form-label-format all-elements-color-background">
+                                <select id="restosComida" name="apud_2" class="form-select col-form-label-format all-elements-color-background" required>
                                     <option value="">Selecciona una opción</option>
-                                    <option value="Los tiro">Los tiro</option>
-                                    <option value="Los composteo">Los composteo</option>
-                                    <option value="Los reciclo">Los reciclo</option>
-                                    <option value="Los aprovecho en nuevas recetas">Los aprovecho en nuevas recetas</option>
+                                    <option value="Los tiro"<?= (isset($_POST['apud_2']) && $_POST['apud_2'] === 'Los tiro') ? 'selected' : '' ?>>Los tiro</option>
+                                    <option value="Los composteo"<?= (isset($_POST['apud_2']) && $_POST['apud_2'] === 'Los composteo') ? 'selected' : '' ?>>Los composteo</option>
+                                    <option value="Los reciclo"<?= (isset($_POST['apud_2']) && $_POST['apud_2'] === 'Los reciclo') ? 'selected' : '' ?>>Los reciclo</option>
+                                    <option value="Los aprovecho en nuevas recetas"<?= (isset($_POST['apud_2']) && $_POST['apud_2'] === 'Los aprovecho en nuevas recetas') ? 'selected' : '' ?>>Los aprovecho en nuevas recetas</option>
                                 </select>
-
+                                <!-- apud_3 -->
                                 <fieldset>
                                     <br><legend class="col-form-label-format">
                                         ¿Compras productos orgánicos?
                                     </legend>
                                     <label for="3-si" class="col-form-label-format">
-                                        <input type="radio" id="3-si" name="prodOrg" value="si" class="all-elements-color-background" required> Sí
+                                        <input type="radio" id="3-si" name="apud_3" class="all-elements-color-background" value="Si" 
+                                        <?= (isset($_POST['apud_3']) && $_POST['apud_3'] === 'Si') ? 'checked' : '' ?> required> Si
                                     </label><br>
                                     <label for="3-Con frecuencia" class="col-form-label-format">
-                                        <input type="radio" id="3-Con frecuencia" name="prodOrg" value="Con frecuencia" class="all-elements-color-background"> Con frecuencia
+                                        <input type="radio" id="3-Con frecuencia" name="apud_3" class="all-elements-color-background" value="Con frecuencia"
+                                        <?= (isset($_POST['apud_3']) && $_POST['apud_3'] === 'Con frecuencia') ? 'checked' : '' ?>> Con frecuencia
                                     </label><br>
                                     <label for="3-a-veces" class="col-form-label-format">
-                                        <input type="radio" id="3-a-veces" name="prodOrg" value="a veces" class="all-elements-color-background"> A veces
+                                        <input type="radio" id="3-a-veces" name="apud_3" class="all-elements-color-background" value="A veces"
+                                        <?= (isset($_POST['apud_3']) && $_POST['apud_3'] === 'A veces') ? 'checked' : '' ?>> A veces
                                     </label><br>
                                     <label for="3-no" class="col-form-label-format">
-                                        <input type="radio" id="3-no" name="prodOrg" value="No" class="all-elements-color-background"> No
+                                        <input type="radio" id="3-no" name="apud_3" class="all-elements-color-background" value="No"
+                                        <?= (isset($_POST['apud_3']) && $_POST['apud_3'] === 'No') ? 'checked' : '' ?>> No
                                     </label><br>
                                 </fieldset> 
-
+                                <!-- apud_4 -->
                                 <fieldset>
                                     <br><legend class="col-form-label-format">
                                         ¿Compras en empaques reutilizables o sin empaque?
                                     </legend>
                                     <label for="4-siempre" class="col-form-label-format">
-                                        <input type="radio" id="4-siempre" name="empaquesReutilizables" value="siempre" class="all-elements-color-background" required> Siempre
+                                        <input type="radio" id="4-siempre" name="apud_4" class="all-elements-color-background" value="Siempre"
+                                        <?= (isset($_POST['apud_4']) && $_POST['apud_4'] === 'Siempre') ? 'checked' : '' ?> required> Siempre
                                     </label><br>
                                     <label for="4-a-veces" class="col-form-label-format">
-                                        <input type="radio" id="4-a-veces" name="empaquesReutilizables" value="a veces" class="all-elements-color-background"> A veces
+                                        <input type="radio" id="4-a-veces" name="apud_4" class="all-elements-color-background" value="A veces"
+                                        <?= (isset($_POST['apud_4']) && $_POST['apud_4'] === 'A veces') ? 'checked' : '' ?>> A veces
                                     </label><br>
                                     <label for="4-nunca" class="col-form-label-format">
-                                        <input type="radio" id="4-nunca" name="empaquesReutilizables" value="Nunca" class="all-elements-color-background"> Nunca
+                                        <input type="radio" id="4-nunca" name="apud_4" class="all-elements-color-background" value="Nunca"
+                                        <?= (isset($_POST['apud_4']) && $_POST['apud_4'] === 'Nunca') ? 'checked' : '' ?>> Nunca
                                     </label><br>
                                 </fieldset> 
                             </div>
@@ -223,40 +232,46 @@
                         <div class="card-header card-header-color-format">Transporte y Energía</div>
                         <div class="card-body card-body-style-questions">
                             <div class="form-check">
+                                <!-- te_1 -->
                                 <label class="col-form-label col-form-label-format" for="restosComida">
                                     ¿Cómo sueles transportarte?
                                 </label>
-                                <select id="usoTransporte" class="form-select col-form-label-format all-elements-color-background">
+                                <select id="usoTransporte" name="te_1" class="form-select col-form-label-format all-elements-color-background" required>
                                     <option value="">Selecciona una opción</option>
-                                    <option value="Auto propio">Auto propio</option>
-                                    <option value="Transporte público">Transporte público</option>
-                                    <option value="Bicicleta">Bicicleta</option>
-                                    <option value="Caminando">Caminando</option>
-                                    <option value="Otros">Otros</option>
+                                    <option value="Auto propio"<?= (isset($_POST['te_1']) && $_POST['te_1'] === 'Auto propio') ? 'selected' : '' ?>>Auto propio</option>
+                                    <option value="Transporte publico"<?= (isset($_POST['te_1']) && $_POST['te_1'] === 'Transporte publico') ? 'selected' : '' ?>>Transporte público</option>
+                                    <option value="Bicicleta"<?= (isset($_POST['te_1']) && $_POST['te_1'] === 'Bicicleta') ? 'selected' : '' ?>>Bicicleta</option>
+                                    <option value="Caminando"<?= (isset($_POST['te_1']) && $_POST['te_1'] === 'Caminando') ? 'selected' : '' ?>>Caminando</option>
+                                    <option value="Otros"<?= (isset($_POST['te_1']) && $_POST['te_1'] === 'Otros') ? 'selected' : '' ?>>Otros</option>
                                 </select>
-
+                                <!-- te_2 -->
                                 <fieldset>
                                     <br><legend class="col-form-label-format">
                                         ¿Intentas reducir el consumo de energía en casa?
                                     </legend>
                                     <label for="7-si" class="col-form-label-format">
-                                        <input type="radio" id="7-si" name="reducirEnergia" value="si" class="all-elements-color-background" required> Si
+                                        <input type="radio" id="7-si" name="te_2" class="all-elements-color-background" value="Si"
+                                        <?= (isset($_POST['te_2']) && $_POST['te_2'] === 'Si') ? 'checked' : '' ?> required> Si
                                     </label><br>
                                     <label for="7-constantemente" class="col-form-label-format">
-                                        <input type="radio" id="7-constantemente" name="reducirEnergia" value="Constantemente" class="all-elements-color-background"> Constantemente
+                                        <input type="radio" id="7-constantemente" name="te_2" class="all-elements-color-background" value="Constantemente"
+                                        <?= (isset($_POST['te_2']) && $_POST['te_2'] === 'Constantemente') ? 'checked' : '' ?>> Constantemente
                                     </label><br>
                                     <label for="7-A veces" class="col-form-label-format">
-                                        <input type="radio" id="7-A veces" name="reducirEnergia" value="A veces" class="all-elements-color-background"> A veces
+                                        <input type="radio" id="7-A veces" name="te_2" class="all-elements-color-background" value="A veces"
+                                        <?= (isset($_POST['te_2']) && $_POST['te_2'] === 'A veces') ? 'checked' : '' ?>> A veces
                                     </label><br>
                                     <label for="7-No lo habia pensado" class="col-form-label-format">
-                                        <input type="radio" id="7-No lo habia pensado" name="reducirEnergia" value="No lo habia pensado" class="all-elements-color-background"> No lo habia pensado
+                                        <input type="radio" id="7-No lo habia pensado" name="te_2" class="all-elements-color-background" value="No lo habia pensado"
+                                        <?= (isset($_POST['te_2']) && $_POST['te_2'] === 'No lo habia pensado') ? 'checked' : '' ?>> No lo habia pensado
                                     </label><br>
                                 </fieldset> 
-
+                                <!-- te_3 -->
                                 <label class="col-form-label col-form-label-format" for="dispositivosElectronicos">
                                     ¿Cuántos dispositivos electrónicos utilizas en casa?
                                 </label>
-                                <input type="number" id="dispositivosElectronicos" class="form-control col-form-label-format all-elements-color-background" min="0" step="1" placeholder="Ingrese un número">                                
+                                <input type="number" name="te_3" id="dispositivosElectronicos" class="form-control col-form-label-format all-elements-color-background" 
+                                value = "<?= !empty($_POST['te_3'])?$_POST['te_3']:''?>" min="0" step="1" placeholder="Ingrese un numero" require>                                
                             </div>
                         </div>
                     </div>
@@ -272,35 +287,44 @@
                         <div class="card-body card-body-style-questions">
                             <div class="form-check">
                                 <fieldset>
+                                    <!-- hc_1 -->
                                     <legend class="col-form-label-format">
                                         ¿Con qué frecuencia compras productos de marcas locales?
                                     </legend>
                                     <label for="1-siempre" class="col-form-label-format">
-                                        <input type="radio" id="1-siempre" name="frecuencia_compras" value="siempre" class="all-elements-color-background" required> Siempre
+                                        <input type="radio" id="1-siempre" name="hc_1" class="all-elements-color-background" value="Siempre" 
+                                        <?= (isset($_POST['hc_1']) && $_POST['hc_1'] === 'Siempre') ? 'checked' : '' ?>required> Siempre
                                     </label><br>
                                     <label for="1-a-veces" class="col-form-label-format">
-                                        <input type="radio" id="1-a-veces" name="frecuencia_compras" value="a veces" class="all-elements-color-background"> A veces
+                                        <input type="radio" id="1-a-veces" name="hc_1" class="all-elements-color-background" value="A veces"
+                                        <?= (isset($_POST['hc_1']) && $_POST['hc_1'] === 'A veces') ? 'checked' : '' ?>> A veces
                                     </label><br>
                                     <label for="1-raramente" class="col-form-label-format">
-                                        <input type="radio" id="1-raramente" name="frecuencia_compras" value="raramente" class="all-elements-color-background"> Raramente
+                                        <input type="radio" id="1-raramente" name="hc_1" class="all-elements-color-background" value="Raramente"
+                                        <?= (isset($_POST['hc_1']) && $_POST['hc_1'] === 'Raramente') ? 'checked' : '' ?>> Raramente
                                     </label><br>
                                     <label for="1-nunca" class="col-form-label-format">
-                                        <input type="radio" id="1-nunca" name="frecuencia_compras" value="nunca" class="all-elements-color-background"> Nunca
+                                        <input type="radio" id="1-nunca" name="hc_1" class="all-elements-color-background" value="Nunca"
+                                        <?= (isset($_POST['hc_1']) && $_POST['hc_1'] === 'Nunca') ? 'checked' : '' ?>> Nunca
                                     </label><br>
                                 </fieldset>
                                 <br>
+                                <!-- hc_2 -->
                                 <fieldset>
                                     <legend class="col-form-label-format">
                                         ¿Sueles leer las etiquetas para conocer el origen y los materiales de los productos?
                                     </legend>
                                     <label for="2-siempre" class="col-form-label-format">
-                                        <input type="radio" id="2-siempre" name="lee_etiquetas" value="si" class="all-elements-color-background" required> Sí
+                                        <input type="radio" id="2-siempre" name="hc_2" class="all-elements-color-background" value="Si" 
+                                        <?= (isset($_POST['hc_2']) && $_POST['hc_2'] === 'Si') ? 'checked' : '' ?>required> Si
                                     </label><br>
                                     <label for="2-no" class="col-form-label-format">
-                                        <input type="radio" id="2-no" name="lee_etiquetas" value="no" class="all-elements-color-background"> No
+                                        <input type="radio" id="2-no" name="hc_2" class="all-elements-color-background" value="No"
+                                        <?= (isset($_POST['hc_2']) && $_POST['hc_2'] === 'No') ? 'checked' : '' ?>> No
                                     </label><br>
                                     <label for="2-a-veces" class="col-form-label-format">
-                                        <input type="radio" id="2-a-veces" name="lee_etiquetas" value="a veces" class="all-elements-color-background"> A veces
+                                        <input type="radio" id="2-a-veces" name="hc_2" class="all-elements-color-background" value="A veces"
+                                        <?= (isset($_POST['hc_2']) && $_POST['hc_2'] === 'A veces') ? 'checked' : '' ?>> A veces
                                     </label><br>
                                 </fieldset>   
                             </div>
@@ -314,30 +338,34 @@
                         <div class="card-header card-header-color-format">Residuos y Reciclaje</div>
                         <div class="card-body card-body-style-questions">
                             <div class="form-check">
+                                <!-- rr_1 -->
                                 <fieldset>
                                     <legend class="col-form-label-format">
                                         ¿Separas la basura en orgánica e inorgánica en tu hogar?
                                     </legend>
                                     <label for="5-siempre" class="col-form-label-format">
-                                        <input type="radio" id="5-siempre" name="separarOrganica" value="siempre" class="all-elements-color-background" required> Siempre
+                                        <input type="radio" id="5-siempre" name="rr_1" class="all-elements-color-background" value="Siempre" 
+                                        <?= (isset($_POST['rr_1']) && $_POST['rr_1'] === 'Siempre') ? 'checked' : '' ?>required> Siempre
                                     </label><br>
                                     <label for="5-a-veces" class="col-form-label-format">
-                                        <input type="radio" id="5-a-veces" name="separarOrganica" value="a veces" class="all-elements-color-background"> A veces
+                                        <input type="radio" id="5-a-veces" name="rr_1" class="all-elements-color-background" value="A veces"
+                                        <?= (isset($_POST['rr_1']) && $_POST['rr_1'] === 'A veces') ? 'checked' : '' ?>> A veces
                                     </label><br>
                                     <label for="5-raramente" class="col-form-label-format">
-                                        <input type="radio" id="5-raramente" name="separarOrganica" value="raramente" class="all-elements-color-background"> Raramente
+                                        <input type="radio" id="5-raramente" name="rr_1" class="all-elements-color-background" value="Raramente"
+                                        <?= (isset($_POST['rr_1']) && $_POST['rr_1'] === 'Raramente') ? 'checked' : '' ?>> Raramente
                                     </label><br>
                                 </fieldset>
-
+                                <!-- rr_2 -->
                                 <label class="col-form-label col-form-label-format" for="noUsados">
                                     ¿Qué haces con la ropa o artículos que ya no usas?
                                 </label>
-                                <select id="noUsados" class="form-select col-form-label-format all-elements-color-background">
+                                <select id="noUsados" name="rr_2" class="form-select col-form-label-format all-elements-color-background" required>
                                     <option value="">Selecciona una opción</option>
-                                    <option value="Los dono">Los dono</option>
-                                    <option value="Los tiro">Los tiro</option>
-                                    <option value="Los vendo">Los vendo</option>
-                                    <option value="Los reciclo">Los reciclo</option>
+                                    <option value="Los dono"<?= (isset($_POST['rr_2']) && $_POST['rr_2'] === 'Los dono') ? 'selected' : '' ?>>Los dono</option>
+                                    <option value="Los tiro"<?= (isset($_POST['rr_2']) && $_POST['rr_2'] === 'Los tiro') ? 'selected' : '' ?>>Los tiro</option>
+                                    <option value="Los vendo"<?= (isset($_POST['rr_2']) && $_POST['rr_2'] === 'Los vendo') ? 'selected' : '' ?>>Los vendo</option>
+                                    <option value="Los reciclo"<?= (isset($_POST['rr_2']) && $_POST['rr_2'] === 'Los reciclo') ? 'selected' : '' ?>>Los reciclo</option>
                                 </select>
                             </div>
                         </div>
@@ -350,44 +378,51 @@
                         <div class="card-header card-header-color-format">Conocimiento sobre Consumo Responsable</div>
                         <div class="card-body card-body-style-questions">
                             <div class="form-check">
+                                <!-- ccr_1 -->
                                 <fieldset>
                                     <legend class="col-form-label-format">
                                         ¿Sabes qué es el “consumo responsable”?
                                     </legend>
                                     <label for="8-si" class="col-form-label-format">
-                                        <input type="radio" id="8-si" name="consumoResponsable" value="si" class="all-elements-color-background" required> Si
+                                        <input type="radio" id="8-si" name="ccr_1" class="all-elements-color-background" value="Si"
+                                        <?= (isset($_POST['ccr_1']) && $_POST['ccr_1'] === 'Si') ? 'checked' : '' ?>required> Si
                                     </label><br>
                                     <label for="8-No" class="col-form-label-format">
-                                        <input type="radio" id="8-No" name="consumoResponsable" value="No" class="all-elements-color-background"> No
+                                        <input type="radio" id="8-No" name="ccr_1" class="all-elements-color-background" value="No"
+                                        <?= (isset($_POST['ccr_1']) && $_POST['ccr_1'] === 'No') ? 'checked' : '' ?>> No
                                     </label><br>
                                     <label for="8-Algo" class="col-form-label-format">
-                                        <input type="radio" id="8-Algo" name="consumoResponsable" value="Algo" class="all-elements-color-background"> Algo
+                                        <input type="radio" id="8-Algo" name="ccr_1" class="all-elements-color-background" value="Algo"
+                                        <?= (isset($_POST['ccr_1']) && $_POST['ccr_1'] === 'Algo') ? 'checked' : '' ?>> Algo
                                     </label><br>
                                 </fieldset> 
-
+                                <!-- ccr_2 -->
                                 <label class="col-form-label col-form-label-format" for="noUsados">
                                     ¿Qué tan importante es para ti el impacto ambiental al comprar?
                                 </label>
-                                <select id="imporImpactoAmb" class="form-select col-form-label-format all-elements-color-background">
+                                <select id="imporImpactoAmb" name="ccr_2" class="form-select col-form-label-format all-elements-color-background" required>
                                     <option value="">Selecciona una opción</option>
-                                    <option value="Muy importante">Muy importante</option>
-                                    <option value="Algo importante">Algo importante</option>
-                                    <option value="Poco importante">Poco importante</option>
-                                    <option value="No es importante">No es importante</option>
+                                    <option value="Muy importante"<?= (isset($_POST['ccr_2']) && $_POST['ccr_2'] === 'Muy importante') ? 'selected' : '' ?>>Muy importante</option>
+                                    <option value="Algo importante"<?= (isset($_POST['ccr_2']) && $_POST['ccr_2'] === 'Algo importante') ? 'selected' : '' ?>>Algo importante</option>
+                                    <option value="Poco importante"<?= (isset($_POST['ccr_2']) && $_POST['ccr_2'] === 'Poco importante') ? 'selected' : '' ?>>Poco importante</option>
+                                    <option value="No es importante"<?= (isset($_POST['ccr_2']) && $_POST['ccr_2'] === 'No es importante') ? 'selected' : '' ?>>No es importante</option>
                                 </select><br>
-
+                                <!-- ccr_3 -->
                                 <fieldset>
                                     <legend class="col-form-label-format">
                                         ¿Estarías dispuesto a pagar más por productos sostenibles?
                                     </legend>
                                     <label for="9-si" class="col-form-label-format">
-                                        <input type="radio" id="9-si" name="dispuestoPagar" value="si" class="all-elements-color-background" required> Sí
+                                        <input type="radio" id="9-si" name="ccr_3" class="all-elements-color-background" value="Si"
+                                        <?= (isset($_POST['ccr_3']) && $_POST['ccr_3'] === 'Si') ? 'checked' : '' ?>required> Si
                                     </label><br>
                                     <label for="9-no" class="col-form-label-format">
-                                        <input type="radio" id="9-no" name="dispuestoPagar" value="no" class="all-elements-color-background"> No
+                                        <input type="radio" id="9-no" name="ccr_3" class="all-elements-color-background" value="No"
+                                        <?= (isset($_POST['ccr_3']) && $_POST['ccr_3'] === 'No') ? 'checked' : '' ?>> No
                                     </label><br>
                                     <label for="9-depende" class="col-form-label-format">
-                                        <input type="radio" id="9-depende" name="dispuestoPagar" value="depende" class="all-elements-color-background"> Depende del producto
+                                        <input type="radio" id="9-depende" name="ccr_3" class="all-elements-color-background" value="Depende del producto"
+                                        <?= (isset($_POST['ccr_3']) && $_POST['ccr_3'] === 'Depende del producto') ? 'checked' : '' ?>> Depende del producto
                                     </label><br>
                                 </fieldset>                                
                             </div>
@@ -420,7 +455,8 @@
                             <label class="col-form-label col-form-label-format" for="9-habitoMejorar">
                                 ¿Qué hábito crees que podrías mejorar para ser un consumidor más responsable?
                             </label>
-                            <input type="text" id="habitoMejorar" name="habitoMejorar" class="form-control col-form-label-format all-elements-color-background" style="width: 1100px; height: 110px;" placeholder="Escribe tu respuesta aquí">
+                            <input type="text" id="habitoMejorar" name="rpc" class="form-control col-form-label-format all-elements-color-background" 
+                            value = "<?= !empty($_POST['rpc'])?$_POST['rpc']:''?>" style="width: 1100px; height: 110px;" placeholder="Escribe tu respuesta aquí">
                         </div>
                     </div>
                 </div>
