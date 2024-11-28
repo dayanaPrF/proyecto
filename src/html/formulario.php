@@ -115,16 +115,19 @@
                         <div class="card-header card-header-color-format">Datos Generales</div>
                         <div class="card-body card-body-style-questions">
                             <div class="form-check">
+                                <!-- EDAD -->
                                 <label class="col-form-label col-form-label-format" for="inputDefault">Edad</label>
-                                <input type="number" class="form-control col-form-label-format all-elements-color-background" placeholder="Edad" id="edad">
+                                <input type="number" name="edad" class="form-control col-form-label-format all-elements-color-background" placeholder="Edad" id="id-edad"
+                                value = "<?= !empty($_POST['edad'])?$_POST['edad']:''?>" required>
                             </div>
                             <div class="form-check">
+                                <!-- SEXO -->
                                 <label class="col-form-label col-form-label-format" for="inputDefault">Sexo</label>
-                                <select id="sexo" class="form-select col-form-label-format all-elements-color-background">
+                                <select id="id-sexo" name="sexo" class="form-select col-form-label-format all-elements-color-background" require>
                                     <option value="">Selecciona una opción</option>
-                                    <option value="hombre">Hombre</option>
-                                    <option value="mujer">Mujer</option>
-                                    <option value="otro">Otro</option>
+                                    <option value="hombre" <?= (isset($_POST['sexo']) && $_POST['sexo'] === 'hombre') ? 'selected' : '' ?>>Hombre</option>
+                                    <option value="mujer" <?= (isset($_POST['sexo']) && $_POST['sexo'] === 'mujer') ? 'selected' : '' ?>>Mujer</option>
+                                    <option value="otro" <?= (isset($_POST['sexo']) && $_POST['sexo'] === 'otro') ? 'selected' : '' ?>>Otro</option>
                                 </select>
                             </div>
                             <div class="form-check">
