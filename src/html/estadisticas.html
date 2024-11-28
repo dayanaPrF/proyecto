@@ -25,8 +25,10 @@
         min-height: 300px;
         background-color: #cbc7c7; /* Color de fondo claro */
         padding: 0; /* Eliminamos padding externo */
+        margin: 0;
         border-radius: 8px;
         border: 1px solid #ccc;
+        margin-top: 20px;
       }
   
       /* Encabezado de los contenedores */
@@ -48,7 +50,10 @@
       /* Centrado vertical y horizontal */
       .custom-row {
         display: flex;
-        justify-content: center;
+        margin-left: 30px;
+        /*justify-content: center;*/
+        justify-content: flex-start; /* Alinea los contenedores a la izquierda */
+        align-items: flex-start;
         align-items: flex-start;
         gap: 20px;
         flex-wrap: wrap; /* Adaptable para pantallas pequeñas */
@@ -57,6 +62,16 @@
       /* Contenedor extra para alineación */
       .contact-container {
         margin-top: 20px;
+      }
+
+      .information-container {
+        width: 330px;   /* Ajusta el ancho del contenedor */
+        height: 500px;  /* Ajusta la altura del contenedor */
+      }
+
+      .graficas-container {
+        width: 950px;   /* Ajusta el ancho del contenedor */
+        height: 500px;  /* Ajusta la altura del contenedor */
       }
       </style>
 </head>
@@ -85,27 +100,23 @@
         </div>
       </nav>
 
-    <div class="row custom-row">
+    <div class="row custom-row g-0">
         <!-- Contenedor Lista de empresas -->
         <div class="col-md-3">
-          <div class="custom-container">
-            <div class="container-header">Lista de empresas</div>
+          <div class="custom-container information-container">
+            <div class="container-header">Información</div>
             <div class="container-body">
-              <ul>
-                <li>Empresa 1</li>
-                <li>Empresa 2</li>
-                <li>Empresa 3</li>
-              </ul>
+                <p>Nombre e informacion interesante para los usuarios</p>
             </div>
           </div>
         </div>
   
-        <!-- Contenedor Información de empresa -->
+        <!-- Contenedor Graficas de empresa -->
         <div class="col-md-4">
-          <div class="custom-container">
-            <div class="container-header">Información de empresas seleccionada</div>
+          <div class="custom-container graficas-container">
+            <div class="container-header">Gráficas</div>
             <div class="container-body">
-              <p>Aquí aparecerán los detalles de la empresa seleccionada.</p>
+              <p>Mostrar informacion de las graficas aqui</p>
             </div>
           </div>
         </div>
