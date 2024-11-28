@@ -5,65 +5,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bienvenido</title>
     <!-- Cargando bootstrap.css descargado -->
-    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
     <style>
         /* Estilizar SOLO la imagen representativa para alinearla al borde izquierdo */
         .imagen-representativa {
-            position: fixed; /* Fija la imagen en una posición */
-            left: 0;         /* La posiciona al borde izquierdo */
-            top: 50%;        /* Centra verticalmente */
-            transform: translateY(-50%); /* Ajusta para estar completamente centrada */
-            z-index: -1;    /* Envía la imagen detrás de otros elementos */
+            position: fixed;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: -1;
         }
 
-        /* Estilizar el botón para centrarlo debajo del contenedor */
+        /* Estilizar el contenedor para alinearlo a la derecha */
+        .content-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start; /* Alinea a la izquierda */
+            position: absolute;
+            top: 50%;
+            left: 43%; /* Alineado un poco a la derecha de la imagen */
+            transform: translateY(-50%);
+            width: 45%; /* Ancho del contenedor */
+        }
+
+        /* Estilo del botón para centrarlo debajo del contenedor */
         .btn {
             display: block;
-            margin: 20px auto 0; /* Centrar el botón y separarlo del contenedor */
-            background-color: green; /* Cambiar color de fondo a verde */
-            border-color: green; /* Cambiar el color del borde */
-            color: white; /* Cambiar el color del texto a blanco */
-            font-size: 1.5rem; /* Aumentar el tamaño del texto */
-            padding: 15px 30px; /* Aumentar el tamaño del botón */
-            border-radius: 8px; /* Bordes redondeados */
-            width: 30%; /* Ancho del botón */
+            margin-top: 20px;
+            background-color: green;
+            border-color: green;
+            color: white;
+            font-size: 1.5rem;
+            padding: 15px 30px;
+            border-radius: 8px;
+            width: 75%; /* Botón ocupa el ancho completo del contenedor */
             text-align: center;
-            transform: translateX(45%); /* Desplazar ligeramente a la izquierda */
+            transform: translateX(15%); /* Desplazar ligeramente a la izquierda */
         }
 
         /* Estilizar el título */
         h1 {
-            text-align: center; /* Centrar el título */
-            color: green; /* Cambiar el color del título a verde */
-            margin-top: 20px; /* Separar el título del borde superior */
-            font-size: 2.5rem; /* Aumentar el tamaño de la fuente */
-            transform: translateX(15%); /* Desplazar ligeramente a la izquierda */
+            color: green;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
         }
 
         /* Estilo del contenedor de información */
         .custom-container {
-            min-height: 300px;
-            background-color: #cbc7c7; /* Color de fondo claro */
+            background-color: #cbc7c7;
             padding: 20px;
-            border-radius: 2px;
+            border-radius: 8px;
             border: 1px solid #ccc;
-            margin-left: 43% ; /* Centrar el contenedor horizontalmente */
-            width: 40%; /* Ancho del contenedor */
+            width: 100%;
+            height: auto; /* Permite que el contenedor crezca con el contenido */
         }
 
         /* Estilo del contenido del contenedor */
         .container-body {
-            color: #000000; /* Texto oscuro */
+            color: #000000;
             font-size: 1.2rem;
         }
     </style>
 </head>
 <body>
     <!-- Barra de navegación -->
-    <nav class="navbar navbar-expand-lg" style="background-color: #efe8e8; color: black;" data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #efe8e8;">
         <div class="container-fluid">
-            <a class="navbar-brand" href="index.html" style="color: black !important;">
-                <img src="logo.png" alt="Logo" width="200" height="75" class="d-inline-block align-text-top">
+            <a class="navbar-brand" href="index.html">
+                <img src="../../img/logo.png" alt="Logo" width="200" height="75">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -71,36 +81,39 @@
             <div class="collapse navbar-collapse" id="navbarColor01">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="index.html" style="color: black !important; font-size: 1.5rem;">Inicio</a>
+                        <a class="nav-link active" href="index.html">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="estadisticas.html" style="color: black !important; font-size: 1.5rem;">Estadísticas</a>
+                        <a class="nav-link" href="estadisticas.html">Estadísticas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="conocemas.html" style="color: black !important; font-size: 1.5rem;">Conoce más</a>
+                        <a class="nav-link" href="conocemas.html">Conoce más</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Contenido por página -->
-    <h1>PRODUCCIÓN Y CONSUMO RESPONSABLE</h1>
+    <!-- Contenedor principal para título, contenedor y botón -->
+    <div class="content-container">
+        <!-- Título -->
+        <h1>PRODUCCIÓN Y CONSUMO RESPONSABLE</h1>
 
-    <!-- Contenedor de información de empresa -->
-    <div class="custom-container">
-        <div class="container-body">
-            <p>Este ODS tiene como finalidad garantizar patrones de producción y consumo sostenibles, promoviendo un equilibrio entre el bienestar humano, el crecimiento económico y la conservación del medio ambiente. Este objetivo busca reducir el impacto ambiental negativo derivado de la producción y el consumo de bienes y servicios, fomentando un uso eficiente de los recursos naturales, la disminución de desechos y la implementación de prácticas responsables en toda la cadena de valor.​
-                Entre sus principales metas, el ODS 12 incluye la gestión eficiente de los recursos naturales, la reducción del desperdicio de alimentos y desechos en general, así como el impulso al reciclaje y la reutilización. Además, promueve la adopción de prácticas sostenibles en las empresas y trabaja en la sensibilización de la población sobre la importancia de un consumo responsable.</p>
+        <!-- Contenedor de información de empresa -->
+        <div class="custom-container">
+            <div class="container-body">
+                <p>Este ODS tiene como finalidad garantizar patrones de producción y consumo sostenibles, promoviendo un equilibrio entre el bienestar humano, el crecimiento económico y la conservación del medio ambiente. Este objetivo busca reducir el impacto ambiental negativo derivado de la producción y el consumo de bienes y servicios, fomentando un uso eficiente de los recursos naturales, la disminución de desechos y la implementación de prácticas responsables en toda la cadena de valor.​ Entre sus principales metas, el ODS 12 incluye la gestión eficiente de los recursos naturales, la reducción del desperdicio de alimentos y desechos en general, así como el impulso al reciclaje y la reutilización. Además, promueve la adopción de prácticas sostenibles en las empresas y trabaja en la sensibilización de la población sobre la importancia de un consumo responsable.</p>
+            </div>
         </div>
+
+        <!-- Botón debajo del contenedor -->
+        <button type="button" class="btn" onclick="window.location.href='formulario.html';">¡Contesta el formulario!</button>
     </div>
 
-    <!-- Botón debajo del contenedor -->
-    <button type="button" class="btn" onclick="window.location.href='formulario.html';">¡Contesta el formulario!</button>
-
-
     <!-- Imagen representativa -->
-    <img src="Imagen_Representativa.jpeg" alt="Imagen Representativa" width="780" height="700" class="imagen-representativa">
+    <img src="../../img/Imagen_Representativa.jpeg" alt="Imagen Representativa" width="780" height="700" class="imagen-representativa">
 
+    <!-- Cargando scripts de Bootstrap -->
+    <script src="../js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
