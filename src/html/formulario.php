@@ -76,6 +76,16 @@
             min-height: 200px; 
             overflow-y: auto;
         }
+
+        .error-border {
+            border: 2px solid #d5303e;
+        }
+
+        .error_message{
+            color: #d5303e; 
+            font-family: Arial, Helvetica, sans-serif; 
+            font-size: 0.8rem;
+        }
     </style>
 </head>
 <body>
@@ -118,7 +128,10 @@
                                 <!-- EDAD -->
                                 <label class="col-form-label col-form-label-format" for="inputDefault">Edad</label>
                                 <input type="number" name="edad" class="form-control col-form-label-format all-elements-color-background" placeholder="Edad" id="id-edad"
-                                value = "<?= !empty($_POST['edad'])?$_POST['edad']:''?>" required>
+                                value = "<?= !empty($_POST['edad'])?$_POST['edad']:''?>" onblur="validarEdad()" onfocus="eliminarBorde()" required>
+                                <div id="error_mesagge_edad">
+                                    <div id="container_edad" class="error_message"></div>
+                                </div>
                             </div>
                             <div class="form-check">
                                 <!-- SEXO -->
@@ -468,5 +481,10 @@
             <button type="submit" class="btn btn-success botton-format-submit">Enviar</button>
         </div>                
     </form>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"></script>
+    <script src="../../js/validaciones.js"></script>
 </body>
 </html>
