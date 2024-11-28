@@ -128,7 +128,7 @@
                                 <!-- EDAD -->
                                 <label class="col-form-label col-form-label-format" for="inputDefault">Edad</label>
                                 <input type="number" name="edad" class="form-control col-form-label-format all-elements-color-background" placeholder="Edad" id="id-edad"
-                                value = "<?= !empty($_POST['edad'])?$_POST['edad']:''?>" onblur="validarEdad()" onfocus="eliminarBorde()" required>
+                                value = "<?= !empty($_POST['edad'])?$_POST['edad']:''?>" onblur="validarEdad()" onfocus="eliminarBordeEdad()" required>
                                 <div id="error_mesagge_edad">
                                     <div id="container_edad" class="error_message"></div>
                                 </div>
@@ -136,17 +136,20 @@
                             <div class="form-check">
                                 <!-- SEXO -->
                                 <label class="col-form-label col-form-label-format" for="inputDefault">Sexo</label>
-                                <select id="id-sexo" name="sexo" class="form-select col-form-label-format all-elements-color-background" required>
+                                <select id="id-sexo" name="sexo" class="form-select col-form-label-format all-elements-color-background" onblur="validarSexo()" onfocus="eliminarBordeSexo()" required>
                                     <option value="">Selecciona una opción</option>
                                     <option value="hombre" <?= (isset($_POST['sexo']) && $_POST['sexo'] === 'hombre') ? 'selected' : '' ?>>Hombre</option>
                                     <option value="mujer" <?= (isset($_POST['sexo']) && $_POST['sexo'] === 'mujer') ? 'selected' : '' ?>>Mujer</option>
                                     <option value="otro" <?= (isset($_POST['sexo']) && $_POST['sexo'] === 'otro') ? 'selected' : '' ?>>Otro</option>
                                 </select>
+                                <div id="error_mesagge_sexo">
+                                    <div id="container_sexo" class="error_message"></div>
+                                </div>
                             </div>
                             <div class="form-check">
                                 <!-- OCUPACION -->
                                 <label class="col-form-label col-form-label-format" for="inputDefault">Ocupación</label>
-                                <select id="id-ocupacion" name="ocupacion" class="form-select col-form-label-format all-elements-color-background" required>
+                                <select id="id-ocupacion" name="ocupacion" class="form-select col-form-label-format all-elements-color-background" onblur="validarOcupacion()" onfocus="eliminarBordeOcupacion()" required>
                                     <option value="">Selecciona una opción</option>
                                     <option value="Estudiante" <?= (isset($_POST['ocupacion']) && $_POST['ocupacion'] === 'Estudiante') ? 'selected' : '' ?>>Estudiante</option>
                                     <option value="Ingeniero" <?= (isset($_POST['ocupacion']) && $_POST['ocupacion'] === 'Ingeniero') ? 'selected' : '' ?>>Ingeniero</option>
@@ -162,6 +165,9 @@
                                     <option value="Chef" <?= (isset($_POST['ocupacion']) && $_POST['ocupacion'] === 'Chef') ? 'selected' : '' ?>>Chef</option>
                                     <option value="Otros" <?= (isset($_POST['ocupacion']) && $_POST['ocupacion'] === 'Otros') ? 'selected' : '' ?>>Otro</option>
                                 </select>
+                                <div id="error_mesagge_ocupacion">
+                                    <div id="container_ocupacion" class="error_message"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -177,44 +183,53 @@
                                 <label class="col-form-label col-form-label-format" for="productosFrescos">
                                     ¿Prefieres comprar productos frescos en mercados locales o en supermercados grandes?
                                 </label>
-                                <select id="productosFrescos" name="apud_1" class="form-select col-form-label-format all-elements-color-background" required>
+                                <select id="id-apud_1" name="apud_1" class="form-select col-form-label-format all-elements-color-background" onblur="validarapud_1()" onfocus="eliminarBordeapud_1()" required>
                                     <option value="">Selecciona una opción</option>
                                     <option value="Mercados locales"<?= (isset($_POST['apud_1']) && $_POST['apud_1'] === 'Mercados locales') ? 'selected' : '' ?>>Mercados locales</option>
                                     <option value="Supermercados"<?= (isset($_POST['apud_1']) && $_POST['apud_1'] === 'Supermercados') ? 'selected' : '' ?>>Supermercados</option>
                                     <option value="Ambos" <?= (isset($_POST['apud_1']) && $_POST['apud_1'] === 'Ambos') ? 'selected' : '' ?>>Ambos</option>
                                 </select>
+                                <div id="error_mesagge_apud_1">
+                                    <div id="container_apud_1" class="error_message"></div>
+                                </div>
                                 <!-- apud_2 -->
                                 <label class="col-form-label col-form-label-format" for="restosComida">
                                     ¿Qué haces con los restos de comida?
                                 </label>
-                                <select id="restosComida" name="apud_2" class="form-select col-form-label-format all-elements-color-background" required>
+                                <select id="id-apud_2" name="apud_2" class="form-select col-form-label-format all-elements-color-background" onblur="validarapud_2()" onfocus="eliminarBordeapud_2()" required>
                                     <option value="">Selecciona una opción</option>
                                     <option value="Los tiro"<?= (isset($_POST['apud_2']) && $_POST['apud_2'] === 'Los tiro') ? 'selected' : '' ?>>Los tiro</option>
                                     <option value="Los composteo"<?= (isset($_POST['apud_2']) && $_POST['apud_2'] === 'Los composteo') ? 'selected' : '' ?>>Los composteo</option>
                                     <option value="Los reciclo"<?= (isset($_POST['apud_2']) && $_POST['apud_2'] === 'Los reciclo') ? 'selected' : '' ?>>Los reciclo</option>
                                     <option value="Los aprovecho en nuevas recetas"<?= (isset($_POST['apud_2']) && $_POST['apud_2'] === 'Los aprovecho en nuevas recetas') ? 'selected' : '' ?>>Los aprovecho en nuevas recetas</option>
                                 </select>
+                                <div id="error_mesagge_apud_2">
+                                    <div id="container_apud_2" class="error_message"></div>
+                                </div>
                                 <!-- apud_3 -->
                                 <fieldset>
                                     <br><legend class="col-form-label-format">
                                         ¿Compras productos orgánicos?
                                     </legend>
                                     <label for="3-si" class="col-form-label-format">
-                                        <input type="radio" id="3-si" name="apud_3" class="all-elements-color-background" value="Si" 
+                                        <input type="radio" name="apud_3" class="all-elements-color-background" value="Si" 
                                         <?= (isset($_POST['apud_3']) && $_POST['apud_3'] === 'Si') ? 'checked' : '' ?> required> Si
                                     </label><br>
                                     <label for="3-Con frecuencia" class="col-form-label-format">
-                                        <input type="radio" id="3-Con frecuencia" name="apud_3" class="all-elements-color-background" value="Con frecuencia"
+                                        <input type="radio" name="apud_3" class="all-elements-color-background" value="Con frecuencia"
                                         <?= (isset($_POST['apud_3']) && $_POST['apud_3'] === 'Con frecuencia') ? 'checked' : '' ?>> Con frecuencia
                                     </label><br>
                                     <label for="3-a-veces" class="col-form-label-format">
-                                        <input type="radio" id="3-a-veces" name="apud_3" class="all-elements-color-background" value="A veces"
+                                        <input type="radio" name="apud_3" class="all-elements-color-background" value="A veces"
                                         <?= (isset($_POST['apud_3']) && $_POST['apud_3'] === 'A veces') ? 'checked' : '' ?>> A veces
                                     </label><br>
                                     <label for="3-no" class="col-form-label-format">
-                                        <input type="radio" id="3-no" name="apud_3" class="all-elements-color-background" value="No"
+                                        <input type="radio" name="apud_3" class="all-elements-color-background" value="No"
                                         <?= (isset($_POST['apud_3']) && $_POST['apud_3'] === 'No') ? 'checked' : '' ?>> No
                                     </label><br>
+                                    <div id="error_mesagge_apud_3">
+                                    <div id="container_apud_3" class="error_message"></div>
+                                </div>
                                 </fieldset> 
                                 <!-- apud_4 -->
                                 <fieldset>
@@ -233,6 +248,8 @@
                                         <input type="radio" id="4-nunca" name="apud_4" class="all-elements-color-background" value="Nunca"
                                         <?= (isset($_POST['apud_4']) && $_POST['apud_4'] === 'Nunca') ? 'checked' : '' ?>> Nunca
                                     </label><br>
+                                    <div id="error_mesagge_apud_4">
+                                    <div id="container_apud_4" class="error_message"></div>
                                 </fieldset> 
                             </div>
                         </div>
