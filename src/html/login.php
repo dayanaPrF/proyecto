@@ -128,7 +128,7 @@
         <div class="card-container">
             <div class="card text-white mb-3">
                 <div class="text-white bg-success mb-3">
-                    <div class="card-header">Iniciar sesión</div>
+                    <div class="card-header">Inicia sesión</div>
                     <div class="card-body card-body-style-questions">
                         <!-- Correo electronico -->
                         <label class="col-form-label col-form-label-format">
