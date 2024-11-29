@@ -81,6 +81,20 @@
             font-family: Arial, Helvetica, sans-serif; 
             font-size: 0.8rem;
         }
+
+        .col-form-label-format{
+            color: #666666; 
+            font-family: Arial, Helvetica, sans-serif; 
+            font-size: 1.0rem;
+        }
+
+        .format-container-botton{
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: auto; 
+            min-height: 100px;
+        }
     </style>
 </head>
 <body>
@@ -116,14 +130,32 @@
                 <div class="text-white bg-success mb-3">
                     <div class="card-header">Iniciar sesión</div>
                     <div class="card-body card-body-style-questions">
+                        <!-- Correo electronico -->
                         <label class="col-form-label col-form-label-format">
                             Correo Electronico
                         </label>
-                        <input type="text" id="id-correo" name="correo" class="form-control col-form-label-format all-elements-color-background" 
-                            value = "<?= !empty($_POST['correo'])?$_POST['correo']:''?>" placeholder="Correo Electronico">
+                        <input type="email" id="id-correo" name="correo" class="form-control col-form-label-format all-elements-color-background" 
+                            value = "<?= !empty($_POST['correo'])?$_POST['correo']:''?>" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                            placeholder="Correo Electronico" required>
                         <div id="error_mesagge_correo">
                             <div id="container_correo" class="error_message"></div>
+                        </div><br>
+                        <!-- Contraseña -->
+                        <label class="col-form-label col-form-label-format">
+                            Contraseña
+                        </label>
+                        <input type="password" id="id-password" name="password" class="form-control col-form-label-format all-elements-color-background" 
+                            placeholder="Contraseña" minlength="8" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}" 
+                            title="Debe contener al menos 8 caracteres, incluyendo una letra mayúscula, una minúscula, un número y un carácter especial." 
+                            value = "<?= !empty($_POST['password'])?$_POST['password']:''?>" required>
+                        <div id="error_mesagge_password">
+                            <div id="container_password" class="error_message"></div>
                         </div>
+
+                        <!-- Boton de envio -->
+                        <div class="format-container-botton">
+                            <button type="submit" class="btn btn-success botton-format-submit" style="background-color: #278b1d !important;">Enviar</button>
+                        </div>    
                     </div>
                 </div>
             </div>
