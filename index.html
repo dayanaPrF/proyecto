@@ -28,7 +28,7 @@
         /* Imagen alineada completamente a la izquierda */
         .imagen-representativa-container {
             flex: 1;
-            max-width: 780px;
+            max-width: 630px;
             margin-right: 20px;
         }
 
@@ -41,7 +41,7 @@
         /* Contenedor del texto y título */
         .text-container {
             flex: 2;
-            max-width: 600px;
+            max-width: 58%; /* Mayor ancho disponible */
             display: flex;
             flex-direction: column;
         }
@@ -61,6 +61,8 @@
             border-radius: 8px;
             border: 1px solid #ccc;
             text-align: justify;
+            max-width: 800px; /* Aumentar el ancho del contenedor */
+            margin: 0 auto 10px auto; /* Centrado horizontal */
         }
 
         /* Estilo del botón */
@@ -71,10 +73,10 @@
             font-size: 1.5rem;
             padding: 15px 30px;
             border-radius: 8px;
-            max-width: 300px;
+            max-width: 500px;
             align-self: center;
             text-align: center;
-            margin: 20px auto 0 auto; /* Centrado debajo del contenedor de texto */
+            margin: 10px auto 0 auto; /* Reducir margen superior */
         }
 
         /* Ajustes responsivos */
