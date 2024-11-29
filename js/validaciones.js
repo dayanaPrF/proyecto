@@ -262,6 +262,6 @@ function submmitBotton(event){
     eliminarBordeccr_2();
     quitarContainerErrorccr_3();
     eliminarBorderpc();
-    $("#miFormulario")[0].reset();
+    $("#formulario")[0].reset();
     return true;
 }

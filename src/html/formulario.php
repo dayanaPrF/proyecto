@@ -119,7 +119,7 @@
       </nav>
 
     <!--Contenido por pagina-->
-    <form action="" method="post">
+    <form action="" method="post" id="formulario">
         <div class="row style-row">
             <!--Columna 1-->
             <div class="col-md-4">
