@@ -96,6 +96,29 @@
                 width: 100%;
             }
         }
+
+        /* Barra de navegación */
+        .nav {
+            display: flex;
+            justify-content: space-between; /* Asegura que los elementos se distribuyan */
+            list-style: none;
+            padding: 0;
+        }
+
+        .nav-item {
+            padding: 20px;
+        }
+
+        /* Alineación de los elementos especiales (Inicia sesión y Regístrate) a la derecha */
+        .special-nav-item {
+            margin-left: auto;  /* Empuja estos elementos hacia la derecha */
+        }
+
+        .special-nav-item .nav-link {
+            text-decoration: underline; /* Subrayado */
+            font-size: 0.9em;           /* Tamaño más pequeño */
+            text-align: right;          /* Alinea el texto dentro del enlace a la derecha */
+        }
     </style>
 </head>
 
@@ -119,7 +142,15 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="src\html\conocemas.html">Conoce más</a>
+                    </li>               
+                </ul>
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item special-nav-item">
+                        <a class="nav-link" href="src/html/login.php">Inicia sesión</a>
                     </li>
+                    <li class="nav-item special-nav-item">
+                        <a class="nav-link" href="src/html/singup.php">Regístrate</a>
+                    </li>                 
                 </ul>
             </div>
         </div>

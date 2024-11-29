@@ -90,14 +90,37 @@
             font-family: Arial, Helvetica, sans-serif; 
             font-size: 0.8rem;
         }
+
+        /* Barra de navegación */
+        .nav {
+            display: flex;
+            justify-content: space-between; /* Asegura que los elementos se distribuyan */
+            list-style: none;
+            padding: 0;
+        }
+
+        .nav-item {
+            padding: 20px;
+        }
+
+        /* Alineación de los elementos especiales (Inicia sesión y Regístrate) a la derecha */
+        .special-nav-item {
+            margin-left: auto;  /* Empuja estos elementos hacia la derecha */
+        }
+
+        .special-nav-item .nav-link {
+            text-decoration: underline; /* Subrayado */
+            font-size: 0.9em;           /* Tamaño más pequeño */
+            text-align: right;          /* Alinea el texto dentro del enlace a la derecha */
+        }
     </style>
 </head>
 <body>
     <!--Barra de navegacion -->
-    <nav class="navbar navbar-expand-lg" style="background-color: #efe8e8; color: black;" data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #efe8e8;">
         <div class="container-fluid">
-            <a class="navbar-brand" href="../../index.html" style="color: black !important;">
-                <img src="../../img/logo.png" alt="Logo" width="200" height="75" class="d-inline-block align-text-top">
+            <a class="navbar-brand" href="..\..\index.html">
+                <img src="..\..\img\logo.png" alt="Logo" width="200" height="75">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -105,18 +128,26 @@
             <div class="collapse navbar-collapse" id="navbarColor01">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="../../index.html" style="color: black !important; font-size: 1.5rem;">Inicio</a>
+                        <a class="nav-link active" href="..\..\index.html">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="estadisticas.html" style="color: black !important; font-size: 1.5rem;">Estadísticas</a>
+                        <a class="nav-link" href="estadisticas.html">Estadísticas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="conocemas.html" style="color: black !important; font-size: 1.5rem;">Conoce más</a>
+                        <a class="nav-link" href="conocemas.html">Conoce más</a>
+                    </li>               
+                </ul>
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item special-nav-item">
+                        <a class="nav-link" href="login.php">Inicia sesión</a>
                     </li>
+                    <li class="nav-item special-nav-item">
+                        <a class="nav-link" href="singup.php">Regístrate</a>
+                    </li>                 
                 </ul>
             </div>
         </div>
-      </nav>
+    </nav>
 
     <!--Contenido por pagina-->
     <form action="" method="post" id="formulario">
