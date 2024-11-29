@@ -70,6 +70,10 @@
             background-color: #efe8e8;
         }
 
+        .reflexion-color-background{
+            background-color: #cbc7c7;
+        }
+
         .format-question{
             color: black; 
             max-height: 200px; 
@@ -213,23 +217,23 @@
                                     </legend>
                                     <label for="3-si" class="col-form-label-format">
                                         <input type="radio" name="apud_3" class="all-elements-color-background" value="Si" 
-                                        <?= (isset($_POST['apud_3']) && $_POST['apud_3'] === 'Si') ? 'checked' : '' ?> required> Si
+                                        <?= (isset($_POST['apud_3']) && $_POST['apud_3'] === 'Si') ? 'checked' : '' ?> onclick="quitarContainerErrorapud_3()" required> Si
                                     </label><br>
                                     <label for="3-Con frecuencia" class="col-form-label-format">
                                         <input type="radio" name="apud_3" class="all-elements-color-background" value="Con frecuencia"
-                                        <?= (isset($_POST['apud_3']) && $_POST['apud_3'] === 'Con frecuencia') ? 'checked' : '' ?>> Con frecuencia
+                                        <?= (isset($_POST['apud_3']) && $_POST['apud_3'] === 'Con frecuencia') ? 'checked' : '' ?> onclick="quitarContainerErrorapud_3()"> Con frecuencia
                                     </label><br>
                                     <label for="3-a-veces" class="col-form-label-format">
                                         <input type="radio" name="apud_3" class="all-elements-color-background" value="A veces"
-                                        <?= (isset($_POST['apud_3']) && $_POST['apud_3'] === 'A veces') ? 'checked' : '' ?>> A veces
+                                        <?= (isset($_POST['apud_3']) && $_POST['apud_3'] === 'A veces') ? 'checked' : '' ?> onclick="quitarContainerErrorapud_3()"> A veces
                                     </label><br>
                                     <label for="3-no" class="col-form-label-format">
                                         <input type="radio" name="apud_3" class="all-elements-color-background" value="No"
-                                        <?= (isset($_POST['apud_3']) && $_POST['apud_3'] === 'No') ? 'checked' : '' ?>> No
+                                        <?= (isset($_POST['apud_3']) && $_POST['apud_3'] === 'No') ? 'checked' : '' ?> onclick="quitarContainerErrorapud_3()"> No
                                     </label><br>
                                     <div id="error_mesagge_apud_3">
-                                    <div id="container_apud_3" class="error_message"></div>
-                                </div>
+                                        <div id="container_apud_3" class="error_message"></div>
+                                    </div>
                                 </fieldset> 
                                 <!-- apud_4 -->
                                 <fieldset>
@@ -238,18 +242,19 @@
                                     </legend>
                                     <label for="4-siempre" class="col-form-label-format">
                                         <input type="radio" id="4-siempre" name="apud_4" class="all-elements-color-background" value="Siempre"
-                                        <?= (isset($_POST['apud_4']) && $_POST['apud_4'] === 'Siempre') ? 'checked' : '' ?> required> Siempre
+                                        <?= (isset($_POST['apud_4']) && $_POST['apud_4'] === 'Siempre') ? 'checked' : '' ?> onclick="quitarContainerErrorapud_4()" required> Siempre
                                     </label><br>
                                     <label for="4-a-veces" class="col-form-label-format">
                                         <input type="radio" id="4-a-veces" name="apud_4" class="all-elements-color-background" value="A veces"
-                                        <?= (isset($_POST['apud_4']) && $_POST['apud_4'] === 'A veces') ? 'checked' : '' ?>> A veces
+                                        <?= (isset($_POST['apud_4']) && $_POST['apud_4'] === 'A veces') ? 'checked' : '' ?> onclick="quitarContainerErrorapud_4()"> A veces
                                     </label><br>
                                     <label for="4-nunca" class="col-form-label-format">
                                         <input type="radio" id="4-nunca" name="apud_4" class="all-elements-color-background" value="Nunca"
-                                        <?= (isset($_POST['apud_4']) && $_POST['apud_4'] === 'Nunca') ? 'checked' : '' ?>> Nunca
+                                        <?= (isset($_POST['apud_4']) && $_POST['apud_4'] === 'Nunca') ? 'checked' : '' ?> onclick="quitarContainerErrorapud_4()"> Nunca
                                     </label><br>
                                     <div id="error_mesagge_apud_4">
-                                    <div id="container_apud_4" class="error_message"></div>
+                                        <div id="container_apud_4" class="error_message"></div>
+                                    </div>
                                 </fieldset> 
                             </div>
                         </div>
@@ -266,7 +271,7 @@
                                 <label class="col-form-label col-form-label-format" for="restosComida">
                                     ¿Cómo sueles transportarte?
                                 </label>
-                                <select id="usoTransporte" name="te_1" class="form-select col-form-label-format all-elements-color-background" required>
+                                <select id="id-te_1" name="te_1" class="form-select col-form-label-format all-elements-color-background" onblur="validarte_1()" onfocus="eliminarBordete_1()" required>
                                     <option value="">Selecciona una opción</option>
                                     <option value="Auto propio"<?= (isset($_POST['te_1']) && $_POST['te_1'] === 'Auto propio') ? 'selected' : '' ?>>Auto propio</option>
                                     <option value="Transporte publico"<?= (isset($_POST['te_1']) && $_POST['te_1'] === 'Transporte publico') ? 'selected' : '' ?>>Transporte público</option>
@@ -274,6 +279,9 @@
                                     <option value="Caminando"<?= (isset($_POST['te_1']) && $_POST['te_1'] === 'Caminando') ? 'selected' : '' ?>>Caminando</option>
                                     <option value="Otros"<?= (isset($_POST['te_1']) && $_POST['te_1'] === 'Otros') ? 'selected' : '' ?>>Otros</option>
                                 </select>
+                                <div id="error_mesagge_te_1">
+                                    <div id="container_te_1" class="error_message"></div>
+                                </div>
                                 <!-- te_2 -->
                                 <fieldset>
                                     <br><legend class="col-form-label-format">
@@ -281,27 +289,33 @@
                                     </legend>
                                     <label for="7-si" class="col-form-label-format">
                                         <input type="radio" id="7-si" name="te_2" class="all-elements-color-background" value="Si"
-                                        <?= (isset($_POST['te_2']) && $_POST['te_2'] === 'Si') ? 'checked' : '' ?> required> Si
+                                        <?= (isset($_POST['te_2']) && $_POST['te_2'] === 'Si') ? 'checked' : '' ?> onclick="quitarContainerErrorte_2()" required> Si
                                     </label><br>
                                     <label for="7-constantemente" class="col-form-label-format">
                                         <input type="radio" id="7-constantemente" name="te_2" class="all-elements-color-background" value="Constantemente"
-                                        <?= (isset($_POST['te_2']) && $_POST['te_2'] === 'Constantemente') ? 'checked' : '' ?>> Constantemente
+                                        <?= (isset($_POST['te_2']) && $_POST['te_2'] === 'Constantemente') ? 'checked' : '' ?> onclick="quitarContainerErrorte_2()"> Constantemente
                                     </label><br>
                                     <label for="7-A veces" class="col-form-label-format">
                                         <input type="radio" id="7-A veces" name="te_2" class="all-elements-color-background" value="A veces"
-                                        <?= (isset($_POST['te_2']) && $_POST['te_2'] === 'A veces') ? 'checked' : '' ?>> A veces
+                                        <?= (isset($_POST['te_2']) && $_POST['te_2'] === 'A veces') ? 'checked' : '' ?> onclick="quitarContainerErrorte_2()"> A veces
                                     </label><br>
                                     <label for="7-No lo habia pensado" class="col-form-label-format">
                                         <input type="radio" id="7-No lo habia pensado" name="te_2" class="all-elements-color-background" value="No lo habia pensado"
-                                        <?= (isset($_POST['te_2']) && $_POST['te_2'] === 'No lo habia pensado') ? 'checked' : '' ?>> No lo habia pensado
+                                        <?= (isset($_POST['te_2']) && $_POST['te_2'] === 'No lo habia pensado') ? 'checked' : '' ?> onclick="quitarContainerErrorte_2()"> No lo habia pensado
                                     </label><br>
+                                    <div id="error_mesagge_te_2">
+                                        <div id="container_te_2" class="error_message"></div>
+                                    </div>
                                 </fieldset> 
                                 <!-- te_3 -->
                                 <label class="col-form-label col-form-label-format" for="dispositivosElectronicos">
                                     ¿Cuántos dispositivos electrónicos utilizas en casa?
                                 </label>
-                                <input type="number" name="te_3" id="dispositivosElectronicos" class="form-control col-form-label-format all-elements-color-background" 
-                                value = "<?= !empty($_POST['te_3'])?$_POST['te_3']:''?>" min="0" step="1" placeholder="Ingrese un numero" require>                                
+                                <input type="number" name="te_3" id="id-te_3" class="form-control col-form-label-format all-elements-color-background" 
+                                value = "<?= !empty($_POST['te_3'])?$_POST['te_3']:''?>" min="0" step="1" placeholder="Ingrese un numero" onblur="validarte_3()" onfocus="eliminarBordete_3()" require>  
+                                <div id="error_mesagge_te_3">
+                                    <div id="container_te_3" class="error_message"></div>
+                                </div>                              
                             </div>
                         </div>
                     </div>
@@ -323,20 +337,23 @@
                                     </legend>
                                     <label for="1-siempre" class="col-form-label-format">
                                         <input type="radio" id="1-siempre" name="hc_1" class="all-elements-color-background" value="Siempre" 
-                                        <?= (isset($_POST['hc_1']) && $_POST['hc_1'] === 'Siempre') ? 'checked' : '' ?>required> Siempre
+                                        <?= (isset($_POST['hc_1']) && $_POST['hc_1'] === 'Siempre') ? 'checked' : '' ?> onclick="quitarContainerErrorhc_1()" required> Siempre
                                     </label><br>
                                     <label for="1-a-veces" class="col-form-label-format">
                                         <input type="radio" id="1-a-veces" name="hc_1" class="all-elements-color-background" value="A veces"
-                                        <?= (isset($_POST['hc_1']) && $_POST['hc_1'] === 'A veces') ? 'checked' : '' ?>> A veces
+                                        <?= (isset($_POST['hc_1']) && $_POST['hc_1'] === 'A veces') ? 'checked' : '' ?> onclick="quitarContainerErrorhc_1()"> A veces
                                     </label><br>
                                     <label for="1-raramente" class="col-form-label-format">
                                         <input type="radio" id="1-raramente" name="hc_1" class="all-elements-color-background" value="Raramente"
-                                        <?= (isset($_POST['hc_1']) && $_POST['hc_1'] === 'Raramente') ? 'checked' : '' ?>> Raramente
+                                        <?= (isset($_POST['hc_1']) && $_POST['hc_1'] === 'Raramente') ? 'checked' : '' ?> onclick="quitarContainerErrorhc_1()"> Raramente
                                     </label><br>
                                     <label for="1-nunca" class="col-form-label-format">
                                         <input type="radio" id="1-nunca" name="hc_1" class="all-elements-color-background" value="Nunca"
-                                        <?= (isset($_POST['hc_1']) && $_POST['hc_1'] === 'Nunca') ? 'checked' : '' ?>> Nunca
+                                        <?= (isset($_POST['hc_1']) && $_POST['hc_1'] === 'Nunca') ? 'checked' : '' ?> onclick="quitarContainerErrorhc_1()"> Nunca
                                     </label><br>
+                                    <div id="error_mesagge_hc_1">
+                                        <div id="container_hc_1" class="error_message"></div>
+                                    </div>  
                                 </fieldset>
                                 <br>
                                 <!-- hc_2 -->
@@ -346,16 +363,19 @@
                                     </legend>
                                     <label for="2-siempre" class="col-form-label-format">
                                         <input type="radio" id="2-siempre" name="hc_2" class="all-elements-color-background" value="Si" 
-                                        <?= (isset($_POST['hc_2']) && $_POST['hc_2'] === 'Si') ? 'checked' : '' ?>required> Si
+                                        <?= (isset($_POST['hc_2']) && $_POST['hc_2'] === 'Si') ? 'checked' : '' ?> onclick="quitarContainerErrorhc_2()" required> Si
                                     </label><br>
                                     <label for="2-no" class="col-form-label-format">
                                         <input type="radio" id="2-no" name="hc_2" class="all-elements-color-background" value="No"
-                                        <?= (isset($_POST['hc_2']) && $_POST['hc_2'] === 'No') ? 'checked' : '' ?>> No
+                                        <?= (isset($_POST['hc_2']) && $_POST['hc_2'] === 'No') ? 'checked' : '' ?> onclick="quitarContainerErrorhc_2()"> No
                                     </label><br>
                                     <label for="2-a-veces" class="col-form-label-format">
                                         <input type="radio" id="2-a-veces" name="hc_2" class="all-elements-color-background" value="A veces"
-                                        <?= (isset($_POST['hc_2']) && $_POST['hc_2'] === 'A veces') ? 'checked' : '' ?>> A veces
+                                        <?= (isset($_POST['hc_2']) && $_POST['hc_2'] === 'A veces') ? 'checked' : '' ?> onclick="quitarContainerErrorhc_2()"> A veces
                                     </label><br>
+                                    <div id="error_mesagge_hc_2">
+                                        <div id="container_hc_2" class="error_message"></div>
+                                    </div>
                                 </fieldset>   
                             </div>
                         </div>
@@ -375,28 +395,34 @@
                                     </legend>
                                     <label for="5-siempre" class="col-form-label-format">
                                         <input type="radio" id="5-siempre" name="rr_1" class="all-elements-color-background" value="Siempre" 
-                                        <?= (isset($_POST['rr_1']) && $_POST['rr_1'] === 'Siempre') ? 'checked' : '' ?>required> Siempre
+                                        <?= (isset($_POST['rr_1']) && $_POST['rr_1'] === 'Siempre') ? 'checked' : '' ?> onclick="quitarContainerErrorrr_1()"required> Siempre
                                     </label><br>
                                     <label for="5-a-veces" class="col-form-label-format">
                                         <input type="radio" id="5-a-veces" name="rr_1" class="all-elements-color-background" value="A veces"
-                                        <?= (isset($_POST['rr_1']) && $_POST['rr_1'] === 'A veces') ? 'checked' : '' ?>> A veces
+                                        <?= (isset($_POST['rr_1']) && $_POST['rr_1'] === 'A veces') ? 'checked' : '' ?> onclick="quitarContainerErrorrr_1()"> A veces
                                     </label><br>
                                     <label for="5-raramente" class="col-form-label-format">
                                         <input type="radio" id="5-raramente" name="rr_1" class="all-elements-color-background" value="Raramente"
-                                        <?= (isset($_POST['rr_1']) && $_POST['rr_1'] === 'Raramente') ? 'checked' : '' ?>> Raramente
+                                        <?= (isset($_POST['rr_1']) && $_POST['rr_1'] === 'Raramente') ? 'checked' : '' ?> onclick="quitarContainerErrorrr_1()"> Raramente
                                     </label><br>
+                                    <div id="error_mesagge_rr_1">
+                                        <div id="container_rr_1" class="error_message"></div>
+                                    </div>
                                 </fieldset>
                                 <!-- rr_2 -->
                                 <label class="col-form-label col-form-label-format" for="noUsados">
                                     ¿Qué haces con la ropa o artículos que ya no usas?
                                 </label>
-                                <select id="noUsados" name="rr_2" class="form-select col-form-label-format all-elements-color-background" required>
+                                <select id="id-rr_2" name="rr_2" class="form-select col-form-label-format all-elements-color-background" onblur="validarrr_2()" onfocus="eliminarBorderr_2()" required>
                                     <option value="">Selecciona una opción</option>
                                     <option value="Los dono"<?= (isset($_POST['rr_2']) && $_POST['rr_2'] === 'Los dono') ? 'selected' : '' ?>>Los dono</option>
                                     <option value="Los tiro"<?= (isset($_POST['rr_2']) && $_POST['rr_2'] === 'Los tiro') ? 'selected' : '' ?>>Los tiro</option>
                                     <option value="Los vendo"<?= (isset($_POST['rr_2']) && $_POST['rr_2'] === 'Los vendo') ? 'selected' : '' ?>>Los vendo</option>
                                     <option value="Los reciclo"<?= (isset($_POST['rr_2']) && $_POST['rr_2'] === 'Los reciclo') ? 'selected' : '' ?>>Los reciclo</option>
                                 </select>
+                                <div id="error_mesagge_rr_2">
+                                    <div id="container_rr_2" class="error_message"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -415,28 +441,34 @@
                                     </legend>
                                     <label for="8-si" class="col-form-label-format">
                                         <input type="radio" id="8-si" name="ccr_1" class="all-elements-color-background" value="Si"
-                                        <?= (isset($_POST['ccr_1']) && $_POST['ccr_1'] === 'Si') ? 'checked' : '' ?>required> Si
+                                        <?= (isset($_POST['ccr_1']) && $_POST['ccr_1'] === 'Si') ? 'checked' : '' ?> onclick="quitarContainerErrorccr_1()" required> Si
                                     </label><br>
                                     <label for="8-No" class="col-form-label-format">
                                         <input type="radio" id="8-No" name="ccr_1" class="all-elements-color-background" value="No"
-                                        <?= (isset($_POST['ccr_1']) && $_POST['ccr_1'] === 'No') ? 'checked' : '' ?>> No
+                                        <?= (isset($_POST['ccr_1']) && $_POST['ccr_1'] === 'No') ? 'checked' : '' ?> onclick="quitarContainerErrorccr_1()"> No
                                     </label><br>
                                     <label for="8-Algo" class="col-form-label-format">
                                         <input type="radio" id="8-Algo" name="ccr_1" class="all-elements-color-background" value="Algo"
-                                        <?= (isset($_POST['ccr_1']) && $_POST['ccr_1'] === 'Algo') ? 'checked' : '' ?>> Algo
+                                        <?= (isset($_POST['ccr_1']) && $_POST['ccr_1'] === 'Algo') ? 'checked' : '' ?> onclick="quitarContainerErrorccr_1()"> Algo
                                     </label><br>
+                                    <div id="error_mesagge_ccr_1">
+                                        <div id="container_ccr_1" class="error_message"></div>
+                                    </div>
                                 </fieldset> 
                                 <!-- ccr_2 -->
                                 <label class="col-form-label col-form-label-format" for="noUsados">
                                     ¿Qué tan importante es para ti el impacto ambiental al comprar?
                                 </label>
-                                <select id="imporImpactoAmb" name="ccr_2" class="form-select col-form-label-format all-elements-color-background" required>
+                                <select id="id-ccr_2" name="ccr_2" class="form-select col-form-label-format all-elements-color-background" onblur="validarccr_2()" onfocus="eliminarBordeccr_2()" required>
                                     <option value="">Selecciona una opción</option>
                                     <option value="Muy importante"<?= (isset($_POST['ccr_2']) && $_POST['ccr_2'] === 'Muy importante') ? 'selected' : '' ?>>Muy importante</option>
                                     <option value="Algo importante"<?= (isset($_POST['ccr_2']) && $_POST['ccr_2'] === 'Algo importante') ? 'selected' : '' ?>>Algo importante</option>
                                     <option value="Poco importante"<?= (isset($_POST['ccr_2']) && $_POST['ccr_2'] === 'Poco importante') ? 'selected' : '' ?>>Poco importante</option>
                                     <option value="No es importante"<?= (isset($_POST['ccr_2']) && $_POST['ccr_2'] === 'No es importante') ? 'selected' : '' ?>>No es importante</option>
-                                </select><br>
+                                </select>
+                                <div id="error_mesagge_ccr_2">
+                                    <div id="container_ccr_2" class="error_message"></div>
+                                </div>
                                 <!-- ccr_3 -->
                                 <fieldset>
                                     <legend class="col-form-label-format">
@@ -444,16 +476,19 @@
                                     </legend>
                                     <label for="9-si" class="col-form-label-format">
                                         <input type="radio" id="9-si" name="ccr_3" class="all-elements-color-background" value="Si"
-                                        <?= (isset($_POST['ccr_3']) && $_POST['ccr_3'] === 'Si') ? 'checked' : '' ?>required> Si
+                                        <?= (isset($_POST['ccr_3']) && $_POST['ccr_3'] === 'Si') ? 'checked' : '' ?> onclick="quitarContainerErrorccr_3()" required> Si
                                     </label><br>
                                     <label for="9-no" class="col-form-label-format">
                                         <input type="radio" id="9-no" name="ccr_3" class="all-elements-color-background" value="No"
-                                        <?= (isset($_POST['ccr_3']) && $_POST['ccr_3'] === 'No') ? 'checked' : '' ?>> No
+                                        <?= (isset($_POST['ccr_3']) && $_POST['ccr_3'] === 'No') ? 'checked' : '' ?> onclick="quitarContainerErrorccr_3()"> No
                                     </label><br>
                                     <label for="9-depende" class="col-form-label-format">
                                         <input type="radio" id="9-depende" name="ccr_3" class="all-elements-color-background" value="Depende del producto"
-                                        <?= (isset($_POST['ccr_3']) && $_POST['ccr_3'] === 'Depende del producto') ? 'checked' : '' ?>> Depende del producto
+                                        <?= (isset($_POST['ccr_3']) && $_POST['ccr_3'] === 'Depende del producto') ? 'checked' : '' ?> onclick="quitarContainerErrorccr_3()"> Depende del producto
                                     </label><br>
+                                    <div id="error_mesagge_ccr_3">
+                                        <div id="container_ccr_3" class="error_message"></div>
+                                    </div>
                                 </fieldset>                                
                             </div>
                         </div>
@@ -480,13 +515,16 @@
                     <div class="card-header card-header-color-format">
                         Reflexión Personal y Compromiso
                     </div>
-                    <div class="card-body all-elements-color-background format-question">
+                    <div class="card-body reflexion-color-background format-question">
                         <div class="form-check">
                             <label class="col-form-label col-form-label-format" for="9-habitoMejorar">
                                 ¿Qué hábito crees que podrías mejorar para ser un consumidor más responsable?
                             </label>
-                            <input type="text" id="habitoMejorar" name="rpc" class="form-control col-form-label-format all-elements-color-background" 
-                            value = "<?= !empty($_POST['rpc'])?$_POST['rpc']:''?>" style="width: 1100px; height: 110px;" placeholder="Escribe tu respuesta aquí">
+                            <input type="text" id="id-rpc" name="rpc" class="form-control col-form-label-format all-elements-color-background" 
+                            value = "<?= !empty($_POST['rpc'])?$_POST['rpc']:''?>" style="width: 1100px; height: 110px;" placeholder="Escribe tu respuesta aquí" oninput="validarrpc()" onfocus="eliminarBorderpc()">
+                            <div id="error_mesagge_rpc">
+                                <div id="container_rpc" class="error_message"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -495,7 +533,7 @@
 
         <!-- boton de envio -->
         <div class="format-container-botton">
-            <button type="submit" class="btn btn-success botton-format-submit">Enviar</button>
+            <button type="submit" class="btn btn-success botton-format-submit" onclick="submmitBotton(event)">Enviar</button>
         </div>                
     </form>
 
