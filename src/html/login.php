@@ -136,7 +136,7 @@
                         </label>
                         <input type="email" id="id-correo" name="correo" class="form-control col-form-label-format all-elements-color-background" 
                             value = "<?= !empty($_POST['correo'])?$_POST['correo']:''?>" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
-                            placeholder="Correo Electronico" required>
+                            placeholder="Correo Electronico" onfocus="eliminarBordeCorreo()" onblur="validacionCorreo()" required>
                         <div id="error_mesagge_correo">
                             <div id="container_correo" class="error_message"></div>
                         </div><br>
@@ -147,19 +147,26 @@
                         <input type="password" id="id-password" name="password" class="form-control col-form-label-format all-elements-color-background" 
                             placeholder="Contraseña" minlength="8" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}" 
                             title="Debe contener al menos 8 caracteres, incluyendo una letra mayúscula, una minúscula, un número y un carácter especial." 
-                            value = "<?= !empty($_POST['password'])?$_POST['password']:''?>" required>
+                            value = "<?= !empty($_POST['password'])?$_POST['password']:''?>" 
+                            onfocus="eliminarBordeContrasena()" onblur="validacionContrasena()" onchange="validacionContrasena()" required>
                         <div id="error_mesagge_password">
                             <div id="container_password" class="error_message"></div>
                         </div>
 
                         <!-- Boton de envio -->
                         <div class="format-container-botton">
-                            <button type="submit" class="btn btn-success botton-format-submit" style="background-color: #278b1d !important;">Enviar</button>
+                            <button type="submit" class="btn btn-success botton-format-submit" style="background-color: #278b1d !important;"
+                            onclick = "submitLogin()" >Enviar</button>
                         </div>    
                     </div>
                 </div>
             </div>
         </div>
-    </form>    
+    </form>  
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"></script>
+    <script src="../../js/validaciones.js"></script>
 </body>
 </html>
