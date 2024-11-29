@@ -265,3 +265,51 @@ function submmitBotton(event){
     $("#formulario")[0].reset();
     return true;
 }
+// Correo electronico
+function verificarCorreo(correo) {
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return emailRegex.test(correo);
+}
+
+function validacionCorreo(){
+    if ($("#id-correo").val() === ""){
+        visualizarError("correo", "Inserte correo electronico");
+        return false;
+    }else if (!verificarCorreo($("#id-correo").val())){
+        visualizarError("correo", "Correo electronico incorrecto");
+        return false;
+    }
+    return true;
+}
+
+function eliminarBordeCorreo(){
+    quitarError("correo");
+}
+
+//Password
+function verificarContrasena(password) {
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,}$/;
+    return passwordRegex.test(password);
+}
+
+function validacionContrasena() {
+    if ($("#id-password").val() === "") {
+        visualizarError("password", "Inserte una contraseña");
+        return false;
+    } else if (!verificarContrasena($("#id-password").val())) {
+        visualizarError("password", "La contraseña debe tener al menos 8 caracteres, incluyendo una letra mayúscula, una letra minúscula y un número.");
+        return false;
+    }
+    return true;
+}
+
+function eliminarBordeContrasena() {
+    quitarError("password");
+}
+
+
+//boton enviar login
+function submitLogin(){
+    validacionCorreo();
+    validacionContrasena();
+}
