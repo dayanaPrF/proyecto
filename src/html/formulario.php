@@ -139,11 +139,8 @@
                 </ul>
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item special-nav-item">
-                        <a class="nav-link" href="login.php">Inicia sesión</a>
-                    </li>
-                    <li class="nav-item special-nav-item">
-                        <a class="nav-link" href="singup.php">Regístrate</a>
-                    </li>                 
+                        <a class="nav-link" href="login.php">Cerrar sesion</a>
+                    </li>               
                 </ul>
             </div>
         </div>
