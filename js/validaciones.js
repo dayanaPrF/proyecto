@@ -271,45 +271,44 @@ function verificarCorreo(correo) {
     return emailRegex.test(correo);
 }
 
-function validacionCorreo(){
-    if ($("#id-correo").val() === ""){
-        visualizarError("correo", "Inserte correo electronico");
+function validacionCorreo() {
+    if ($("#id-correo").val() === "") { // Comprobación si el correo está vacío
+        visualizarError("correo", "Inserte correo electronico"); // Mostrar error si está vacío
         return false;
-    }else if (!verificarCorreo($("#id-correo").val())){
-        visualizarError("correo", "Correo electronico incorrecto");
+    } else if (!verificarCorreo($("#id-correo").val())) { // Comprobación si el correo es válido
+        visualizarError("correo", "Correo electronico incorrecto"); // Mostrar error si es inválido
         return false;
     }
     return true;
 }
 
-function eliminarBordeCorreo(){
-    quitarError("correo");
+function eliminarBordeCorreo() { 
+    quitarError("correo"); // Elimina el borde de error del correo
 }
 
-//Password
+// Password
 function verificarContrasena(password) {
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,}$/;
     return passwordRegex.test(password);
 }
 
 function validacionContrasena() {
-    if ($("#id-password").val() === "") {
-        visualizarError("password", "Inserte una contraseña");
+    if ($("#id-password").val() === "") { // Comprobación si la contraseña está vacía
+        visualizarError("password", "Inserte una contraseña"); // Mostrar error si está vacía
         return false;
-    } else if (!verificarContrasena($("#id-password").val())) {
-        visualizarError("password", "La contraseña debe tener al menos 8 caracteres, incluyendo una letra mayúscula, una letra minúscula y un número.");
+    } else if (!verificarContrasena($("#id-password").val())) { // Comprobación si la contraseña es válida
+        visualizarError("password", "La contraseña debe tener al menos 8 caracteres, incluyendo una letra mayúscula, una letra minúscula y un número."); // Mostrar error si es inválida
         return false;
     }
     return true;
 }
 
 function eliminarBordeContrasena() {
-    quitarError("password");
+    quitarError("password"); // Elimina el borde de error de la contraseña
 }
 
-
-//boton enviar login
-function submitLogin(){
-    validacionCorreo();
-    validacionContrasena();
+// Boton enviar login
+function submitLogin() {
+    validacionCorreo(); // Validar correo antes de enviar
+    validacionContrasena(); // Validar contraseña antes de enviar
 }
