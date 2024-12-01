@@ -165,17 +165,18 @@
                         Correo Electronico
                     </label>
                     <input type="email" id="id-correo" name="correo" class="form-control col-form-label-format all-elements-color-background" 
-                        value="<?= !empty($_POST['correo']) ? $_POST['correo'] : '' ?>" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                        value="<?= !empty($_POST['correo']) ? $_POST['correo'] : '' ?>" pattern='[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
                         placeholder="Correo Electronico" onfocus="eliminarBordeCorreo()" onblur="validacionCorreo()" required>
                     <div id="error_mesagge_correo">
                         <div id="container_correo" class="error_message"></div>
                     </div><br>
+                
                     <!-- Contraseña -->
                     <label class="col-form-label col-form-label-format">
                         Contraseña
                     </label>
                     <input type="password" id="id-password" name="password" class="form-control col-form-label-format all-elements-color-background" 
-                        placeholder="Contraseña" minlength="8" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}" 
+                        placeholder="Contraseña" minlength="8" $pattern = '/(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/'
                         title="Debe contener al menos 8 caracteres, incluyendo una letra mayúscula, una minúscula, un número y un carácter especial." 
                         value="<?= !empty($_POST['password']) ? $_POST['password'] : '' ?>" 
                         onfocus="eliminarBordeContrasena()" onblur="validacionContrasena()" onchange="validacionContrasena()" required>
