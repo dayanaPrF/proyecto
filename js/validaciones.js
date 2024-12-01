@@ -265,10 +265,12 @@ function submmitBotton(event){
     $("#formulario")[0].reset();
     return true;
 }
-// Correo electronico
+// Verificar si el correo electrónico es válido utilizando una expresión regular
 function verificarCorreo(correo) {
-    return (filter_var(correo, FILTER_VALIDATE_EMAIL));
+    const regexCorreo = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return regexCorreo.test(correo); // Retorna true si el correo es válido
 }
+
 
 function validacionCorreo() {
     if ($("#id-correo").val() === "") { // Comprobación si el correo está vacío

@@ -169,7 +169,7 @@
                         Correo Electronico
                     </label>
                     <input type="email" id="id-correo" name="correo" class="form-control col-form-label-format all-elements-color-background" 
-                        value="<?= !empty($_POST['correo']) ? $_POST['correo'] : '' ?>" pattern='[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+                        value="<?= !empty($_POST['correo']) ? $_POST['correo'] : '' ?>" $pattern='[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
                         placeholder="Correo Electronico" onfocus="eliminarBordeCorreo()" onblur="validacionCorreo()" required>
                     <div id="error_mesagge_correo">
                         <div id="container_correo" class="error_message"></div>
