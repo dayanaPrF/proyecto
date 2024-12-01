@@ -287,9 +287,25 @@ function eliminarBordeCorreo() {
 
 // Password
 function verificarContrasena(password) {
-    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,}$/;
-    return passwordRegex.test(password);
+    if (password.length < 8) {
+        visualizarError("password", "La contraseña debe tener al menos 8 caracteres");
+        return false;
+    }
+    if (!/[a-z]/.test(password)) {
+        visualizarError("password", "La contraseña debe tener al menos una letra minúscula");
+        return false;
+    }
+    if (!/[A-Z]/.test(password)) {
+        visualizarError("password", "La contraseña debe tener al menos una letra mayúscula");
+        return false;
+    }
+    if (!/[0-9]/.test(password)) {
+        visualizarError("password", "La contraseña debe tener al menos un número");
+        return false;
+    }
+    return true;
 }
+
 
 function validacionContrasena() {
     if ($("#id-password").val() === "") { // Comprobación si la contraseña está vacía
