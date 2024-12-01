@@ -271,6 +271,20 @@ function verificarCorreo(correo) {
     return regexCorreo.test(correo); // Retorna true si el correo es válido
 }
 
+// Validación del correo
+function submitLogin(event) {
+    event.preventDefault(); // Prevenir el envío del formulario si hay un error
+
+    // Validar correo y contraseña
+    const correoValido = validacionCorreo();
+    const contrasenaValida = validacionContrasena();
+
+    // Si ambas validaciones son correctas, entonces enviar el formulario
+    if (correoValido && contrasenaValida) {
+        $("#login").submit(); // Enviar el formulario
+    }
+}
+
 
 function validacionCorreo() {
     if ($("#id-correo").val() === "") { // Comprobación si el correo está vacío
