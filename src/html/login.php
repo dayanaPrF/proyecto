@@ -119,6 +119,10 @@
             text-align: right;          /* Alinea el texto dentro del enlace a la derecha */
         }
     </style>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"></script>
+    <script src="/proyecto/js/validaciones.js"></script>
 </head>
 <body>
     <!--Barra de navegacion -->
@@ -195,9 +199,5 @@
         </div>
     </form>  
     
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
-      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-      crossorigin="anonymous"></script>
-    <script src="../../js/validaciones.js"></script>
 </body>
 </html>
