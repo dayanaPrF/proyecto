@@ -267,8 +267,7 @@ function submmitBotton(event){
 }
 // Correo electronico
 function verificarCorreo(correo) {
-    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    return emailRegex.test(correo);
+    return (filter_var(correo, FILTER_VALIDATE_EMAIL));
 }
 
 function validacionCorreo() {
