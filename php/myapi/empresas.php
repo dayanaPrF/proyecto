@@ -37,6 +37,25 @@ class Empresas extends DataBase {
         $this->conexion->close();
     }
 
+    public function getDetails($id) {
+        $this->response = [];
+    
+        // Realizamos la consulta para obtener los detalles de la empresa por ID
+        if ($result = $this->conexion->query("SELECT * FROM empresas WHERE id = $id")) {
+            $rows = $result->fetch_assoc();
+            
+            if ($rows) {
+                $this->response = $rows;
+            }
+            $result->free();
+        } else {
+            die('Query Error: ' . mysqli_error($this->conexion));
+        }
+    
+        return $this->response;
+    }
+    
+
     public function getData() {
         return $this->response;
     }

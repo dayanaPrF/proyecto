@@ -62,8 +62,7 @@ function listarEmpresas() {
                 let empresas = JSON.parse(response);
                 let template = '';
                 empresas.forEach(empresa => {
-                    // Suponiendo que 'imagen' es la URL del logo de la empresa
-                    let logo = empresa.imagen || 'path/to/default/logo.png'; // Imagen predeterminada si no existe logo
+                    let logo = empresa.imagen
                     template += `
                         <li>
                             <a href="javascript:void(0);" class="empresa-item" data-id="${empresa.id}">
@@ -76,8 +75,8 @@ function listarEmpresas() {
 
                 // Agregar el evento click para mostrar más información
                 $('.empresa-item').on('click', function() {
-                    let empresaId = $(this).data('id');
-                    mostrarDetallesEmpresa(empresaId);
+                    let empresaId = $(this).data('id');  // Obtén el ID correctamente
+                    mostrarDetallesEmpresa(empresaId);  // Pasa el ID correctamente
                 });
             } catch (error) {
                 console.error('Error al parsear JSON:', error);
@@ -90,9 +89,8 @@ function listarEmpresas() {
 function mostrarDetallesEmpresa(id) {
     console.log('Obteniendo detalles de la empresa con ID:', id);
 
-    // Aquí debes hacer una nueva solicitud para obtener más información de la empresa seleccionada
     $.ajax({
-        url: `/proyecto/php/empresa-detalles.php?id=${id}`, // Debes crear un endpoint para obtener detalles
+        url: `/proyecto/php/empresa-detalles.php?id=${id}`,
         type: 'GET',
         success: function(response) {
             try {
@@ -116,37 +114,37 @@ function mostrarDetallesEmpresa(id) {
 
 
 
-// Obtener una empresa por ID
-$(document).on('click', '.empresa-item', function() { 
-    let element = $(this)[0].parentElement.parentElement;
-    let id = $(element).attr('empresaId');
-    console.log(`Obteniendo la empresa con ID: ${id}`);
+// // Obtener una empresa por ID
+// $(document).on('click', '.empresa-item', function() { 
+//     let element = $(this)[0].parentElement.parentElement;
+//     let id = $(element).attr('empresaId');
+//     console.log(`Obteniendo la empresa con ID: ${id}`);
     
-    // Hacemos la petición GET para obtener la empresa por su ID
-    $.get('backend/empresa-single.php', { id }, function(response) {   
-        console.log(`Respuesta de obtener empresa: ${response}`);
-        const empresa = JSON.parse(response);
+//     // Hacemos la petición GET para obtener la empresa por su ID
+//     $.get('backend/empresa-single.php', { id }, function(response) {   
+//         console.log(`Respuesta de obtener empresa: ${response}`);
+//         const empresa = JSON.parse(response);
 
-        // Verificamos si el estado de la respuesta es "success"
-        if (empresa.status === 'success') {
-            console.log('Empresa obtenida:', empresa);
+//         // Verificamos si el estado de la respuesta es "success"
+//         if (empresa.status === 'success') {
+//             console.log('Empresa obtenida:', empresa);
 
-            // Rellenar los campos de la empresa
-            $('#nombre').val(empresa.empresa.nombre);
-            $('#area_interes').val(empresa.empresa.area_interes);
-            $('#fuente_consumo').val(empresa.empresa.fuente_consumo);
-            $('#emisiones').val(empresa.empresa.emisiones);
-            $('#medidas').val(empresa.empresa.medidas);
-            $('#direccion').val(empresa.empresa.direccion);
-            $('#telefono').val(empresa.empresa.telefono);
-            $('#correo').val(empresa.empresa.correo);
-            $('#imagen').val(empresa.empresa.imagen);
-            $('#empresa-id').val(empresa.empresa.id);
+//             // Rellenar los campos de la empresa
+//             $('#nombre').val(empresa.empresa.nombre);
+//             $('#area_interes').val(empresa.empresa.area_interes);
+//             $('#fuente_consumo').val(empresa.empresa.fuente_consumo);
+//             $('#emisiones').val(empresa.empresa.emisiones);
+//             $('#medidas').val(empresa.empresa.medidas);
+//             $('#direccion').val(empresa.empresa.direccion);
+//             $('#telefono').val(empresa.empresa.telefono);
+//             $('#correo').val(empresa.empresa.correo);
+//             $('#imagen').val(empresa.empresa.imagen);
+//             $('#empresa-id').val(empresa.empresa.id);
 
-            edit = true;
-        } else {
-            $('#container').html(empresa.message);  // En caso de error, muestra el mensaje
-            $('#empresa-result').show();
-        }
-    });
-});
+//             edit = true;
+//         } else {
+//             $('#container').html(empresa.message);  // En caso de error, muestra el mensaje
+//             $('#empresa-result').show();
+//         }
+//     });
+// });
