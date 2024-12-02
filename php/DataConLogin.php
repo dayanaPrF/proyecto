@@ -22,7 +22,7 @@ class Data extends DataBase {
         $this->data = array();
         parent::__construct($db, $user, $pass);
     }
-//probando commit
+
         public function registrarUsuario($correo, $contraseña) {
             $sql = "INSERT INTO user (correo, contraseña) VALUES (?, ?)";
             $stmt = $this->conn->stmt_init();
