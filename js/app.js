@@ -18,26 +18,31 @@ function listarEmpresas() {
             console.log(`Respuesta de listar empresas: ${response}`);
             try {
                 let empresas = JSON.parse(response);
-                alert(response);
-                let template = '';
-                empresas.forEach(empresa => {
-                    let descripcion = '';
-                    descripcion += '<li>Área de interés: ' + empresa.area_interes + '</li>';
-                    descripcion += '<li>Fuente de consumo: ' + empresa.fuente_consumo + '</li>';
-                    descripcion += '<li>Emisiones: ' + empresa.emisiones + '</li>';
-                    descripcion += '<li>Medidas adoptadas: ' + empresa.medidas + '</li>';
-                    template += `
-                        <tr empresaId="${empresa.id}">
-                            <td>${empresa.id}</td>
-                            <td><a href="javascript:void(0);" class="empresa-item">${empresa.nombre}</a></td>
-                            <td>${descripcion}</td>
-                            <td>
-                                <button class="empresa-delete btn btn-danger">Eliminar</button>
-                            </td>
-                        </tr>
-                    `;
-                });
-                $('#empresas').html(template);
+
+                // Verificamos que la respuesta es un array de empresas
+                if (Array.isArray(empresas)) {
+                    let template = '';
+                    empresas.forEach(empresa => {
+                        let descripcion = '';
+                        descripcion += '<li>Área de interés: ' + empresa.area_interes + '</li>';
+                        descripcion += '<li>Fuente de consumo: ' + empresa.fuente_consumo + '</li>';
+                        descripcion += '<li>Emisiones: ' + empresa.emisiones + '</li>';
+                        descripcion += '<li>Medidas adoptadas: ' + empresa.medidas + '</li>';
+                        template += `
+                            <tr empresaId="${empresa.id}">
+                                <td>${empresa.id}</td>
+                                <td><a href="javascript:void(0);" class="empresa-item">${empresa.nombre}</a></td>
+                                <td>${descripcion}</td>
+                                <td>
+                                    <button class="empresa-delete btn btn-danger">Eliminar</button>
+                                </td>
+                            </tr>
+                        `;
+                    });
+                    $('#empresas').html(template);
+                } else {
+                    console.error('La respuesta no es un arreglo:', empresas);
+                }
             } catch (error) {
                 console.error('Error al parsear JSON:', error);
                 console.log('Respuesta recibida:', response);
@@ -45,6 +50,8 @@ function listarEmpresas() {
         }
     });
 }
+
+
 
 // Obtener una empresa por ID
 $(document).on('click', '.empresa-item', function() { 
