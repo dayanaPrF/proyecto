@@ -1,7 +1,7 @@
 <?php
-namespace tecweb\MyApi;
+namespace PROYECTO\MYAPI;
 
-use tecweb\MyApi\DataBase;
+//use tecweb\MyApi\DataBase;
 
 require_once 'DataBase.php';
 
@@ -17,7 +17,7 @@ class Empresas extends DataBase {
         $this->response = [];
 
         // Realizamos la consulta a la base de datos
-        if ($result = $this->conexion->query("SELECT id, nombre FROM empresas WHERE eliminado = 0")) {
+        if ($result = $this->conexion->query("SELECT nombre FROM empresas")) {
             // Obtenemos los resultados
             $rows = $result->fetch_all(MYSQLI_ASSOC);
 
