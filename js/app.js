@@ -62,10 +62,15 @@ function listarEmpresas() {
                 let empresas = JSON.parse(response);
                 let template = '';
                 empresas.forEach(empresa => {
-                    let logo = empresa.imagen
+                    
+                    let logo = empresa.imagen ? `/proyecto/img/img_Empresas/${empresa.imagen}` : '/proyecto/img/default-logo.png';
+                    
+                    // Imprimir la ruta del logo para depuración
+                    console.log(`Ruta del logo para ${empresa.nombre}: ${logo}`);
+                    
                     template += `
                         <li>
-                            <a href="javascript:void(0);" class="empresa-item" data-id="${empresa.id}">
+                             <a href="javascript:void(0);" class="empresa-item" data-id="${empresa.id}">
                                 <img src="${logo}" alt="${empresa.nombre}" width="40" height="40"> ${empresa.nombre}
                             </a>
                         </li>
@@ -89,6 +94,11 @@ function listarEmpresas() {
 function mostrarDetallesEmpresa(id) {
     console.log('Obteniendo detalles de la empresa con ID:', id);
 
+    if (id === undefined) {
+        console.error('No se ha proporcionado un ID válido');
+        return;  // No continúa si el ID es inválido
+    }
+
     $.ajax({
         url: `/proyecto/php/empresa-detalles.php?id=${id}`,
         type: 'GET',
@@ -106,6 +116,7 @@ function mostrarDetallesEmpresa(id) {
             } catch (error) {
                 console.error('Error al parsear los detalles:', error);
                 $('#empresaDetails').html('<p>No se pudo cargar la información de la empresa.</p>');
+                console.log('Respuesta recibida:', response);
             }
         }
     });
