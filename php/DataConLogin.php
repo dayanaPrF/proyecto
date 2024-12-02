@@ -5,6 +5,16 @@ namespace PROYECTO\MYAPI;
 use PROYECTO\MYAPI\DataBase;
 require_once __DIR__ . '/DataBase.php';
 
+//  control de entrada del formulario
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $correo = $_POST['correo'];  // Recibir los datos del formulario
+    $contraseña = $_POST['password'];
+
+    // Crear instancia de la clase Data
+    $db = new Data("paginaods");
+    $db->registrarUsuario($correo, $contraseña); 
+}
+
 class Data extends DataBase {
     private $data;
 
@@ -13,23 +23,27 @@ class Data extends DataBase {
         parent::__construct($db, $user, $pass);
     }
 //probando commit
-        public function registrarUsuario($correo, $contrasena) {
+        public function registrarUsuario($correo, $contraseña) {
             $sql = "INSERT INTO user (correo, contraseña) VALUES (?, ?)";
             $stmt = $this->conn->stmt_init();
 
             if (!$stmt->prepare($sql)) {
-                die("SQL error: " . $this->conn->error);
+                die(json_encode(['status' => 'error', 'message' => 'SQL error: ' . $this->conn->error]));
             }
-
-            $stmt->bind_param("ss", $correo, $contrasena);
-
+    
+            // Hashear la contraseña antes de guardarla
+            $hashedPassword = password_hash($contraseña, PASSWORD_DEFAULT);
+            $stmt->bind_param("ss", $correo, $hashedPassword);
+    
             if ($stmt->execute()) {
-                echo "<script>alert('Registrado correctamente'); window.location.href = 'login.php';</script>";
+                // Si se registra correctamente, enviar una respuesta exitosa
+                return ['status' => 'success', 'message' => 'Registrado correctamente'];
             } else {
                 if ($this->conn->errno === 1062) {
-                    die("El correo ya ha sido registrado");
+                    // El correo ya existe
+                    return ['status' => 'error', 'message' => 'El correo ya ha sido registrado'];
                 } else {
-                    die("Error: " . $this->conn->errno . " " . $this->conn->error);
+                    return ['status' => 'error', 'message' => 'Error: ' . $this->conn->errno . ' ' . $this->conn->error];
                 }
             }
             $stmt->close();

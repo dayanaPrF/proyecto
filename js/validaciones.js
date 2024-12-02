@@ -271,21 +271,6 @@ function verificarCorreo(correo) {
     return regexCorreo.test(correo); // Retorna true si el correo es válido
 }
 
-// Validación del correo
-function submitLogin(event) {
-    event.preventDefault(); // Prevenir el envío del formulario si hay un error
-
-    // Validar correo y contraseña
-    const correoValido = validacionCorreo();
-    const contrasenaValida = validacionContrasena();
-
-    // Si ambas validaciones son correctas, entonces enviar el formulario
-    if (correoValido && contrasenaValida) {
-        $("#login").submit(); // Enviar el formulario
-    }
-}
-
-
 function validacionCorreo() {
     if ($("#id-correo").val() === "") { // Comprobación si el correo está vacío
         visualizarError("correo", "Inserte correo electronico"); // Mostrar error si está vacío
@@ -340,20 +325,29 @@ function eliminarBordeContrasena() {
 
 // validaciones.js
 
-function submitLogin(event) {
-    event.preventDefault();  // Evita el envío estándar del formulario
+// Función para manejar el envío del formulario por AJAX
+$("#login").submit(function(event) {
+    event.preventDefault(); 
     
-    // Validaciones (asegúrate de tener las funciones de validación definidas)
-    if (validacionCorreo() && validacionContrasena()) {
-        var formData = $("#login").serialize();  // Serializa todos los campos del formulario
+    const correoValido = validacionCorreo();
+    const contrasenaValida = validacionContrasena();
+
+    // Si las validaciones son correctas, enviamos el formulario mediante AJAX
+    if (correoValido && contrasenaValida) {
+        var formData = $(this).serialize(); 
 
         $.ajax({
             type: "POST",
-            url: "DataConLogin.php",
+            url: "../php/DataConLogin.php", 
             data: formData,
+            dataType: "json",
             success: function(response) {
-                alert('Registrado correctamente');
-                window.location.href = 'login.php';  // Redirige al login
+                if (response.status === 'success') {
+                    alert('Registrado correctamente');
+                    window.location.href = 'login.php'; 
+                } else {
+                    alert('Error: ' + response.message);  // Muestra el error devuelto por el servidor
+                }
             },
             error: function(error) {
                 console.log(error);
@@ -361,7 +355,7 @@ function submitLogin(event) {
             }
         });
     }
-}
+});
 
 
 // Boton enviar login
