@@ -12,7 +12,7 @@ $(document).ready(function () {
 function listarEmpresas() {
     console.log('Obteniendo la lista de empresas...');
     $.ajax({
-        url: 'backend/empresa-list.php',  // Reemplaza esto con el archivo PHP que retorna las empresas
+        url: '../php/empresa-list.php',
         type: 'GET',
         success: function(response) {
             console.log(`Respuesta de listar empresas: ${response}`);

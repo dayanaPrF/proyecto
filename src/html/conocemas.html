@@ -82,6 +82,17 @@
             text-align: right;          /* Alinea el texto dentro del enlace a la derecha */
         }
       </style>
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      
+      <!-- Cargar el archivo de funciones app.js -->
+      <script src="../../js/app.js"></script>
+
+      <!-- Ejecutar listarEmpresas al cargar la página -->
+      <script>
+          $(document).ready(function() {
+              listarEmpresas(); // Llama a la función cuando todo esté listo
+          });
+      </script>
 </head>
 <body>
         <!-- Barra de navegación -->
@@ -153,11 +164,6 @@
               </div>
           </div>
       </div>
-
-      <script>
-          // Cargar las empresas cuando la página se cargue
-          window.onload = listarEmpresas();
-      </script>
         
     
 </body>
