@@ -2,7 +2,7 @@
 
 use tecweb\MyApi\Empresas;
 
-include_once __DIR__ . '/vendor/autoload.php';
+//include_once __DIR__ . '/vendor/autoload.php';
 
 // Creamos una instancia de la clase Empresas
 $empresas = new Empresas('marketzone');

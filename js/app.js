@@ -8,36 +8,35 @@ $(document).ready(function () {
     });
 });
 
-// Obtener todos los productos
-function listarProductos() {
-    console.log('Obteniendo la lista de productos...');
+// Obtener todas las empresas
+function listarEmpresas() {
+    console.log('Obteniendo la lista de empresas...');
     $.ajax({
-        url: 'backend/product-list.php',
+        url: 'backend/empresa-list.php',  // Reemplaza esto con el archivo PHP que retorna las empresas
         type: 'GET',
         success: function(response) {
-            console.log(`Respuesta de listar productos: ${response}`);
+            console.log(`Respuesta de listar empresas: ${response}`);
             try {
-                let products = JSON.parse(response);
+                let empresas = JSON.parse(response);
                 let template = '';
-                products.forEach(product => {
+                empresas.forEach(empresa => {
                     let descripcion = '';
-                    descripcion += '<li>precio: ' + product.precio + '</li>';
-                    descripcion += '<li>unidades: ' + product.unidades + '</li>';
-                    descripcion += '<li>modelo: ' + product.modelo + '</li>';
-                    descripcion += '<li>marca: ' + product.marca + '</li>';
-                    descripcion += '<li>detalles: ' + product.detalles + '</li>';
+                    descripcion += '<li>Área de interés: ' + empresa.area_interes + '</li>';
+                    descripcion += '<li>Fuente de consumo: ' + empresa.fuente_consumo + '</li>';
+                    descripcion += '<li>Emisiones: ' + empresa.emisiones + '</li>';
+                    descripcion += '<li>Medidas adoptadas: ' + empresa.medidas + '</li>';
                     template += `
-                        <tr productId="${product.id}">
-                            <td>${product.id}</td>
-                            <td><a href="javascript:void(0);" class="product-item">${product.nombre}</a></td>
+                        <tr empresaId="${empresa.id}">
+                            <td>${empresa.id}</td>
+                            <td><a href="javascript:void(0);" class="empresa-item">${empresa.nombre}</a></td>
                             <td>${descripcion}</td>
                             <td>
-                                <button class="product-delete btn btn-danger">Eliminar</button>
+                                <button class="empresa-delete btn btn-danger">Eliminar</button>
                             </td>
                         </tr>
                     `;
                 });
-                $('#products').html(template);
+                $('#empresas').html(template);
             } catch (error) {
                 console.error('Error al parsear JSON:', error);
                 console.log('Respuesta recibida:', response);
@@ -46,35 +45,37 @@ function listarProductos() {
     });
 }
 
-// Obtener un Producto por ID
-$(document).on('click', '.product-item', function() { 
+// Obtener una empresa por ID
+$(document).on('click', '.empresa-item', function() { 
     let element = $(this)[0].parentElement.parentElement;
-    let id = $(element).attr('productId');
-    console.log(`Obteniendo el producto con ID: ${id}`);
+    let id = $(element).attr('empresaId');
+    console.log(`Obteniendo la empresa con ID: ${id}`);
     
-    // Hacemos la petición GET para obtener el producto por su ID
-    $.get('backend/product-single.php', { id }, function(response) {   
-        console.log(`Respuesta de obtener producto: ${response}`);
-        const product = JSON.parse(response);
+    // Hacemos la petición GET para obtener la empresa por su ID
+    $.get('backend/empresa-single.php', { id }, function(response) {   
+        console.log(`Respuesta de obtener empresa: ${response}`);
+        const empresa = JSON.parse(response);
 
         // Verificamos si el estado de la respuesta es "success"
-        if (product.status === 'success') {
-            console.log('Producto obtenido:', product);
+        if (empresa.status === 'success') {
+            console.log('Empresa obtenida:', empresa);
 
-            // Rellenar los campos del producto
-            $('#name').val(product.producto.nombre);
-            $('#marca').val(product.producto.marca);
-            $('#modelo').val(product.producto.modelo);
-            $('#precio').val(product.producto.precio);
-            $('#detalles').val(product.producto.detalles);
-            $('#unidades').val(product.producto.unidades);
-            $('#imagen').val(product.producto.imagen);
-            $('#product-id').val(product.producto.id);
+            // Rellenar los campos de la empresa
+            $('#nombre').val(empresa.empresa.nombre);
+            $('#area_interes').val(empresa.empresa.area_interes);
+            $('#fuente_consumo').val(empresa.empresa.fuente_consumo);
+            $('#emisiones').val(empresa.empresa.emisiones);
+            $('#medidas').val(empresa.empresa.medidas);
+            $('#direccion').val(empresa.empresa.direccion);
+            $('#telefono').val(empresa.empresa.telefono);
+            $('#correo').val(empresa.empresa.correo);
+            $('#imagen').val(empresa.empresa.imagen);
+            $('#empresa-id').val(empresa.empresa.id);
 
             edit = true;
         } else {
-            $('#container').html(product.message);  // En caso de error, muestra el mensaje
-            $('#product-result').show();
+            $('#container').html(empresa.message);  // En caso de error, muestra el mensaje
+            $('#empresa-result').show();
         }
     });
 });
