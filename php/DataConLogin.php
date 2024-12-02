@@ -13,27 +13,26 @@ class Data extends DataBase {
         parent::__construct($db, $user, $pass);
     }
 //probando commit
-    public function registrarUsuario($correo, $contrasena) {
-        $sql  = "INSERT INTO user (correo, contraseña) VALUES (?, ?)";
-        $stmt = $this->conn->stmt_init();
+        public function registrarUsuario($correo, $contrasena) {
+            $sql = "INSERT INTO user (correo, contraseña) VALUES (?, ?)";
+            $stmt = $this->conn->stmt_init();
 
-        if (!$stmt->prepare($sql)) {
-            die("SQL error: " . $this->conn->error);
-        }
-
-        $stmt->bind_param("ss", $correo, $contrasena);
-
-        if ($stmt->execute()) {
-            echo "Registrado correctamente";
-        } else {
-            if ($this->conn->errno === 1062) {
-                die("El correo ya ha sido registrado");
-            } else {
-                die("Error: " . $this->conn->errno . " " . $this->conn->error);
+            if (!$stmt->prepare($sql)) {
+                die("SQL error: " . $this->conn->error);
             }
-        }
 
-        $stmt->close();
-    }
+            $stmt->bind_param("ss", $correo, $contrasena);
+
+            if ($stmt->execute()) {
+                echo "<script>alert('Registrado correctamente'); window.location.href = 'login.php';</script>";
+            } else {
+                if ($this->conn->errno === 1062) {
+                    die("El correo ya ha sido registrado");
+                } else {
+                    die("Error: " . $this->conn->errno . " " . $this->conn->error);
+                }
+            }
+            $stmt->close();
+        }
 }
 ?>

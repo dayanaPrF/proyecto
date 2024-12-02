@@ -338,6 +338,32 @@ function eliminarBordeContrasena() {
     quitarError("password"); // Elimina el borde de error de la contraseña
 }
 
+// validaciones.js
+
+function submitLogin(event) {
+    event.preventDefault();  // Evita el envío estándar del formulario
+    
+    // Validaciones (asegúrate de tener las funciones de validación definidas)
+    if (validacionCorreo() && validacionContrasena()) {
+        var formData = $("#login").serialize();  // Serializa todos los campos del formulario
+
+        $.ajax({
+            type: "POST",
+            url: "DataConLogin.php",
+            data: formData,
+            success: function(response) {
+                alert('Registrado correctamente');
+                window.location.href = 'login.php';  // Redirige al login
+            },
+            error: function(error) {
+                console.log(error);
+                alert('Hubo un error al registrar');
+            }
+        });
+    }
+}
+
+
 // Boton enviar login
 function submitLogin() {
     validacionCorreo(); // Validar correo antes de enviar
