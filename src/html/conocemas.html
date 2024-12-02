@@ -84,7 +84,7 @@
       </style>
 </head>
 <body>
-        <!--Barra de navegación -->
+        <!-- Barra de navegación -->
         <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #efe8e8;">
           <div class="container-fluid">
               <a class="navbar-brand" href="..\..\index.html">
@@ -95,79 +95,70 @@
               </button>
               <div class="collapse navbar-collapse" id="navbarColor01">
                   <ul class="navbar-nav me-auto">
-                      <li class="nav-item">
-                          <a class="nav-link active" href="..\..\index.html">Inicio</a>
-                      </li>
-                      <li class="nav-item">
-                          <a class="nav-link" href="estadisticas.html">Estadísticas</a>
-                      </li>
-                      <li class="nav-item">
-                          <a class="nav-link" href="conocemas.html">Conoce más</a>
-                      </li>               
+                      <li class="nav-item"><a class="nav-link active" href="..\..\index.html">Inicio</a></li>
+                      <li class="nav-item"><a class="nav-link" href="estadisticas.html">Estadísticas</a></li>
+                      <li class="nav-item"><a class="nav-link" href="conocemas.html">Conoce más</a></li>               
                   </ul>
                   <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                      <li class="nav-item special-nav-item">
-                          <a class="nav-link" href="login.php">Inicia sesión</a>
-                      </li>
-                      <li class="nav-item special-nav-item">
-                          <a class="nav-link" href="singup.php">Regístrate</a>
-                      </li>                 
+                      <li class="nav-item special-nav-item"><a class="nav-link" href="login.php">Inicia sesión</a></li>
+                      <li class="nav-item special-nav-item"><a class="nav-link" href="singup.php">Regístrate</a></li>                 
                   </ul>
               </div>
           </div>
       </nav>
-        
-          <div class="container">
-            <!-- Texto principal centrado -->
-            <div class="row">
-              <div class="col-12">
-                <h1 class="hero-text">CONOCE SOBRE MÁS EMPRESAS</h1>
-              </div>
-            </div>
 
-        <!-- Contenedores principales -->
-    <div class="row custom-row">
-        <!-- Contenedor Lista de empresas -->
-        <div class="col-md-3">
-          <div class="custom-container">
-            <div class="container-header">Lista de empresas</div>
-            <div class="container-body">
-              <ul>
-                <li>Empresa 1</li>
-                <li>Empresa 2</li>
-                <li>Empresa 3</li>
-              </ul>
-            </div>
+      <div class="container">
+          <!-- Texto principal centrado -->
+          <div class="row">
+              <div class="col-12">
+                  <h1 class="hero-text">CONOCE SOBRE MÁS EMPRESAS</h1>
+              </div>
           </div>
-        </div>
-  
-        <!-- Contenedor Información de empresa -->
-        <div class="col-md-4">
-          <div class="custom-container">
-            <div class="container-header">Información de empresas seleccionada</div>
-            <div class="container-body">
-              <p>Aquí aparecerán los detalles de la empresa seleccionada.</p>
-            </div>
+
+          <!-- Contenedores principales -->
+          <div class="row custom-row">
+              <!-- Contenedor Lista de empresas -->
+              <div class="col-md-3">
+                  <div class="custom-container">
+                      <div class="container-header">Lista de empresas</div>
+                      <div class="container-body">
+                          <ul id="empresas" class="empresa-list"></ul>
+                      </div>
+                  </div>
+              </div>
+
+              <!-- Contenedor Información de empresa -->
+              <div class="col-md-4">
+                  <div class="custom-container">
+                      <div class="container-header">Información de empresa seleccionada</div>
+                      <div id="empresaDetails" class="container-body">
+                          <p>Aquí aparecerán los detalles de la empresa seleccionada.</p>
+                      </div>
+                  </div>
+              </div>
+
+              <!-- Contenedor Contacto a las empresas -->
+              <div class="col-md-4 contact-container">
+                  <div class="custom-container">
+                      <div class="container-header">Contacto a las empresas</div>
+                      <div class="container-body">
+                          <p>Puedes contactar a las empresas</p>
+                          <ul id="contactInfo">
+                              <li>Correo: contacto@algo.com</li>
+                              <li>Teléfono: 2 123 456 7890</li>
+                              <li>WhatsApp: 2 987 654 3210</li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
           </div>
-        </div>
-  
-        <!-- Contenedor Contacto a las empresas -->
-        <div class="col-md-4 contact-container">
-          <div class="custom-container">
-            <div class="container-header">Contacto a las empresas</div>
-            <div class="container-body">
-              <p>Puedes contactar a las empresas</p>
-              <ul>
-                <li>Correo: contacto@algo.com</li>
-                <li>Teléfono: 2 123 456 7890</li>
-                <li>WhatsApp: 2 987 654 3210</li>
-              </ul>
-            </div>
-          </div>
-        </div>
       </div>
-    </div>
-    
+
+      <script>
+          // Cargar las empresas cuando la página se cargue
+          window.onload = listarEmpresas;
+      </script>
+        
     
 </body>
 </html>
