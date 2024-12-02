@@ -2,6 +2,8 @@
 namespace PROYECTO\MYAPI;
 
 use PROYECTO\MYAPI\DataBase;
+use PROYECTO\MYAPI\Empresas;
+
 
 require_once __DIR__ . '/../DataBase.php';
 

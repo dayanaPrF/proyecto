@@ -1,11 +1,13 @@
 <?php
 namespace PROYECTO\MYAPI;
 
+use PROYECTO\MYAPI\empresas;
 //use tecweb\MyApi\DataBase;
+require_once __DIR__ . DIRECTORY_SEPARATOR . 'empresas.php';
 
 require_once 'DataBase.php';
 
-class Empresas extends DataBase {
+class empresas extends DataBase {
     private $response = [];
 
     public function __construct($db, $user = 'root', $pass = '12345678a') {
