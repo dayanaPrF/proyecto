@@ -18,6 +18,7 @@ function listarEmpresas() {
             console.log(`Respuesta de listar empresas: ${response}`);
             try {
                 let empresas = JSON.parse(response);
+                alert(response);
                 let template = '';
                 empresas.forEach(empresa => {
                     let descripcion = '';

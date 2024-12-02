@@ -11,6 +11,7 @@ $empresas = new Empresas('paginaods');
 // Llamamos al método list para obtener la lista de empresas
 $empresas->list();
 
-// Devolvemos los datos en formato JSON
-echo json_encode($empresas->getData());
+// Devolvemos los datos en formato JSON sin escapar Unicode
+echo json_encode($empresas->getData(), JSON_UNESCAPED_UNICODE);
+
 ?>

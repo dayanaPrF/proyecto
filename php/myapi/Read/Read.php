@@ -14,29 +14,54 @@ class Read extends DataBase {
     }
 
     // Listar todas las empresas o productos
-    public function list() {
-        $this->response = [];
+    // public function list() {
+    //     $this->response = [];
 
-        // Realizamos la consulta a la base de datos
-        if ($result = $this->conexion->query("SELECT * FROM empresas")) {
-            // Obtenemos los resultados
-            $rows = $result->fetch_all(MYSQLI_ASSOC);
+    //     // Realizamos la consulta a la base de datos
+    //     if ($result = $this->conexion->query("SELECT * FROM empresas")) {
+    //         // Obtenemos los resultados
+    //         $rows = $result->fetch_all(MYSQLI_ASSOC);
 
-            if (!is_null($rows)) {
-                // Codificamos a UTF-8 los datos y los mapeamos al arreglo de respuesta
-                foreach ($rows as $num => $row) {
-                    foreach ($row as $key => $value) {
-                        $this->response[$num][$key] = utf8_encode($value);
+    //         if (!is_null($rows)) {
+    //             // Codificamos a UTF-8 los datos y los mapeamos al arreglo de respuesta
+    //             foreach ($rows as $num => $row) {
+    //                 foreach ($row as $key => $value) {
+    //                     $this->response[$num][$key] = utf8_encode($value);
+    //                 }
+    //             }
+    //         }
+    //         $result->free();
+    //     } else {
+    //         die('Query Error: ' . mysqli_error($this->conexion));
+    //     }
+
+    //     return $this->response;
+    // }
+
+        // Método para obtener la lista de productos
+        public function list() {
+            $this->response = [];
+        
+            // Realizamos la consulta a la base de datos
+            if ($result = $this->conexion->query("SELECT * FROM empresas")) {
+                // Obtenemos los resultados
+                $rows = $result->fetch_all(MYSQLI_ASSOC);
+        
+                if (!is_null($rows)) {
+                    // Codificamos a UTF-8 los datos y los mapeamos al arreglo de respuesta
+                    foreach ($rows as $num => $row) {
+                        foreach ($row as $key => $value) {
+                            $this->response[$num][$key] = mb_convert_encoding($value, 'UTF-8', 'auto');
+                        }
                     }
                 }
+                $result->free();
+            } else {
+                die('Query Error: ' . mysqli_error($this->conexion));
             }
-            $result->free();
-        } else {
-            die('Query Error: ' . mysqli_error($this->conexion));
         }
+        
 
-        return $this->response;
-    }
 
     // Buscar empresa o producto por ID
     public function single($id) {

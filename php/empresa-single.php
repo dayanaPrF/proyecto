@@ -8,7 +8,7 @@ use PROYECTO\MYAPI\Empresas;
 $empresas = new Empresas('paginaods');
 
 // Llamamos al método single para obtener la información de una empresa
-$empresas->single($_GET[]);
+$empresas->single($_GET['id']);
 
 // Devolvemos los datos en formato JSON
 echo $empresas->getData();
