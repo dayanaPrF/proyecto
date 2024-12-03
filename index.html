@@ -146,14 +146,6 @@
                         <a class="nav-link" href="src\html\conocemas.html">Conoce más</a>
                     </li>               
                 </ul>
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item special-nav-item">
-                        <a class="nav-link" href="src/html/login.php">Inicia sesión</a>
-                    </li>
-                    <li class="nav-item special-nav-item">
-                        <a class="nav-link" href="src/html/singup.php">Regístrate</a>
-                    </li>                 
-                </ul>
             </div>
         </div>
     </nav>
@@ -188,22 +180,7 @@
       integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
       crossorigin="anonymous"></script>
     <!-- Lógica del Frontend -->
-    <script>
-        // Función para verificar si el usuario está logueado
-        function isUserLoggedIn() {
-            return document.cookie.indexOf('user_logged_in=true') !== -1;
-        }
-
-        // Redirigir al formulario si el usuario no ha iniciado sesión
-        document.getElementById('btnFormulario').addEventListener('click', function() {
-            if (!isUserLoggedIn()) {
-                window.location.href = 'src/html/login.php'; // Redirige al login
-            } else {
-                // Si está logueado, puede continuar
-                window.location.href = 'src/html/formulario.html'; // Redirige al formulario
-            }
-        });
-    </script>
+    <script src="js\app.js"></script>
 </body>
 
 </html>

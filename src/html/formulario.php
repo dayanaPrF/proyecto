@@ -137,11 +137,6 @@
                         <a class="nav-link" href="conocemas.html">Conoce más</a>
                     </li>               
                 </ul>
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item special-nav-item">
-                        <a class="nav-link" href="login.php">Cerrar sesion</a>
-                    </li>               
-                </ul>
             </div>
         </div>
     </nav>
