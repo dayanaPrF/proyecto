@@ -20,7 +20,7 @@ class Empresas extends DataBase {
         $this->response = [];
 
         // Realizamos la consulta a la base de datos
-        if ($result = $this->conexion->query("SELECT id, nombre, area_interes, fuente_consumo, emisiones, medidas FROM empresas")) {
+        if ($result = $this->conexion->query("SELECT id, nombre, imagen, area_interes, fuente_consumo, emisiones, medidas FROM empresas")) {
             // Obtenemos los resultados
             $rows = $result->fetch_all(MYSQLI_ASSOC);
 
@@ -54,7 +54,7 @@ class Empresas extends DataBase {
     
         return $this->response;
     }
-    
+
 
     public function getData() {
         return $this->response;

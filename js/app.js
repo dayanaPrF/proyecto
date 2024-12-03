@@ -61,16 +61,18 @@ function listarEmpresas() {
             try {
                 let empresas = JSON.parse(response);
                 let template = '';
-                empresas.forEach(empresa => {
+                empresas.forEach(empresa => {   
+
+                    console.log('Imagen:', empresa.imagen);
                     
-                    let logo = empresa.imagen ? `/proyecto/img/img_Empresas/${empresa.imagen}` : '/proyecto/img/default-logo.png';
+                    let logo = empresa.imagen ? `/proyecto/img/img_Empresas/${empresa.imagen}` : '/proyecto/img/logoBimbo.png';
                     
-                    // Imprimir la ruta del logo para depuración
+                    // Verifica la ruta de la imagen en la consola para depurar
                     console.log(`Ruta del logo para ${empresa.nombre}: ${logo}`);
                     
                     template += `
                         <li>
-                             <a href="javascript:void(0);" class="empresa-item" data-id="${empresa.id}">
+                            <a href="javascript:void(0);" class="empresa-item" data-id="${empresa.id}">
                                 <img src="${logo}" alt="${empresa.nombre}" width="40" height="40"> ${empresa.nombre}
                             </a>
                         </li>
