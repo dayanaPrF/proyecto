@@ -5,7 +5,7 @@ use PROYECTO\MYAPI\DataBase;
 
 require_once 'DataBase.php';
 
-class Empresas extends DataBase {
+class Empresas2 extends DataBase {
     private $response = [];
 
     public function __construct($db, $user = 'root', $pass = '12345678a') {
