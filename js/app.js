@@ -82,7 +82,9 @@ function listarEmpresas() {
 
                 // Agregar el evento click para mostrar más información
                 $('.empresa-item').on('click', function() {
+
                     let empresaId = $(this).data('id');  // Obtén el ID correctamente
+                    console.log('click en: '+empresaId);
                     mostrarDetallesEmpresa(empresaId);  // Pasa el ID correctamente
                 });
             } catch (error) {
@@ -102,7 +104,7 @@ function mostrarDetallesEmpresa(id) {
     }
 
     $.ajax({
-        url: `/proyecto/php/empresa-detalles.php?id=${id}`,
+        url: `../../php/empresa-detalles.php?id=${id}`,
         type: 'GET',
         success: function(response) {
             console.log('Respuesta recibida:', response);  // Agrega esta línea para ver qué estás recibiendo
