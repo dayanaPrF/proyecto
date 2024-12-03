@@ -64,7 +64,7 @@ function listarEmpresas() {
                 empresas.forEach(empresa => {   
 
                     console.log('Imagen:', empresa.imagen);
-                    
+
                     let logo = empresa.imagen ? `/proyecto/img/img_Empresas/${empresa.imagen}` : '/proyecto/img/logoBimbo.png';
                     
                     // Verifica la ruta de la imagen en la consola para depurar
@@ -105,8 +105,11 @@ function mostrarDetallesEmpresa(id) {
         url: `/proyecto/php/empresa-detalles.php?id=${id}`,
         type: 'GET',
         success: function(response) {
+            console.log('Respuesta recibida:', response);  // Agrega esta línea para ver qué estás recibiendo
             try {
                 let empresa = JSON.parse(response);
+
+                // Información de la empresa
                 let template = `
                     <h2>${empresa.nombre}</h2>
                     <p><strong>Área de interés:</strong> ${empresa.area_interes}</p>
@@ -115,14 +118,28 @@ function mostrarDetallesEmpresa(id) {
                     <p><strong>Medidas adoptadas:</strong> ${empresa.medidas}</p>
                 `;
                 $('#empresaDetails').html(template);
+
+                // Información de contacto (si lo tienes)
+                let contactTemplate = `
+                    <ul>
+                        <li><strong>Correo:</strong> ${empresa.correo}</li>
+                        <li><strong>Teléfono:</strong> ${empresa.telefono}</li>
+                    </ul>
+                `;
+                $('#contactInfo').html(contactTemplate);
+
             } catch (error) {
                 console.error('Error al parsear los detalles:', error);
                 $('#empresaDetails').html('<p>No se pudo cargar la información de la empresa.</p>');
-                console.log('Respuesta recibida:', response);
             }
+        },
+        error: function(xhr, status, error) {
+            console.error('Error en la solicitud:', error);
+            $('#empresaDetails').html('<p>No se pudo obtener la información de la empresa.</p>');
         }
     });
 }
+
 
 
 
