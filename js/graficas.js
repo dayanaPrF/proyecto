@@ -50,10 +50,19 @@ function getListOfQuestions() {
                 $(this).css('background-color', '');
                 $(this).css('color', 'black');
             });
+
             // Manejamos el clic en la pregunta
             preguntaElemento.on('click', function() {
-                showGraph(item.id);//Aqui se pasa el id de la pregunta
+                // Primero, eliminamos el resaltado de cualquier otra pregunta seleccionada
+                $('.pregunta-item').removeClass('selected');
+                
+                // Luego, aplicamos el resaltado a la pregunta seleccionada
+                $(this).addClass('selected');
+
+                // Llamamos a la función para mostrar el gráfico
+                showGraph(item.id);
             });
+
             subLista.append(preguntaElemento);
         });
         categoriaElemento.append(subLista);
@@ -61,9 +70,11 @@ function getListOfQuestions() {
     });
 }
 
+
 function showGraph(questionId) {
     console.log("Se hizo clic en la pregunta con ID: ", questionId);
     // Verificamos si existe un gráfico anterior y lo destruimos
+    $('#mensajeGrafico').remove();
     if (window.chart) {
         window.chart.destroy();
     }

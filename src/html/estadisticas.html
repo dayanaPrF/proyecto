@@ -110,6 +110,12 @@
           box-sizing: border-box;
           height: 440px; /* Ajusta la altura a lo que necesites */
       }
+
+      .selected {
+          background-color: #278b1d;
+          color: white !important;
+      }
+
       </style>
 </head>
 <body>
@@ -153,6 +159,7 @@
           <div class="custom-container graficas-container">
             <div class="container-header">Gráficas</div>
             <div class="container-body">
+              <p id="mensajeGrafico">Aqui se mostrara el grafico</p>
               <canvas id="graficas" width="450" height="200"></canvas>
             </div>
           </div>
