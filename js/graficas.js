@@ -28,9 +28,6 @@ const categoriasPreguntas = {
         { question: "¿Sabes qué es el 'consumo responsable'?", id: "ccr_1" },
         { question: "¿Qué tan importante es para ti el impacto ambiental al comprar?", id: "ccr_2" },
         { question: "¿Estarías dispuesto a pagar más por productos sostenibles?", id: "ccr_3" }
-    ],
-    "Información": [
-        { question: "¿Qué hábito crees que podrías mejorar para ser un consumidor más responsable?", id: "rpc" }
     ]
 };
 
@@ -39,11 +36,9 @@ function getListOfQuestions() {
     lista.empty();
     const indication = $(`<p>Seleccione una opción de la lista para mostrar la gráfica</p>`);
     lista.append(indication);
-
     Object.keys(categoriasPreguntas).forEach((categoria) => {
         const categoriaElemento = $(`<li><strong>${categoria}</strong></li>`);
         const subLista = $('<ul></ul>');
-
         categoriasPreguntas[categoria].forEach((item) => {
             const preguntaElemento = $(`<li class="pregunta-item">${item.question}</li>`);
             // Evento para resaltar el texto al pasar el cursor sobre él
@@ -57,11 +52,10 @@ function getListOfQuestions() {
             });
             // Manejamos el clic en la pregunta
             preguntaElemento.on('click', function() {
-                showGraph(item.id);  // Aquí se pasa el id de la pregunta
+                showGraph(item.id);//Aqui se pasa el id de la pregunta
             });
             subLista.append(preguntaElemento);
         });
-
         categoriaElemento.append(subLista);
         lista.append(categoriaElemento);
     });
@@ -75,8 +69,12 @@ function showGraph(questionId) {
         success: function(response) {
             try {
                 let respuestas = JSON.parse(response);
-                // Llamamos a la función para generar el gráfico
-                createChart(respuestas, questionId);
+                //Determinar el tipo de grafico
+                if (shouldUseBarChart(questionId)) {
+                    createBarChart(respuestas, questionId);
+                } else {
+                    createPieChart(respuestas, questionId);
+                }
             } catch (error) {
                 console.error('Error al parsear JSON:', error);
                 console.log('Respuesta recibida:', response);
@@ -85,7 +83,58 @@ function showGraph(questionId) {
     });
 }
 
-function createChart(respuestas, questionId) {
+function shouldUseBarChart(questionId) {
+    const preguntasParaBarra = [
+        "apud_3","apud_4", "te_1", "te_3", "hc_1", "rr_2", "ccr_2", "ccr_3"
+    ]; //IDs de preguntas que prefieren grafico de barras
+    return preguntasParaBarra.includes(questionId);
+}
+
+function createBarChart(respuestas, questionId) {
+    let labels = [];
+    let data = [];
+    let respuestasContadas = {};
+    respuestas.forEach((respuesta) => {
+        let valor = respuesta[questionId];  // Usamos el id de la pregunta seleccionada
+        if (!respuestasContadas[valor]) {
+            respuestasContadas[valor] = 0;
+        }
+        respuestasContadas[valor]++;
+    });
+    console.log('Respuestas contadas:', respuestasContadas);
+
+    for (let valor in respuestasContadas) {
+        labels.push(valor);
+        data.push(respuestasContadas[valor]);
+    }
+    console.log('Etiquetas de los datos:', labels);
+
+    // Crear gráfico de barras
+    const ctx = document.getElementById('graficas').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',//Tipo de gráfico (barras)
+        data: {
+            labels: labels, //Las etiquetas de las barras (respuestas)
+            datasets: [{
+                label: 'Cantidad de respuestas',
+                data: data,  //Los valores correspondientes a cada etiqueta
+                backgroundColor: 'rgba(39, 139, 29, 0.5)',  // Color de las barras
+                borderColor: 'rgba(39, 139, 29, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true  // Comienza el eje Y desde cero
+                }
+            }
+        }
+    });
+}
+
+function createPieChart(respuestas, questionId) {
     let labels = [];
     let data = [];
     let respuestasContadas = {};
@@ -104,28 +153,27 @@ function createChart(respuestas, questionId) {
         data.push(respuestasContadas[valor]);
     }
     console.log('Etiquetas de los datos:', labels);
-/*
-    // Crear el gráfico usando Chart.js
-    const ctx = document.getElementById('grafica').getContext('2d');
+
+    // Crear gráfico de pastel
+    const ctx = document.getElementById('graficas').getContext('2d');
     new Chart(ctx, {
-        type: 'bar',  // Tipo de gráfico (barras)
+        type: 'pie',  // Tipo de gráfico (pastel)
         data: {
-            labels: labels,  // Las etiquetas de las barras (respuestas)
+            labels: labels,  // Las etiquetas de las categorías (respuestas)
             datasets: [{
-                label: 'Cantidad de respuestas',
                 data: data,  // Los valores correspondientes a cada etiqueta
-                backgroundColor: 'rgba(39, 139, 29, 0.5)',  // Color de las barras
-                borderColor: 'rgba(39, 139, 29, 1)',
+                backgroundColor: [
+                    'rgba(39, 139, 29, 0.5)', 
+                    'rgba(255, 99, 132, 0.5)',
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(255, 159, 64, 0.5)',
+                ],  // Colores para las secciones
                 borderWidth: 1
             }]
         },
         options: {
-            responsive: true,
-            scales: {
-                y: {
-                    beginAtZero: true  // Comienza el eje Y desde cero
-                }
-            }
+            responsive: true
         }
-    });*/
+    });
 }
+
