@@ -137,6 +137,7 @@ function agregar() {
                 if (result.status === "success") {
                     $('#formulario').trigger('reset');
                 }
+                listarReflexion();
                 alert(result.message);
             },
             error: function(xhr, status, error) {
@@ -146,13 +147,17 @@ function agregar() {
     });
 }
 
-function listarReflexion(){
+function listarReflexion() {
     $.ajax({
         url: '/proyecto/php/Respuestas-rcp.php',
         type: 'GET',
         success: function(response) {
             try {
                 let respuestas = JSON.parse(response);
+                if (!respuestas || respuestas.length === 0) {
+                    $('#info-card-body').html('<p  style="font-size: 18px; color: #333; margin-bottom: 20px;" class="card-body-texto-inicio">Aun no hay respuestas. 😞</p>'); // Mensaje si no hay respuestas
+                    return;
+                }
                 let template = '';
                 template += '<p style="font-size: 18px; color: #333; margin-bottom: 20px;" class="card-body-texto-inicio">¡Conoce las opiniones de las personas! 😊</p>';
                 respuestas.forEach(respuesta => {
@@ -164,14 +169,13 @@ function listarReflexion(){
                         `;
                     }
                 });
-                if (template !== '') {
-                    $('#info-card-body').html(template);
-                } else {
-                    $('#info-card-body').html('<p>Aun no hay respuestas. 😞</p>'); // Mensaje si no hay respuestas
-                }
+                $('#info-card-body').html(template);
             } catch (error) {
                 console.error('Error al parsear JSON:', error);
             }
+        },
+        error: function() {
+            $('#info-card-body').html('< style="margin: 0; font-size: 16px; color: #333;" class="opiniones">Hubo un problema al obtener las respuestas. 😞</p>');
         }
     });
 }
