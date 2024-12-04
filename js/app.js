@@ -106,28 +106,6 @@ function mostrarDetallesEmpresa(id) {
 function agregar() {
     $('#formulario').submit(function(e) {
         e.preventDefault();
-        let data = 
-    "edad: " + $('#id-edad').val() + "\n" +
-    "sexo: " + $('#id-sexo').val() + "\n" +
-    "ocupacion: " + $('#id-ocupacion').val() + "\n" +
-    "hc_1: " + $("input[name='hc_1']:checked").val() + "\n" +
-    "hc_2: " + $("input[name='hc_2']:checked").val() + "\n" +
-    "apud_1: " + $('#id-apud_1').val() + "\n" +
-    "apud_2: " + $('#id-apud_2').val() + "\n" +
-    "apud_3: " + $("input[name='apud_3']:checked").val() + "\n" +
-    "apud_4: " + $("input[name='apud_4']:checked").val() + "\n" +
-    "rr_1: " + $("input[name='rr_1']:checked").val() + "\n" +
-    "rr_2: " + $('#id-rr_2').val() + "\n" +
-    "te_1: " + $('#id-te_1').val() + "\n" +
-    "te_2: " + $("input[name='te_2']:checked").val() + "\n" +
-    "te_3: " + $('#id-te_3').val() + "\n" +
-    "ccr_1: " + $("input[name='ccr_1']:checked").val() + "\n" +
-    "ccr_2: " + $('#id-ccr_2').val() + "\n" +
-    "ccr_3: " + $("input[name='ccr_3']:checked").val() + "\n" +
-    "rpc: " + $('#id-rpc').val();
-
-alert(data);
-
         let postData = {
             edad: $('#id-edad').val(),
             sexo: $('#id-sexo').val(),
@@ -147,22 +125,18 @@ alert(data);
             ccr_2: $('#id-ccr_2').val(),
             ccr_3: $("input[name='ccr_3']:checked").val(),
             rpc: $('#id-rpc').val()
-        };        
-        //let url = edit === false ? 'backend/product-add.php' : 'backend/product-edit.php';
+        }; 
         $.ajax({
             url: 'http://localhost/proyecto/php/Respuestas-add.php',
             type: 'POST',
             contentType: 'application/json',
             data: JSON.stringify(postData),
             success: function(response) {
-                alert(response);
-                console.log(response);
                 let result = typeof response === 'string' ? JSON.parse(response) : response;
                 if (result.status === "success") {
-                    //listarProductos();
                     $('#formulario').trigger('reset');
                 }
-                alert("Mensaje proveniente de servidor\n"+result.message);
+                alert(result.message);
             },
             error: function(xhr, status, error) {
                 alert("Error en la solicitud: " + error);
