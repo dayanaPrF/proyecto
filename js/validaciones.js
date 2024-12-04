@@ -243,7 +243,6 @@ function submmitBotton(event){
         event.preventDefault();
         return false;
     }
-    alert("¡Registro exitoso!");
     eliminarBordeEdad();
     eliminarBordeSexo();
     eliminarBordeOcupacion();
@@ -262,7 +261,6 @@ function submmitBotton(event){
     eliminarBordeccr_2();
     quitarContainerErrorccr_3();
     eliminarBorderpc();
-    $("#formulario")[0].reset();
     return true;
 }
 // // Verificar si el correo electrónico es válido utilizando una expresión regular

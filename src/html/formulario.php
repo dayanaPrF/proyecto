@@ -115,7 +115,7 @@
         }
     </style>
 </head>
-<body>
+<body onload="init()">
     <!--Barra de navegacion -->
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #efe8e8;">
         <div class="container-fluid">
@@ -142,7 +142,7 @@
     </nav>
 
     <!--Contenido por pagina-->
-    <form action="" method="post" id="formulario">
+    <form id="formulario" enctype="multipart/form-data">
         <div class="row style-row">
             <!--Columna 1-->
             <div class="col-md-4">
@@ -564,5 +564,6 @@
       integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
       crossorigin="anonymous"></script>
     <script src="../../js/validaciones.js"></script>
+    <script src="../../js/app.js"></script>
 </body>
 </html>

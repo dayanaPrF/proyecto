@@ -1,4 +1,5 @@
 <?php
+//Estos archivos son provisionales para hacer pruebas en lo que se hace lo de vendor
 namespace PROYECTO\MYAPI;
 
 use PROYECTO\MYAPI\DataBase;
