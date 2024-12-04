@@ -265,101 +265,101 @@ function submmitBotton(event){
     $("#formulario")[0].reset();
     return true;
 }
-// Verificar si el correo electrónico es válido utilizando una expresión regular
-function verificarCorreo(correo) {
-    const regexCorreo = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    return regexCorreo.test(correo); // Retorna true si el correo es válido
-}
+// // Verificar si el correo electrónico es válido utilizando una expresión regular
+// function verificarCorreo(correo) {
+//     const regexCorreo = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+//     return regexCorreo.test(correo); // Retorna true si el correo es válido
+// }
 
-function validacionCorreo() {
-    if ($("#id-correo").val() === "") { // Comprobación si el correo está vacío
-        visualizarError("correo", "Inserte correo electronico"); // Mostrar error si está vacío
-        return false;
-    } else if (!verificarCorreo($("#id-correo").val())) { // Comprobación si el correo es válido
-        visualizarError("correo", "Correo electronico incorrecto"); // Mostrar error si es inválido
-        return false;
-    }
-    return true;
-}
+// function validacionCorreo() {
+//     if ($("#id-correo").val() === "") { // Comprobación si el correo está vacío
+//         visualizarError("correo", "Inserte correo electronico"); // Mostrar error si está vacío
+//         return false;
+//     } else if (!verificarCorreo($("#id-correo").val())) { // Comprobación si el correo es válido
+//         visualizarError("correo", "Correo electronico incorrecto"); // Mostrar error si es inválido
+//         return false;
+//     }
+//     return true;
+// }
 
-function eliminarBordeCorreo() { 
-    quitarError("correo"); // Elimina el borde de error del correo
-}
+// function eliminarBordeCorreo() { 
+//     quitarError("correo"); // Elimina el borde de error del correo
+// }
 
-// Password
-function verificarContrasena(password) {
-    if (password.length < 8) {
-        visualizarError("password", "La contraseña debe tener al menos 8 caracteres");
-        return false;
-    }
-    if (!/[a-z]/.test(password)) {
-        visualizarError("password", "La contraseña debe tener al menos una letra minúscula");
-        return false;
-    }
-    if (!/[A-Z]/.test(password)) {
-        visualizarError("password", "La contraseña debe tener al menos una letra mayúscula");
-        return false;
-    }
-    if (!/[0-9]/.test(password)) {
-        visualizarError("password", "La contraseña debe tener al menos un número");
-        return false;
-    }
-    return true;
-}
+// // Password
+// function verificarContrasena(password) {
+//     if (password.length < 8) {
+//         visualizarError("password", "La contraseña debe tener al menos 8 caracteres");
+//         return false;
+//     }
+//     if (!/[a-z]/.test(password)) {
+//         visualizarError("password", "La contraseña debe tener al menos una letra minúscula");
+//         return false;
+//     }
+//     if (!/[A-Z]/.test(password)) {
+//         visualizarError("password", "La contraseña debe tener al menos una letra mayúscula");
+//         return false;
+//     }
+//     if (!/[0-9]/.test(password)) {
+//         visualizarError("password", "La contraseña debe tener al menos un número");
+//         return false;
+//     }
+//     return true;
+// }
 
 
-function validacionContrasena() {
-    if ($("#id-password").val() === "") { // Comprobación si la contraseña está vacía
-        visualizarError("password", "Inserte una contraseña"); // Mostrar error si está vacía
-        return false;
-    } else if (!verificarContrasena($("#id-password").val())) { // Comprobación si la contraseña es válida
-        visualizarError("password", "La contraseña debe tener al menos 8 caracteres, incluyendo una letra mayúscula, una letra minúscula y un número."); // Mostrar error si es inválida
-        return false;
-    }
-    return true;
-}
+// function validacionContrasena() {
+//     if ($("#id-password").val() === "") { // Comprobación si la contraseña está vacía
+//         visualizarError("password", "Inserte una contraseña"); // Mostrar error si está vacía
+//         return false;
+//     } else if (!verificarContrasena($("#id-password").val())) { // Comprobación si la contraseña es válida
+//         visualizarError("password", "La contraseña debe tener al menos 8 caracteres, incluyendo una letra mayúscula, una letra minúscula y un número."); // Mostrar error si es inválida
+//         return false;
+//     }
+//     return true;
+// }
 
-function eliminarBordeContrasena() {
-    quitarError("password"); // Elimina el borde de error de la contraseña
-}
+// function eliminarBordeContrasena() {
+//     quitarError("password"); // Elimina el borde de error de la contraseña
+// }
 
-// validaciones.js
+// // validaciones.js
 
-// Función para manejar el envío del formulario por AJAX
-$("#login").submit(function(event) {
-    event.preventDefault(); 
+// // Función para manejar el envío del formulario por AJAX
+// $("#login").submit(function(event) {
+//     event.preventDefault(); 
     
-    const correoValido = validacionCorreo();
-    const contrasenaValida = validacionContrasena();
+//     const correoValido = validacionCorreo();
+//     const contrasenaValida = validacionContrasena();
 
-    // Si las validaciones son correctas, enviamos el formulario mediante AJAX
-    if (correoValido && contrasenaValida) {
-        var formData = $(this).serialize(); 
+//     // Si las validaciones son correctas, enviamos el formulario mediante AJAX
+//     if (correoValido && contrasenaValida) {
+//         var formData = $(this).serialize(); 
 
-        $.ajax({
-            type: "POST",
-            url: "../php/DataConLogin.php", 
-            data: formData,
-            dataType: "json",
-            success: function(response) {
-                if (response.status === 'success') {
-                    alert('Registrado correctamente');
-                    window.location.href = 'login.php'; 
-                } else {
-                    alert('Error: ' + response.message);  // Muestra el error devuelto por el servidor
-                }
-            },
-            error: function(error) {
-                console.log(error);
-                alert('Hubo un error al registrar');
-            }
-        });
-    }
-});
+//         $.ajax({
+//             type: "POST",
+//             url: "../php/DataConLogin.php", 
+//             data: formData,
+//             dataType: "json",
+//             success: function(response) {
+//                 if (response.status === 'success') {
+//                     alert('Registrado correctamente');
+//                     window.location.href = 'login.php'; 
+//                 } else {
+//                     alert('Error: ' + response.message);  // Muestra el error devuelto por el servidor
+//                 }
+//             },
+//             error: function(error) {
+//                 console.log(error);
+//                 alert('Hubo un error al registrar');
+//             }
+//         });
+//     }
+// });
 
 
-// Boton enviar login
-function submitLogin() {
-    validacionCorreo(); // Validar correo antes de enviar
-    validacionContrasena(); // Validar contraseña antes de enviar
-}
+// // Boton enviar login
+// function submitLogin() {
+//     validacionCorreo(); // Validar correo antes de enviar
+//     validacionContrasena(); // Validar contraseña antes de enviar
+// }
