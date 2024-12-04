@@ -72,6 +72,12 @@
       .graficas-container {
         width: 950px;   /* Ajusta el ancho del contenedor */
         height: 500px;  /* Ajusta la altura del contenedor */
+        position: relative;
+      }
+
+      #graficas {
+          width: 100% !important; /* Se asegura de que el canvas ocupe todo el ancho */
+          height: 100% !important; /* Se asegura de que el canvas ocupe todo el alto */
       }
 
       /* Barra de navegación */
@@ -132,7 +138,7 @@
   </nav>
 
     <div class="row custom-row g-0">
-        <!-- Contenedor Lista de empresas -->
+        <!-- Contenedor Lista de preguntas -->
         <div class="col-md-3">
           <div class="custom-container information-container" style="height: 500px;">
             <div class="container-header">Nuestras respuestas</div>
@@ -147,8 +153,7 @@
           <div class="custom-container graficas-container">
             <div class="container-header">Gráficas</div>
             <div class="container-body">
-              <canvas id="graficas" width="400" height="200"></canvas>
-              <p>Mostrar informacion de las graficas aqui</p>
+              <canvas id="graficas" width="450" height="200"></canvas>
             </div>
           </div>
         </div>

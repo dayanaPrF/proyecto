@@ -112,7 +112,7 @@ function createBarChart(respuestas, questionId) {
     // Crear gráfico de barras
     const ctx = document.getElementById('graficas').getContext('2d');
     new Chart(ctx, {
-        type: 'bar',//Tipo de gráfico (barras)
+        type: 'bar',  // Tipo de gráfico (barras)
         data: {
             labels: labels, //Las etiquetas de las barras (respuestas)
             datasets: [{
@@ -125,6 +125,12 @@ function createBarChart(respuestas, questionId) {
         },
         options: {
             responsive: true,
+            maintainAspectRatio: false,  // Esto permite que el gráfico cambie su tamaño de acuerdo al contenedor
+            plugins: {
+                legend: {
+                    position: 'top',
+                }
+            },
             scales: {
                 y: {
                     beginAtZero: true  // Comienza el eje Y desde cero
@@ -172,8 +178,15 @@ function createPieChart(respuestas, questionId) {
             }]
         },
         options: {
-            responsive: true
+            responsive: true,
+            maintainAspectRatio: false,  // Esto permite que el gráfico cambie su tamaño de acuerdo al contenedor
+            plugins: {
+                legend: {
+                    position: 'top',
+                }
+            }
         }
     });
 }
+
 
