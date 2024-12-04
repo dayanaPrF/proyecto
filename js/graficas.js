@@ -63,17 +63,27 @@ function getListOfQuestions() {
 
 function showGraph(questionId) {
     console.log("Se hizo clic en la pregunta con ID: ", questionId);
+    // Verificamos si existe un gráfico anterior y lo destruimos
+    if (window.chart) {
+        window.chart.destroy();
+    }
+    // Verificar si el canvas con id 'graficas' existe en el DOM
+    const ctx = document.getElementById('graficas')?.getContext('2d');
+    if (!ctx) {
+        console.error("No se pudo obtener el contexto del canvas.");
+        return;
+    }
     $.ajax({
         url: '/proyecto/php/Respuestas-list.php',
         type: 'GET',
         success: function(response) {
             try {
                 let respuestas = JSON.parse(response);
-                //Determinar el tipo de grafico
+                // Determinamos qué tipo de gráfico crear
                 if (shouldUseBarChart(questionId)) {
-                    createBarChart(respuestas, questionId);
+                    createBarChart(respuestas, questionId, ctx);
                 } else {
-                    createPieChart(respuestas, questionId);
+                    createPieChart(respuestas, questionId, ctx);
                 }
             } catch (error) {
                 console.error('Error al parsear JSON:', error);
@@ -83,6 +93,7 @@ function showGraph(questionId) {
     });
 }
 
+
 function shouldUseBarChart(questionId) {
     const preguntasParaBarra = [
         "apud_3","apud_4", "te_1", "te_3", "hc_1", "rr_2", "ccr_2", "ccr_3"
@@ -90,42 +101,37 @@ function shouldUseBarChart(questionId) {
     return preguntasParaBarra.includes(questionId);
 }
 
-function createBarChart(respuestas, questionId) {
+function createBarChart(respuestas, questionId, ctx) {
     let labels = [];
     let data = [];
     let respuestasContadas = {};
     respuestas.forEach((respuesta) => {
-        let valor = respuesta[questionId];  // Usamos el id de la pregunta seleccionada
+        let valor = respuesta[questionId];
         if (!respuestasContadas[valor]) {
             respuestasContadas[valor] = 0;
         }
         respuestasContadas[valor]++;
     });
-    console.log('Respuestas contadas:', respuestasContadas);
-
     for (let valor in respuestasContadas) {
         labels.push(valor);
         data.push(respuestasContadas[valor]);
     }
-    console.log('Etiquetas de los datos:', labels);
-
     // Crear gráfico de barras
-    const ctx = document.getElementById('graficas').getContext('2d');
-    new Chart(ctx, {
-        type: 'bar',  // Tipo de gráfico (barras)
+    window.chart = new Chart(ctx, {
+        type: 'bar',
         data: {
-            labels: labels, //Las etiquetas de las barras (respuestas)
+            labels: labels,
             datasets: [{
                 label: 'Cantidad de respuestas',
-                data: data,  //Los valores correspondientes a cada etiqueta
-                backgroundColor: 'rgba(39, 139, 29, 0.5)',  // Color de las barras
+                data: data,
+                backgroundColor: 'rgba(39, 139, 29, 0.5)',
                 borderColor: 'rgba(39, 139, 29, 1)',
                 borderWidth: 1
             }]
         },
         options: {
             responsive: true,
-            maintainAspectRatio: false,  // Esto permite que el gráfico cambie su tamaño de acuerdo al contenedor
+            maintainAspectRatio: false,
             plugins: {
                 legend: {
                     position: 'top',
@@ -133,53 +139,48 @@ function createBarChart(respuestas, questionId) {
             },
             scales: {
                 y: {
-                    beginAtZero: true  // Comienza el eje Y desde cero
+                    beginAtZero: true
                 }
             }
         }
     });
 }
 
-function createPieChart(respuestas, questionId) {
+function createPieChart(respuestas, questionId, ctx) {
     let labels = [];
     let data = [];
     let respuestasContadas = {};
-
     respuestas.forEach((respuesta) => {
-        let valor = respuesta[questionId];  // Usamos el id de la pregunta seleccionada
+        let valor = respuesta[questionId];
         if (!respuestasContadas[valor]) {
             respuestasContadas[valor] = 0;
         }
         respuestasContadas[valor]++;
     });
-    console.log('Respuestas contadas:', respuestasContadas);
-
     for (let valor in respuestasContadas) {
         labels.push(valor);
         data.push(respuestasContadas[valor]);
     }
-    console.log('Etiquetas de los datos:', labels);
 
     // Crear gráfico de pastel
-    const ctx = document.getElementById('graficas').getContext('2d');
-    new Chart(ctx, {
-        type: 'pie',  // Tipo de gráfico (pastel)
+    window.chart = new Chart(ctx, {
+        type: 'pie',
         data: {
-            labels: labels,  // Las etiquetas de las categorías (respuestas)
+            labels: labels,
             datasets: [{
-                data: data,  // Los valores correspondientes a cada etiqueta
+                data: data,
                 backgroundColor: [
                     'rgba(39, 139, 29, 0.5)', 
                     'rgba(255, 99, 132, 0.5)',
                     'rgba(54, 162, 235, 0.5)',
                     'rgba(255, 159, 64, 0.5)',
-                ],  // Colores para las secciones
+                ],
                 borderWidth: 1
             }]
         },
         options: {
             responsive: true,
-            maintainAspectRatio: false,  // Esto permite que el gráfico cambie su tamaño de acuerdo al contenedor
+            maintainAspectRatio: false,
             plugins: {
                 legend: {
                     position: 'top',
@@ -188,5 +189,3 @@ function createPieChart(respuestas, questionId) {
         }
     });
 }
-
-
