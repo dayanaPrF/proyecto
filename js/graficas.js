@@ -74,7 +74,10 @@ function getListOfQuestions() {
 function showGraph(questionId) {
     console.log("Se hizo clic en la pregunta con ID: ", questionId);
     // Verificamos si existe un gráfico anterior y lo destruimos
-    $('#mensajeGrafico').remove();
+    // $('#mensajeGrafico').remove();
+    $('#mensajeGrafico').hide(); // Ocultamos el mensaje si existe
+    $('#mensajeSinDatos').hide();
+    $('#graficas').show();
     if (window.chart) {
         window.chart.destroy();
     }
@@ -92,14 +95,9 @@ function showGraph(questionId) {
                 let respuestas = JSON.parse(response);
                 // Si no hay datos, mostramos el mensaje "Aún no hay datos registrados"
                 if (respuestas.length === 0) {
-                    // Creamos el mensaje
-                    const mensaje = $('<p>', {
-                        id: 'mensajeGrafico',
-                        class: 'format-information-p',
-                        text: 'Aún no hay datos registrados :('
-                    });
-                    // Añadimos el mensaje al contenedor de las gráficas
-                    $('#container-body').append(mensaje);
+                    $('#graficas').hide(); // Ocultamos el canvas
+                    $('#mensajeGrafico').hide(); // Mostramos el mensaje
+                    $('#mensajeSinDatos').show();
                     console.log("Mensaje insertado en #graficas");
                 } else {
                     // Si hay datos, generamos el gráfico
