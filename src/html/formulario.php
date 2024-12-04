@@ -30,6 +30,14 @@
             font-size: 1.0rem;
         }
 
+        .card-body-texto-inicio {
+            background-color: #cbc7c7; 
+            overflow-y: auto;
+            font-family: Arial, Helvetica, sans-serif; 
+            color: #666666 !important;  /* Color para el texto */
+            font-size: 1.0rem;
+        }
+
         .dimensiones-info{
             max-width: 20rem; 
             min-width: 20rem;
@@ -91,6 +99,19 @@
             font-size: 0.8rem;
         }
 
+        .opiniones {
+            color: #666666 !important; 
+            font-family: Arial, Helvetica, sans-serif; 
+            font-size: 0.8rem;
+            text-decoration-color: #278b1d;
+        }
+
+        .opiniones::selection {
+            background-color: #278b1d; 
+            color: #ffffff; 
+            text-decoration: underline; 
+            text-decoration-color: #278b1d !important; 
+        }
         /* Barra de navegación */
         .nav {
             display: flex;
