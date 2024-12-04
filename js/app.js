@@ -10,6 +10,7 @@ $(document).ready(function () {
 
 function init() {
     agregar();
+    listarReflexion();
 }
 
 function listarEmpresas() {
@@ -142,5 +143,35 @@ function agregar() {
                 alert("Error en la solicitud: " + error);
             }
         });
+    });
+}
+
+function listarReflexion(){
+    $.ajax({
+        url: '/proyecto/php/Respuestas-rcp.php',
+        type: 'GET',
+        success: function(response) {
+            try {
+                let respuestas = JSON.parse(response);
+                let template = '';
+                template += '<p style="font-size: 18px; color: #333; margin-bottom: 20px;" class="card-body-texto-inicio">¡Conoce las opiniones de las personas! 😊</p>';
+                respuestas.forEach(respuesta => {
+                    if (respuesta.rpc && respuesta.rpc.trim() !== '') {
+                        template += `
+                            <div class="respuesta-item" style="background-color: #e5e3e3; border-radius: 10px; padding: 10px; margin-bottom: 10px;">
+                                <p style="margin: 0; font-size: 16px; color: #333;" class="opiniones">${respuesta.rpc}</p>
+                            </div>
+                        `;
+                    }
+                });
+                if (template !== '') {
+                    $('#info-card-body').html(template);
+                } else {
+                    $('#info-card-body').html('<p>Aun no hay respuestas. 😞</p>'); // Mensaje si no hay respuestas
+                }
+            } catch (error) {
+                console.error('Error al parsear JSON:', error);
+            }
+        }
     });
 }

@@ -85,5 +85,26 @@ class Formulario extends DataBase {
         // Cerramos la conexión
         $this->conexion->close();
     }
+
+    function listReflexion(){
+        $this->response = [];
+
+        // Realizamos la consulta a la base de datos
+        if ($result = $this->conexion->query("SELECT rpc FROM cuestionario")) {
+            // Obtenemos los resultados
+            $rows = $result->fetch_all(MYSQLI_ASSOC);
+
+            if (!is_null($rows)) {
+                // Mapear los resultados
+                $this->response = $rows;
+            }
+            $result->free();
+        } else {
+            die('Query Error: ' . mysqli_error($this->conexion));
+        }
+
+        // Cerramos la conexión
+        $this->conexion->close();
+    }
 }
 ?>
