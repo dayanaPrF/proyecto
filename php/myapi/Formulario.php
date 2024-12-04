@@ -14,6 +14,7 @@ class Formulario extends DataBase {
         
         $this->conexion->set_charset('utf8mb4');  // Mejor opción que utf8 general para manejar todos los caracteres
     }
+
     public function add($respForm) {
         $this->response = [ // Respuesta predeterminada
             'status' => 'error',
@@ -48,7 +49,7 @@ class Formulario extends DataBase {
             if ($stmt->execute()) {
                 $this->response = [
                     'status' => 'success',
-                    'message' => '¡Formulario agregado exitosamente!'
+                    'message' => '¡Respuestas agregadas exitosamente!'
                 ];
             } else {
                 $this->response['message'] = "Error en la ejecución: " . $stmt->error;
@@ -60,8 +61,29 @@ class Formulario extends DataBase {
         $this->conexion->close();
     }    
     
-        public function getData() {
-            return $this->response;
+    public function getData() {
+        return $this->response;
+    }
+
+    function listAnswers(){
+        $this->response = [];
+
+        // Realizamos la consulta a la base de datos
+        if ($result = $this->conexion->query("SELECT * FROM cuestionario")) {
+            // Obtenemos los resultados
+            $rows = $result->fetch_all(MYSQLI_ASSOC);
+
+            if (!is_null($rows)) {
+                // Mapear los resultados
+                $this->response = $rows;
+            }
+            $result->free();
+        } else {
+            die('Query Error: ' . mysqli_error($this->conexion));
         }
+
+        // Cerramos la conexión
+        $this->conexion->close();
+    }
 }
 ?>

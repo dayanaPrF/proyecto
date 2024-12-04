@@ -12,32 +12,6 @@ class Read extends DataBase {
     public function __construct($db) {
         parent::__construct($db);
     }
-
-    // Listar todas las empresas o productos
-    // public function list() {
-    //     $this->response = [];
-
-    //     // Realizamos la consulta a la base de datos
-    //     if ($result = $this->conexion->query("SELECT * FROM empresas")) {
-    //         // Obtenemos los resultados
-    //         $rows = $result->fetch_all(MYSQLI_ASSOC);
-
-    //         if (!is_null($rows)) {
-    //             // Codificamos a UTF-8 los datos y los mapeamos al arreglo de respuesta
-    //             foreach ($rows as $num => $row) {
-    //                 foreach ($row as $key => $value) {
-    //                     $this->response[$num][$key] = utf8_encode($value);
-    //                 }
-    //             }
-    //         }
-    //         $result->free();
-    //     } else {
-    //         die('Query Error: ' . mysqli_error($this->conexion));
-    //     }
-
-    //     return $this->response;
-    // }
-
         // Método para obtener la lista de productos
         public function list() {
             $this->response = [];
@@ -97,6 +71,27 @@ class Read extends DataBase {
         }
 
         return $this->response;
+    }
+
+    function listAnswers(){
+        $this->response = [];
+
+        // Realizamos la consulta a la base de datos
+        if ($result = $this->conexion->query("SELECT * FROM cuestionario")) {
+            // Obtenemos los resultados
+            $rows = $result->fetch_all(MYSQLI_ASSOC);
+
+            if (!is_null($rows)) {
+                // Mapear los resultados
+                $this->response = $rows;
+            }
+            $result->free();
+        } else {
+            die('Query Error: ' . mysqli_error($this->conexion));
+        }
+
+        // Cerramos la conexión
+        $this->conexion->close();
     }
 }
 ?>
