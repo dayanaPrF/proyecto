@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    //Genera la lista de preguntas
+    // Genera la lista de preguntas
     getListOfQuestions();
 });
 
@@ -33,7 +33,7 @@ const categoriasPreguntas = {
     ]
 };
 
-function getListOfQuestions(){
+function getListOfQuestions() {
     const lista = $('#listaPreguntas');
     lista.empty();
 
@@ -42,9 +42,21 @@ function getListOfQuestions(){
         const subLista = $('<ul></ul>');
         categoriasPreguntas[categoria].forEach((question, index) => {
             const questionKey = `${categoria}-${index}`;
-            const preguntaElemento = $(`<li>
-                <span class="pregunta" onclick="showGrapg('${questionKey}')">${question}</span>
-            </li>`);
+            const preguntaElemento = $(`<li class="pregunta-item">${question}</li>`);
+            // Evento para resaltar el texto al pasar el cursor sobre él
+            preguntaElemento.on('mouseenter', function() {
+                $(this).css('background-color', '#278b1d'); 
+                $(this).css('color', 'white');
+                $(this).css('cursor', 'pointer');
+            }).on('mouseleave', function() {
+                $(this).css('background-color', '');
+                $(this).css('color', 'black');
+            });
+            // Manejamos el clic en la pregunta
+            preguntaElemento.on('click', function() {
+                showGraph(questionKey);
+            });
+
             subLista.append(preguntaElemento);
         });
         categoriaElemento.append(subLista);
@@ -52,6 +64,7 @@ function getListOfQuestions(){
     });
 }
 
-function showGraph(questionKey){
-
+function showGraph(questionKey) {
+    console.log("Se hizo clic en la pregunta: ", questionKey);
+    // Aquí puedes agregar el código que debe ejecutarse cuando se haga clic en la pregunta
 }
