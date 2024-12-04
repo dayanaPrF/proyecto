@@ -34,13 +34,13 @@ const categoriasPreguntas = {
 function getListOfQuestions() {
     const lista = $('#listaPreguntas');
     lista.empty();
-    const indication = $(`<p>Seleccione una opción de la lista para mostrar la gráfica</p>`);
+    const indication = $(`<p class="format-information"><b>Seleccione una opción de la lista para mostrar la gráfica</b></p>`);
     lista.append(indication);
     Object.keys(categoriasPreguntas).forEach((categoria) => {
         const categoriaElemento = $(`<li><strong>${categoria}</strong></li>`);
         const subLista = $('<ul></ul>');
         categoriasPreguntas[categoria].forEach((item) => {
-            const preguntaElemento = $(`<li class="pregunta-item">${item.question}</li>`);
+            const preguntaElemento = $(`<li class="pregunta-item format-information">${item.question}</li>`);
             // Evento para resaltar el texto al pasar el cursor sobre él
             preguntaElemento.on('mouseenter', function() {
                 $(this).css('background-color', '#278b1d');
@@ -48,7 +48,7 @@ function getListOfQuestions() {
                 $(this).css('cursor', 'pointer');
             }).on('mouseleave', function() {
                 $(this).css('background-color', '');
-                $(this).css('color', 'black');
+                $(this).css('color', '#666666');
             });
 
             // Manejamos el clic en la pregunta
@@ -90,11 +90,24 @@ function showGraph(questionId) {
         success: function(response) {
             try {
                 let respuestas = JSON.parse(response);
-                // Determinamos qué tipo de gráfico crear
-                if (shouldUseBarChart(questionId)) {
-                    createBarChart(respuestas, questionId, ctx);
+                // Si no hay datos, mostramos el mensaje "Aún no hay datos registrados"
+                if (respuestas.length === 0) {
+                    // Creamos el mensaje
+                    const mensaje = $('<p>', {
+                        id: 'mensajeGrafico',
+                        class: 'format-information-p',
+                        text: 'Aún no hay datos registrados :('
+                    });
+                    // Añadimos el mensaje al contenedor de las gráficas
+                    $('#container-body').append(mensaje);
+                    console.log("Mensaje insertado en #graficas");
                 } else {
-                    createPieChart(respuestas, questionId, ctx);
+                    // Si hay datos, generamos el gráfico
+                    if (shouldUseBarChart(questionId)) {
+                        createBarChart(respuestas, questionId, ctx);
+                    } else {
+                        createPieChart(respuestas, questionId, ctx);
+                    }
                 }
             } catch (error) {
                 console.error('Error al parsear JSON:', error);

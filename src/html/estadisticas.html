@@ -116,6 +116,24 @@
           color: white !important;
       }
 
+      .format-information{
+            color: #666666; 
+            font-family: Arial, Helvetica, sans-serif; 
+            font-size: 1.0rem;
+        }
+
+        .format-information-p {
+            color: #666666; 
+            font-family: Arial, Helvetica, sans-serif; 
+            font-size: 1.0rem;
+            
+            /* Centrar el texto en el contenedor */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%; /* Asegura que el texto se centre verticalmente */
+            text-align: center; /* Centra el texto horizontalmente */
+        }
       </style>
 </head>
 <body>
@@ -159,7 +177,7 @@
           <div class="custom-container graficas-container">
             <div class="container-header">Gráficas</div>
             <div class="container-body">
-              <p id="mensajeGrafico">Aqui se mostrara el grafico</p>
+              <p id="mensajeGrafico" class="format-information-p">Aqui se mostrara el grafico</p>
               <canvas id="graficas" width="450" height="200"></canvas>
             </div>
           </div>
