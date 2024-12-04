@@ -107,37 +107,33 @@ function agregar() {
     $('#formulario').submit(function(e) {
         e.preventDefault();
         let postData = {
-            edad: $('#edad').val(),
-            sexo: $('#sexo').val(),
-            ocupacion: $('#ocupacion').val(),
-            hc_1: $('#hc_1').val(),
-            hc_2: $('#hc_2').val(),
-            apud_1: $('#apud_1').val(),
-            apud_2: $('#apud_2').val(),
-            apud_3: $('#apud_3').val(),
-            apud_4: $('#apud_4').val(),
-            rr_1: $('#rr_1').val(),
-            rr_2: $('#rr_2').val(),
-            te_1: $('#te_1').val(),
-            te_2: $('#te_2').val(),
-            te_3: $('#te_3').val(),
-            ccr_1: $('#ccr_1').val(),
-            ccr_2: $('#ccr_2').val(),
-            ccr_3: $('#ccr_3').val(),
-            rpc: $('#rpc').val()
-        };        
-        //let url = edit === false ? 'backend/product-add.php' : 'backend/product-edit.php';
+            edad: $('#id-edad').val(),
+            sexo: $('#id-sexo').val(),
+            ocupacion: $('#id-ocupacion').val(),
+            hc_1: $("input[name='hc_1']:checked").val(),
+            hc_2: $("input[name='hc_2']:checked").val(),
+            apud_1: $('#id-apud_1').val(),
+            apud_2: $('#id-apud_2').val(),
+            apud_3: $("input[name='apud_3']:checked").val(),
+            apud_4: $("input[name='apud_4']:checked").val(),
+            rr_1: $("input[name='rr_1']:checked").val(),
+            rr_2: $('#id-rr_2').val(),
+            te_1: $('#id-te_1').val(),
+            te_2: $("input[name='te_2']:checked").val(),
+            te_3: $('#id-te_3').val(),
+            ccr_1: $("input[name='ccr_1']:checked").val(),
+            ccr_2: $('#id-ccr_2').val(),
+            ccr_3: $("input[name='ccr_3']:checked").val(),
+            rpc: $('#id-rpc').val()
+        }; 
         $.ajax({
-            url: '/../php/Respuestas-add.php',
+            url: 'http://localhost/proyecto/php/Respuestas-add.php',
             type: 'POST',
             contentType: 'application/json',
             data: JSON.stringify(postData),
             success: function(response) {
-                alert(response);
-                console.log(response);
                 let result = typeof response === 'string' ? JSON.parse(response) : response;
                 if (result.status === "success") {
-                    //listarProductos();
                     $('#formulario').trigger('reset');
                 }
                 alert(result.message);

@@ -1,17 +1,7 @@
 <?php
-//namespace PROYECTO\MYAPI;
 use PROYECTO\MYAPI\Formulario;
-
-//include_once __DIR__ . '/vendor/autoload.php';
-require_once __DIR__ . '/myapi/Formulario.php';
-
-// Creamos una instancia de la clase Empresas
+require_once __DIR__ . DIRECTORY_SEPARATOR . 'myapi' . DIRECTORY_SEPARATOR . 'Formulario.php';
 $form = new Formulario('paginaods');
-
-// Llamamos al método list para obtener la lista de empresas
-$form->add();
-
-// Devolvemos los datos en formato JSON sin escapar Unicode
+$form->add(json_decode(file_get_contents('php://input'), true));
 echo json_encode($form->getData(), JSON_UNESCAPED_UNICODE);
-
 ?>
