@@ -96,6 +96,14 @@
             font-size: 0.9em;           /* Tamaño más pequeño */
             text-align: right;          /* Alinea el texto dentro del enlace a la derecha */
         }
+
+        .container-body-questions {
+          padding: 20px;
+          color: #333; /* Texto oscuro */
+          overflow-y: auto; /* Habilita el desplazamiento si es necesario */
+          box-sizing: border-box;
+          height: 440px; /* Ajusta la altura a lo que necesites */
+      }
       </style>
 </head>
 <body>
@@ -126,10 +134,10 @@
     <div class="row custom-row g-0">
         <!-- Contenedor Lista de empresas -->
         <div class="col-md-3">
-          <div class="custom-container information-container">
-            <div class="container-header">Información</div>
-            <div class="container-body">
-                <p>Nombre e informacion interesante para los usuarios</p>
+          <div class="custom-container information-container" style="height: 500px;">
+            <div class="container-header">Nuestras respuestas</div>
+            <div class="container-body-questions">
+              <ul id="listaPreguntas"></ul>
             </div>
           </div>
         </div>
@@ -145,7 +153,8 @@
           </div>
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="graficas.js"></script>
+    <script src="../../js/graficas.js"></script>
 </body>
 </html>
