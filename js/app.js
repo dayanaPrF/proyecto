@@ -158,6 +158,11 @@ function listarReflexion() {
                     $('#info-card-body').html('<p  style="font-size: 18px; color: #333; margin-bottom: 20px;" class="card-body-texto-inicio">Aun no hay respuestas. 😞</p>'); // Mensaje si no hay respuestas
                     return;
                 }
+                let todasVacias = respuestas.every(respuesta => !respuesta.rpc || respuesta.rpc.trim() === '');
+                if (todasVacias) {
+                    $('#info-card-body').html('<p style="font-size: 18px; color: #333; margin-bottom: 20px;" class="card-body-texto-inicio">Aun no hay respuestas. 😞</p>'); // Mensaje si todas las respuestas están vacías
+                    return;
+                }
                 let template = '';
                 template += '<p style="font-size: 18px; color: #333; margin-bottom: 20px;" class="card-body-texto-inicio">¡Conoce las opiniones de las personas! 😊</p>';
                 respuestas.forEach(respuesta => {
