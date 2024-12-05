@@ -3,7 +3,20 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Factory\AppFactory;
 
-require __DIR__ . '/vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
+
+$app = new \Slim\App();
+
+// Definir tus rutas aquí
+$app->get('/', function ($request, $response, $args) {
+    return $response->write("¡Hola, mundo!");
+});
+
+$app->run();
+
+
+
+//require __DIR__ . '/vendor/autoload.php';
 
 // Crear la aplicación Slim
 $app = AppFactory::create();
