@@ -19,6 +19,8 @@ class ComposerStaticInit3b0766dbcef4dfb1a4a2012fef8611d8
         array (
             'Psr\\Http\\Message\\' => 17,
             'Psr\\Container\\' => 14,
+            'PROYECTO\\MYAPI\\READ\\' => 20,
+            'PROYECTO\\MYAPI\\CREATE\\' => 22,
         ),
         'F' => 
         array (
@@ -38,6 +40,14 @@ class ComposerStaticInit3b0766dbcef4dfb1a4a2012fef8611d8
         'Psr\\Container\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/container/src',
+        ),
+        'PROYECTO\\MYAPI\\READ\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/backend/myapi/Read',
+        ),
+        'PROYECTO\\MYAPI\\CREATE\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/backend/myapi/Create',
         ),
         'FastRoute\\' => 
         array (

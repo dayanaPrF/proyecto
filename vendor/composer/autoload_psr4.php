@@ -9,5 +9,7 @@ return array(
     'Slim\\' => array($vendorDir . '/slim/slim/Slim'),
     'Psr\\Http\\Message\\' => array($vendorDir . '/psr/http-message/src'),
     'Psr\\Container\\' => array($vendorDir . '/psr/container/src'),
+    'PROYECTO\\MYAPI\\READ\\' => array($baseDir . '/backend/myapi/Read'),
+    'PROYECTO\\MYAPI\\CREATE\\' => array($baseDir . '/backend/myapi/Create'),
     'FastRoute\\' => array($vendorDir . '/nikic/fast-route/src'),
 );

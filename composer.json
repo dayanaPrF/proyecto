@@ -1,4 +1,18 @@
 {
+    "name": "aldol/backend",
+    "autoload": {
+        "psr-4": {
+            "PROYECTO\\MYAPI\\CREATE\\": "backend/myapi/Create/",
+            "PROYECTO\\MYAPI\\READ\\": "backend/myapi/Read/",
+            "PROYECTO\\MYAPI\\": "backend/myapi/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Ivonne",
+            "email": "ivonne.perezf@alumno.buap.mx"
+        }
+    ],
     "require": {
         "slim/slim": "^3.0"
     }

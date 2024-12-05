@@ -1,8 +1,11 @@
 <?php
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use PROYECTO\MYAPI\READ\Read;
+use PROYECTO\MYAPI\CREATE\Create;
 
 require __DIR__ . '/../vendor/autoload.php';
+//require __DIR__ . '/vendor/autoload.php';
 
 $app = new \Slim\App();
 
@@ -10,6 +13,13 @@ $app = new \Slim\App();
 $app->get('/', function (Request $request, Response $response, $args) {
     $response->getBody()->write("¡Hola, mundo!");
     return $response;
+});
+
+$app->get('/answers', function (Request $request, Response $response, $args) {
+    $form = new Read('paginaods');
+    $form->listAnswers();
+    $response->getBody()->write(json_encode($form->getData()));
+    return $response->withHeader('Content-Type', 'application/json');
 });
 
 // Ejecutar la aplicación
