@@ -137,6 +137,7 @@ function agregar() {
                 if (result.status === "success") {
                     $('#formulario').trigger('reset');
                 }
+                listarReflexion();
                 alert(result.message);
             },
             error: function(xhr, status, error) {
