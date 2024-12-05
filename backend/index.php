@@ -22,6 +22,27 @@ $app->get('/answers', function (Request $request, Response $response, $args) {
     return $response->withHeader('Content-Type', 'application/json');
 });
 
+$app->get('/listemp', function (Request $request, Response $response, $args) {
+    $empresas = new Read('paginaods');
+    $empresas->list();
+    $response->getBody()->write(json_encode($empresas->getData()));
+    return $response->withHeader('Content-Type', 'application/json');
+});
+
+
+$app->get('/empresas/{id}', function (Request $request, Response $response, $args) {
+    $empresaId = $args['id'];
+    if ($empresaId) {
+        $empresas = new Read('paginaods');
+        $empresas->getDetails($empresaId); 
+        $response->getBody()->write($empresas->getData());
+        return $response->withHeader('Content-Type', 'application/json');
+    } else {
+        $response->getBody()->write(json_encode(['error' => 'ID de empresa no proporcionado']));
+        return $response->withHeader('Content-Type', 'application/json');
+    }
+});
+
 // Ejecutar la aplicación
 $app->run();
 

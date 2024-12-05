@@ -16,7 +16,7 @@ function init() {
 function listarEmpresas() {
     console.log('Obteniendo la lista de empresas...');
     $.ajax({
-        url: '/proyecto/backend/empresa-list.php',
+        url: 'http://localhost/proyecto/backend/listemp',
         type: 'GET',
         success: function(response) {
             try {
@@ -56,14 +56,13 @@ function mostrarDetallesEmpresa(id) {
         console.error('No se ha proporcionado un ID válido');
         return;  // No continúa si el ID es inválido
     }
-
     $.ajax({
-        url: `../../backend/empresa-detalles.php?id=${id}`,
+        url: `http://localhost/proyecto/backend/empresas/${id}`,
         type: 'GET',
         success: function(response) {
             console.log('Respuesta recibida:', response);  // Agrega esta línea para ver qué estás recibiendo
             try {
-                let empresa = JSON.parse(response);
+                let empresa = response;//JSON.parse(response);
 
                 // Información de la empresa
                 let template = `
