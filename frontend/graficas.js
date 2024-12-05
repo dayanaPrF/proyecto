@@ -87,7 +87,7 @@ function showGraph(questionId) {
         return;
     }
     $.ajax({
-        url: '/proyecto/backend/Respuestas-list.php',
+        url: 'http://localhost/proyecto/backend/answers',
         type: 'GET',
         success: function(response) {
             try {
