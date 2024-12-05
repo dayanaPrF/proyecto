@@ -19,32 +19,24 @@ function listarEmpresas() {
         url: '/proyecto/php/empresa-list.php',
         type: 'GET',
         success: function(response) {
-            console.log(`Respuesta de listar empresas: ${response}`);
             try {
                 let empresas = JSON.parse(response);
                 let template = '';
                 empresas.forEach(empresa => {   
-
                     console.log('Imagen:', empresa.imagen);
-
-                    let logo = empresa.imagen ? `/proyecto/img/img_Empresas/${empresa.imagen}` : '/proyecto/img/logoBimbo.png';
-                    
-                    // Verifica la ruta de la imagen en la consola para depurar
-                    console.log(`Ruta del logo para ${empresa.nombre}: ${logo}`);
-                    
+                    let logo = empresa.imagen.startsWith('http') ? empresa.imagen : `/proyecto/img/img_Empresas/${empresa.imagen}`;
                     template += `
-                        <li>
-                            <a href="javascript:void(0);" class="empresa-item" data-id="${empresa.id}">
-                                <img src="${logo}" alt="${empresa.nombre}" width="40" height="40"> ${empresa.nombre}
-                            </a>
-                        </li>
-                    `;
+                    <li style="list-style-type: none; padding-left: 0;">
+                        <a href="javascript:void(0);" class="empresa-item" data-id="${empresa.id}">
+                            <img src="${logo}" width="40" height="40"> ${empresa.nombre}
+                        </a>
+                    </li>
+                `;
                 });
                 $('#empresas').html(template);
-
                 // Agregar el evento click para mostrar más información
+                $('.empresa-item').css('color', 'green');
                 $('.empresa-item').on('click', function() {
-
                     let empresaId = $(this).data('id');  // Obtén el ID correctamente
                     console.log('click en: '+empresaId);
                     mostrarDetallesEmpresa(empresaId);  // Pasa el ID correctamente
@@ -75,19 +67,19 @@ function mostrarDetallesEmpresa(id) {
 
                 // Información de la empresa
                 let template = `
-                    <h2>${empresa.nombre}</h2>
-                    <p><strong>Área de interés:</strong> ${empresa.area_interes}</p>
-                    <p><strong>Fuente de consumo:</strong> ${empresa.fuente_consumo}</p>
-                    <p><strong>Emisiones:</strong> ${empresa.emisiones}</p>
-                    <p><strong>Medidas adoptadas:</strong> ${empresa.medidas}</p>
+                    <h2 style="color: green;">${empresa.nombre}</h2>
+                    <p class="format-list"><strong>Área de interés:</strong> ${empresa.area_interes}</p>
+                    <p class="format-list"><strong>Fuente de consumo:</strong> ${empresa.fuente_consumo}</p>
+                    <p class="format-list"><strong>Emisiones:</strong> ${empresa.emisiones} tCO₂e</p>
+                    <p class="format-list"><strong>Medidas adoptadas:</strong> ${empresa.medidas}</p>
                 `;
                 $('#empresaDetails').html(template);
 
                 // Información de contacto (si lo tienes)
                 let contactTemplate = `
-                    <ul>
-                        <li><strong>Correo:</strong> ${empresa.correo}</li>
-                        <li><strong>Teléfono:</strong> ${empresa.telefono}</li>
+                    <ul style="list-style-type: none !important; padding-left: 0 !important;">
+                        <li style="list-style-type: none !important; padding-left: 0 !important;"> <strong>Correo:</strong> ${empresa.correo}</li>
+                        <li style="list-style-type: none !important; padding-left: 0 !important;"> <strong>Teléfono:</strong> ${empresa.telefono}</li>
                     </ul>
                 `;
                 $('#contactInfo').html(contactTemplate);

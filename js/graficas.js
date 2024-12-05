@@ -81,7 +81,6 @@ function showGraph(questionId) {
     if (window.chart) {
         window.chart.destroy();
     }
-    // Verificar si el canvas con id 'graficas' existe en el DOM
     const ctx = document.getElementById('graficas')?.getContext('2d');
     if (!ctx) {
         console.error("No se pudo obtener el contexto del canvas.");

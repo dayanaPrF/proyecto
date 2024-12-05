@@ -48,15 +48,15 @@
       /* Centrado vertical y horizontal */
       .custom-row {
         display: flex;
-        justify-content: center;
-        align-items: flex-start;
-        gap: 20px;
-        flex-wrap: wrap; /* Adaptable para pantallas pequeñas */
-      }
+        justify-content: space-between;
+        align-items: stretch; /* Garantiza altura uniforme */
+        gap: 10px; /* Reduce el espacio */
+        flex-wrap: wrap; /* Permite ajuste en pantallas más pequeñas */
+    }
   
       /* Contenedor extra para alineación */
       .contact-container {
-        margin-top: 20px;
+        margin-top: 0px;
       }
 
       /* Barra de navegación */
@@ -80,6 +80,30 @@
             text-decoration: underline; /* Subrayado */
             font-size: 0.9em;           /* Tamaño más pequeño */
             text-align: right;          /* Alinea el texto dentro del enlace a la derecha */
+        }
+
+        .format-information-p {
+            color: #666666; 
+            font-family: Arial, Helvetica, sans-serif; 
+            font-size: 1.0rem;
+            
+            /* Centrar el texto en el contenedor */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%; /* Asegura que el texto se centre verticalmente */
+            text-align: center; /* Centra el texto horizontalmente */
+        }
+
+        .format-list {
+            color: #666666 !important; 
+            font-family: Arial, Helvetica, sans-serif; 
+            font-size: 1.0rem;
+        }
+
+        .no-bullets {
+            list-style-type: none !important; /* Elimina los puntos */
+            padding-left: 0; /* Elimina la indentación */
         }
       </style>
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -118,14 +142,14 @@
           <!-- Texto principal centrado -->
           <div class="row">
               <div class="col-12">
-                  <h1 class="hero-text">CONOCE SOBRE MÁS EMPRESAS</h1>
+                  <h1 class="hero-text">CONOCE MÁS SOBRE LAS EMPRESAS</h1>
               </div>
           </div>
 
           <!-- Contenedores principales -->
         <div class="row custom-row">
             <!-- Contenedor Lista de empresas -->
-            <div class="col-md-3">
+            <div class="col-md-3 d-flex flex-column">
                 <div class="custom-container">
                     <div class="container-header">Lista de empresas</div>
                     <div class="container-body">
@@ -135,20 +159,20 @@
             </div>
 
             <!-- Contenedor Información de empresa -->
-            <div class="col-md-4">
+            <div class="col-md-4 d-flex flex-column">
                 <div class="custom-container">
                     <div class="container-header">Información de empresa seleccionada</div>
-                    <div id="empresaDetails" class="container-body">
-                        <p>Aquí aparecerán los detalles de la empresa seleccionada.</p>
+                    <div id="empresaDetails" class="container-body format-list">
+                        <p class="format-information-p format-list">Aquí aparecerán los detalles de la empresa seleccionada.</p>
                     </div>
                 </div>
             </div>
 
             <!-- Contenedor Contacto a las empresas -->
-            <div class="col-md-4 contact-container">
+            <div class="col-md-4 d-flex flex-column contact-container">
                 <div class="custom-container">
                     <div class="container-header">Contacto a las empresas</div>
-                    <div id="contactInfo" class="container-body">
+                    <div id="contactInfo" class="container-body format-list">
                         <!-- La información de contacto se añadirá aquí -->
                     </div>
                 </div>
