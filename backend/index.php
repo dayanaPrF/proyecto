@@ -43,6 +43,13 @@ $app->get('/empresas/{id}', function (Request $request, Response $response, $arg
     }
 });
 
+$app->post('/agregar', function ($request, $response, $args) {
+    $data = $request->getParsedBody();
+    $form = new Create('paginaods');
+    $form->add($data);
+    return $response->withJson($form->getData(), 200);
+});
+
 // Ejecutar la aplicación
 $app->run();
 

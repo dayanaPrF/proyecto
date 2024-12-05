@@ -119,7 +119,7 @@ function agregar() {
             rpc: $('#id-rpc').val()
         }; 
         $.ajax({
-            url: 'http://localhost/proyecto/backend/Respuestas-add.php',
+            url: 'http://localhost/proyecto/backend/agregar',
             type: 'POST',
             contentType: 'application/json',
             data: JSON.stringify(postData),
