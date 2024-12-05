@@ -8,17 +8,10 @@
         }
 
         public function add($respForm) {
-            // Inicializar la respuesta predeterminada
             $response = array(
                 'status' => 'error',
                 'message' => 'Error al insertar la respuesta'
             );
-    
-            // // Verificar si el producto ya existe en la base de datos
-            // $sql = "SELECT * FROM productos WHERE nombre = '{$producto['nombre']}' AND eliminado = 0";
-            // $result = $this->conexion->query($sql);
-    
-            //if ($result->num_rows == 0) {
                 $this->conexion->set_charset("utf8");
                 $sql = "INSERT INTO productos (id, edad, sexo, ocupacion, hc_1, hc_2, apud_1, apud_2, apud_3, apud_4, rr_1, rr_2, te_1, te_2, te_3, ccr_1, ccr_2, ccr_3, rpc) 
                         VALUES (null, '{$respForm['edad']}', '{$respForm['sexo']}', '{$respForm['ocupacion']}', '{$respForm['hc_1']}', 
@@ -32,7 +25,6 @@
                 } else {
                     $response['message'] = "ERROR: No se ejecutó $sql. " . mysqli_error($this->conexion);
                 }
-            //}
             $result->free();
             $this->conexion->close();
             $this->data = $response;
