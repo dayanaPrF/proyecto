@@ -140,7 +140,7 @@ function agregar() {
 
 function listarReflexion() {
     $.ajax({
-        url: '/proyecto/backend/Respuestas-rcp.php',
+        url: '/proyecto/backend/resprcp',
         type: 'GET',
         success: function(response) {
             try {

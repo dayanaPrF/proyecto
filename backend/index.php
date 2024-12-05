@@ -50,6 +50,12 @@ $app->post('/agregar', function ($request, $response, $args) {
     return $response->withJson($form->getData(), 200);
 });
 
+$app->get('/resprcp', function ($request, $response, $args) {
+    $form = new Read('paginaods');
+    $form->listReflexion();
+    return $response->withJson($form->getData(), 200);
+});
+
 // Ejecutar la aplicación
 $app->run();
 
