@@ -16,35 +16,27 @@ function init() {
 function listarEmpresas() {
     console.log('Obteniendo la lista de empresas...');
     $.ajax({
-        url: '/proyecto/php/empresa-list.php',
+        url: '/proyecto/backend/empresa-list.php',
         type: 'GET',
         success: function(response) {
-            console.log(`Respuesta de listar empresas: ${response}`);
             try {
                 let empresas = JSON.parse(response);
                 let template = '';
                 empresas.forEach(empresa => {   
-
                     console.log('Imagen:', empresa.imagen);
-
-                    let logo = empresa.imagen ? `/proyecto/img/img_Empresas/${empresa.imagen}` : '/proyecto/img/logoBimbo.png';
-                    
-                    // Verifica la ruta de la imagen en la consola para depurar
-                    console.log(`Ruta del logo para ${empresa.nombre}: ${logo}`);
-                    
+                    let logo = empresa.imagen.startsWith('http') ? empresa.imagen : `/proyecto/img/img_Empresas/${empresa.imagen}`;
                     template += `
-                        <li>
-                            <a href="javascript:void(0);" class="empresa-item" data-id="${empresa.id}">
-                                <img src="${logo}" alt="${empresa.nombre}" width="40" height="40"> ${empresa.nombre}
-                            </a>
-                        </li>
-                    `;
+                    <li style="list-style-type: none; padding-left: 0;">
+                        <a href="javascript:void(0);" class="empresa-item" data-id="${empresa.id}">
+                            <img src="${logo}" width="40" height="40"> ${empresa.nombre}
+                        </a>
+                    </li>
+                `;
                 });
                 $('#empresas').html(template);
-
                 // Agregar el evento click para mostrar más información
+                $('.empresa-item').css('color', 'green');
                 $('.empresa-item').on('click', function() {
-
                     let empresaId = $(this).data('id');  // Obtén el ID correctamente
                     console.log('click en: '+empresaId);
                     mostrarDetallesEmpresa(empresaId);  // Pasa el ID correctamente
@@ -66,7 +58,7 @@ function mostrarDetallesEmpresa(id) {
     }
 
     $.ajax({
-        url: `../../php/empresa-detalles.php?id=${id}`,
+        url: `../../backend/empresa-detalles.php?id=${id}`,
         type: 'GET',
         success: function(response) {
             console.log('Respuesta recibida:', response);  // Agrega esta línea para ver qué estás recibiendo
@@ -75,19 +67,19 @@ function mostrarDetallesEmpresa(id) {
 
                 // Información de la empresa
                 let template = `
-                    <h2>${empresa.nombre}</h2>
-                    <p><strong>Área de interés:</strong> ${empresa.area_interes}</p>
-                    <p><strong>Fuente de consumo:</strong> ${empresa.fuente_consumo}</p>
-                    <p><strong>Emisiones:</strong> ${empresa.emisiones}</p>
-                    <p><strong>Medidas adoptadas:</strong> ${empresa.medidas}</p>
+                    <h2 style="color: green;">${empresa.nombre}</h2>
+                    <p class="format-list"><strong>Área de interés:</strong> ${empresa.area_interes}</p>
+                    <p class="format-list"><strong>Fuente de consumo:</strong> ${empresa.fuente_consumo}</p>
+                    <p class="format-list"><strong>Emisiones:</strong> ${empresa.emisiones} tCO₂e</p>
+                    <p class="format-list"><strong>Medidas adoptadas:</strong> ${empresa.medidas}</p>
                 `;
                 $('#empresaDetails').html(template);
 
                 // Información de contacto (si lo tienes)
                 let contactTemplate = `
-                    <ul>
-                        <li><strong>Correo:</strong> ${empresa.correo}</li>
-                        <li><strong>Teléfono:</strong> ${empresa.telefono}</li>
+                    <ul style="list-style-type: none !important; padding-left: 0 !important;">
+                        <li style="list-style-type: none !important; padding-left: 0 !important;"> <strong>Correo:</strong> ${empresa.correo}</li>
+                        <li style="list-style-type: none !important; padding-left: 0 !important;"> <strong>Teléfono:</strong> ${empresa.telefono}</li>
                     </ul>
                 `;
                 $('#contactInfo').html(contactTemplate);
@@ -128,7 +120,7 @@ function agregar() {
             rpc: $('#id-rpc').val()
         }; 
         $.ajax({
-            url: 'http://localhost/proyecto/php/Respuestas-add.php',
+            url: 'http://localhost/proyecto/backend/Respuestas-add.php',
             type: 'POST',
             contentType: 'application/json',
             data: JSON.stringify(postData),
@@ -147,13 +139,22 @@ function agregar() {
     });
 }
 
-function listarReflexion(){
+function listarReflexion() {
     $.ajax({
-        url: '/proyecto/php/Respuestas-rcp.php',
+        url: '/proyecto/backend/Respuestas-rcp.php',
         type: 'GET',
         success: function(response) {
             try {
                 let respuestas = JSON.parse(response);
+                if (!respuestas || respuestas.length === 0) {
+                    $('#info-card-body').html('<p  style="font-size: 18px; color: #333; margin-bottom: 20px;" class="card-body-texto-inicio">Aun no hay respuestas. 😞</p>'); // Mensaje si no hay respuestas
+                    return;
+                }
+                let todasVacias = respuestas.every(respuesta => !respuesta.rpc || respuesta.rpc.trim() === '');
+                if (todasVacias) {
+                    $('#info-card-body').html('<p style="font-size: 18px; color: #333; margin-bottom: 20px;" class="card-body-texto-inicio">Aun no hay respuestas. 😞</p>'); // Mensaje si todas las respuestas están vacías
+                    return;
+                }
                 let template = '';
                 template += '<p style="font-size: 18px; color: #333; margin-bottom: 20px;" class="card-body-texto-inicio">¡Conoce las opiniones de las personas! 😊</p>';
                 respuestas.forEach(respuesta => {
@@ -165,14 +166,13 @@ function listarReflexion(){
                         `;
                     }
                 });
-                if (template !== '') {
-                    $('#info-card-body').html(template);
-                } else {
-                    $('#info-card-body').html('<p>Aun no hay respuestas. 😞</p>'); // Mensaje si no hay respuestas
-                }
+                $('#info-card-body').html(template);
             } catch (error) {
                 console.error('Error al parsear JSON:', error);
             }
+        },
+        error: function() {
+            $('#info-card-body').html('< style="margin: 0; font-size: 16px; color: #333;" class="opiniones">Hubo un problema al obtener las respuestas. 😞</p>');
         }
     });
 }

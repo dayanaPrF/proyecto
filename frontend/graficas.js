@@ -9,7 +9,7 @@ const categoriasPreguntas = {
         { question: "¿Prefieres comprar productos frescos en mercados locales o en supermercados grandes?", id: "apud_1" },
         { question: "¿Qué haces con los restos de comida?", id: "apud_2" },
         { question: "¿Compras productos orgánicos?", id: "apud_3" },
-        { question: "¿Compras en empaques reutilizables o sin empaque?", id: "apud_4" }
+        { question: "¿Compras en empaques reutilizables?", id: "apud_4" }
     ],
     "Transporte y Energía": [
         { question: "¿Cómo sueles transportarte?", id: "te_1" },
@@ -81,14 +81,13 @@ function showGraph(questionId) {
     if (window.chart) {
         window.chart.destroy();
     }
-    // Verificar si el canvas con id 'graficas' existe en el DOM
     const ctx = document.getElementById('graficas')?.getContext('2d');
     if (!ctx) {
         console.error("No se pudo obtener el contexto del canvas.");
         return;
     }
     $.ajax({
-        url: '/proyecto/php/Respuestas-list.php',
+        url: '/proyecto/backend/Respuestas-list.php',
         type: 'GET',
         success: function(response) {
             try {
