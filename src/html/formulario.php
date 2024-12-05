@@ -282,7 +282,7 @@
                                 <!-- apud_4 -->
                                 <fieldset>
                                     <br><legend class="col-form-label-format">
-                                        ¿Compras en empaques reutilizables o sin empaque?
+                                        ¿Compras en empaques reutilizables?
                                     </legend>
                                     <label for="4-siempre" class="col-form-label-format">
                                         <input type="radio" id="4-siempre" name="apud_4" class="all-elements-color-background" value="Siempre"

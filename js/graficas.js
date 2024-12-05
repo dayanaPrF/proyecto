@@ -9,7 +9,7 @@ const categoriasPreguntas = {
         { question: "¿Prefieres comprar productos frescos en mercados locales o en supermercados grandes?", id: "apud_1" },
         { question: "¿Qué haces con los restos de comida?", id: "apud_2" },
         { question: "¿Compras productos orgánicos?", id: "apud_3" },
-        { question: "¿Compras en empaques reutilizables o sin empaque?", id: "apud_4" }
+        { question: "¿Compras en empaques reutilizables?", id: "apud_4" }
     ],
     "Transporte y Energía": [
         { question: "¿Cómo sueles transportarte?", id: "te_1" },
