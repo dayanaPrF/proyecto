@@ -16,7 +16,7 @@ function init() {
 function listarEmpresas() {
     console.log('Obteniendo la lista de empresas...');
     $.ajax({
-        url: '/proyecto/php/empresa-list.php',
+        url: '/proyecto/backend/empresa-list.php',
         type: 'GET',
         success: function(response) {
             try {
@@ -58,7 +58,7 @@ function mostrarDetallesEmpresa(id) {
     }
 
     $.ajax({
-        url: `../../php/empresa-detalles.php?id=${id}`,
+        url: `../../backend/empresa-detalles.php?id=${id}`,
         type: 'GET',
         success: function(response) {
             console.log('Respuesta recibida:', response);  // Agrega esta línea para ver qué estás recibiendo
@@ -120,7 +120,7 @@ function agregar() {
             rpc: $('#id-rpc').val()
         }; 
         $.ajax({
-            url: 'http://localhost/proyecto/php/Respuestas-add.php',
+            url: 'http://localhost/proyecto/backend/Respuestas-add.php',
             type: 'POST',
             contentType: 'application/json',
             data: JSON.stringify(postData),
@@ -141,7 +141,7 @@ function agregar() {
 
 function listarReflexion() {
     $.ajax({
-        url: '/proyecto/php/Respuestas-rcp.php',
+        url: '/proyecto/backend/Respuestas-rcp.php',
         type: 'GET',
         success: function(response) {
             try {

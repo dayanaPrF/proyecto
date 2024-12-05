@@ -1,0 +1,15 @@
+{
+    "name": "dayan/backend",
+    "autoload": {
+        "psr-4": {
+            "PROYECTO\\MYAPI\\": "myapi/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Loopni",
+            "email": "dayanaperzfls@gmail.com"
+        }
+    ],
+    "require": {}
+}

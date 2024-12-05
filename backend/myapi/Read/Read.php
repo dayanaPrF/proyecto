@@ -10,11 +10,11 @@ class Read extends DataBase {
     }
 
     public function list() {
-        $this->response = [];
+        $response = [];
         if ($result = $this->conexion->query("SELECT id, nombre, imagen, area_interes, fuente_consumo, emisiones, medidas FROM empresas")) {
             $rows = $result->fetch_all(MYSQLI_ASSOC);
             if (!is_null($rows)) {
-                $this->response = $rows;
+                $response = $rows;
             }
             $result->free();
         } else {
@@ -24,12 +24,12 @@ class Read extends DataBase {
         $this->data = $response;
     }
         
-    function listAnswers(){
-        $this->response = [];
+    function listAnswers() {
+        $response = [];
         if ($result = $this->conexion->query("SELECT * FROM cuestionario")) {
             $rows = $result->fetch_all(MYSQLI_ASSOC);
             if (!is_null($rows)) {
-                $this->response = $rows;
+                $response = $rows;
             }
             $result->free();
         } else {
@@ -38,13 +38,14 @@ class Read extends DataBase {
         $this->conexion->close();
         $this->data = $response;
     }
+    
 
     public function getDetails($id) {
-        $this->response = [];
+        $response = [];
         if ($result = $this->conexion->query("SELECT * FROM empresas WHERE id = $id")) {
             $rows = $result->fetch_assoc();
             if ($rows) {
-                $this->response = $rows;
+                $response = $rows;
             }
             $result->free();
         } else {
@@ -55,11 +56,11 @@ class Read extends DataBase {
     }
 
     function listReflexion(){
-        $this->response = [];
+        $response = [];
         if ($result = $this->conexion->query("SELECT rpc FROM cuestionario")) {
             $rows = $result->fetch_all(MYSQLI_ASSOC);
             if (!is_null($rows)) {
-                $this->response = $rows;
+                $response = $rows;
             }
             $result->free();
         } else {
